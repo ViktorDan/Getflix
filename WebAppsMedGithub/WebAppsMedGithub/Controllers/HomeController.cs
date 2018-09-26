@@ -8,7 +8,7 @@ namespace WebAppsMedGithub.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: Home testest
         public ActionResult Index()
         {
             return View();
