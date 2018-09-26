@@ -9,6 +9,7 @@ namespace WebAppsMedGithub.Controllers
     public class HomeController : Controller
     {
         // Kristian var her 2 ganger
+        //her og
         public ActionResult Index()
         {
             return View();
