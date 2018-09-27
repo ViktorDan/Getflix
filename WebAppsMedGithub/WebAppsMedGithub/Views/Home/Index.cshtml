@@ -3,5 +3,25 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Getflix</h2>
+<h3>Velkommen til Getflix!</h3>
+
+<form action="/Home/Hovedside">
+    <table class="table">
+        <tr>
+            <td style="color:red">Logg deg inn:</td>
+        </tr>
+        <tr>
+            <td>Brukernavn</td><td><input required type="text" name="BrukerNavn"/></td>
+        </tr>
+        <tr>
+            <td>Passord</td><td><input required type="password" name="passord"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Logg inn" name="LoggInn"/></td>
+        </tr>
+    </table>
+</form>
+
+<p>Om du ikke har bruker <a href="/Home/KundeRegistrer">registrer deg her!</a></p>
 

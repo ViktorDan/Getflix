@@ -12,5 +12,16 @@ namespace WebAppsMedGithub.Controllers
         {
             return View();
         }
+
+        public ActionResult KundeRegistrer()
+        {
+            return View();
+
+        }
+
+        public ActionResult HovedSide()
+        {
+            return View();
+        }
     }
 }
