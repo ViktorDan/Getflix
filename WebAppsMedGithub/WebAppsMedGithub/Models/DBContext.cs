@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using WebAppsMedGithub.Models;
 
 // Her finnes alt som har med oppretting av database å gjøre. DB metoder finner man i DBFunksjonalitet
 // Public Virtual lager connection mellom Kunder og Poststeder
@@ -14,7 +15,7 @@ namespace WebAppsMedGithub.Models
     public class Kunder
     {
         [Key]
-        public int Id { get; set; }
+        public int KId { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
         public string Adresse { get; set; }
@@ -32,7 +33,7 @@ namespace WebAppsMedGithub.Models
     public class Filmer
     {
         [Key]
-        public int Id { get; set; }
+        public int FId { get; set; }
         public string Navn { get; set; }
         public int Lengde { get; set; }
         public int Storrelse { get; set; }
