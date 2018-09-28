@@ -51,6 +51,7 @@ namespace WebAppsMedGithub.Models
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
+        public DbSet<Poststeder> Poststeder { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
