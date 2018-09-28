@@ -16,25 +16,27 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int KId { get; set; }
         public string Fornavn { get; set; }
-        public string Etternavn { get; set; }
-        public string Adresse { get; set; }
-        public string Postnr { get; set; }
-        public string Tlf { get; set; }
-        public virtual Poststeder Poststeder { get; set; }
+        public string Passord { get; set; }
+        //public string etternavn { get; set; }
+        //public string adresse { get; set; }
+        //public string postnr { get; set; }
+        //public string tlf { get; set; }
+
+        // public virtual Poststeder Poststeder { get; set; }
     }
     public class Poststeder
     {
         [Key]
         public string Postnr { get; set; }
         public string Poststed { get; set; }
-        public virtual Kunder Kunder { get; set; }
+        // public virtual Kunder Kunder { get; set; }
     }
     public class Filmer
     {
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
-        public int Lengdxe { get; set; }
+        public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
     }
@@ -51,6 +53,7 @@ namespace WebAppsMedGithub.Models
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
+        public DbSet<Poststeder> Poststeder { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
