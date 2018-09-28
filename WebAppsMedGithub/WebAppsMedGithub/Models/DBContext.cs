@@ -35,7 +35,7 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
-        public int Lengde { get; set; }
+        public int Lengdxe { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
     }
@@ -52,6 +52,7 @@ namespace WebAppsMedGithub.Models
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
         public DbSet<Kunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
+        public DbSet<Poststeder> Poststeder { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

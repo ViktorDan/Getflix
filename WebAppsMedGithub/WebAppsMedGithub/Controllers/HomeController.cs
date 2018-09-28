@@ -43,5 +43,10 @@ namespace WebAppsMedGithub.Controllers
             }
             return View();
         }
+
+        public ActionResult FilmRegistrer()
+        {
+            return View();
+        }
     }
 }
