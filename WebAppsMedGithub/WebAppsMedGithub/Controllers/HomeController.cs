@@ -22,30 +22,6 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult HovedSide()
         {
-            var db = new DBFunksjonalitet();
-            List<Film> alleFilmer = db.alleFilmer();
-            return View(alleFilmer);
-        }
-
-        public ActionResult FilmRegistrer()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult FilmRegistrer(Film innFilm)
-        {
-            var db = new DBFunksjonalitet();
-            bool OK = db.lagreFilm(innFilm);
-            if(OK)
-            {
-                return RedirectToAction("Liste");
-            }
-            return View();
-        }
-
-        public ActionResult FilmRegistrer()
-        {
             return View();
         }
     }
