@@ -29,7 +29,7 @@ namespace WebAppsMedGithub.Controllers
         }
 
         [HttpPost]
-        public ActionResult Registrer(Models.Kunder innKunde)
+        public ActionResult Registrer(Models.Kunde innKunde)
         {
             // åpner først databasen ved å instansiere et DB objekt.
             using (var db = new Models.DBContext())
@@ -37,12 +37,11 @@ namespace WebAppsMedGithub.Controllers
                 try
                 {
                     // add kunde til tabellen Kunder, og commit ved "savechanges".
-                    var nyKunde = new Models.Kunder();
+                    var nyKunde = new Models.dbKunder();
                     byte[] passordDb = lagHash(innKunde.Passord);
-                    nyKunde.Fornavn = innKunde.Fornavn;
+                    nyKunde.Fornavn = innKunde.Navn;
                     nyKunde.Passord = passordDb;
-
-                    db.Kunder.Add(innKunde);
+                    db.Kunder.Add(nyKunde);
                     db.SaveChanges();
                 }
                 catch (Exception feil)

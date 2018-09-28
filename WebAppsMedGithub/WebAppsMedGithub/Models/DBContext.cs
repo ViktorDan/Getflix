@@ -11,12 +11,13 @@ using System.Web;
 
 namespace WebAppsMedGithub.Models
 {
-    public class dbKunde
+    public class dbKunder
     {
-        //[Key]
+        [Key]
         //public int KId { get; set; }
         public string Fornavn { get; set; }
-        public string Passord { get; set; }
+        public byte[] Passord { get; set; }
+        public string Salt { get; set; }
         //public string etternavn { get; set; }
         //public string adresse { get; set; }
         //public string postnr { get; set; }
@@ -51,7 +52,7 @@ namespace WebAppsMedGithub.Models
             Database.CreateIfNotExists();
         }
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
-        public DbSet<Kunder> Kunder { get; set; }
+        public DbSet<dbKunder> Kunder { get; set; }
         //public DbSet<Filmer> Filmer { get; set; }
         //public DbSet<Poststeder> Poststeder { get; set; }
 
