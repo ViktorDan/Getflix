@@ -21,6 +21,7 @@ namespace WebAppsMedGithub.Controllers
         }
 
         // legger kunde inn i database hvis valideringen er OK, funker ikke enda
+        /*
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult KundeRegistrer(Kunde innKunde)
@@ -35,7 +36,7 @@ namespace WebAppsMedGithub.Controllers
                 }
             }
             return View(); 
-        }
+        }*/
 
         public ActionResult HovedSide()
         {
