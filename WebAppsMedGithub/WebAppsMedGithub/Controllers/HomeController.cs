@@ -12,7 +12,7 @@ namespace WebAppsMedGithub.Controllers
     {
         public ActionResult Index()
         {
-            // sjekk login
+            // Sjekker om det er en aktiv login når man går inn i Index
             if(Session["LoggetInn"] == null)
             {
                 Session["LoggetInn"] = false;
@@ -29,7 +29,7 @@ namespace WebAppsMedGithub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(Kunde innLogget)
         {
-            // sjekk om login var OK
+            // Sjekker om login var OK
             if (DBFunk.bruker_i_db(innLogget))
             {
                 // brukernavn og passord OK
@@ -62,10 +62,15 @@ namespace WebAppsMedGithub.Controllers
                 {
                     // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
                     var nyKunde = new dbKunder();
+                    nyKunde.Brukernavn = innKunde.Brukernavn;
+                    nyKunde.Fornavn = innKunde.Fornavn;
+                    nyKunde.Etternavn = innKunde.Etternavn;
+                    nyKunde.Adresse = innKunde.Adresse;
+                    nyKunde.Postnr = innKunde.Postnr;
+                    nyKunde.Tlf = innKunde.Tlf;
                     string salt = DBFunk.lagSalt();
                     var passordOgSalt = innKunde.Passord + salt;
                     byte[] passordDb = DBFunk.lagHash(passordOgSalt);
-                    nyKunde.Navn = innKunde.Navn;
                     nyKunde.Passord = passordDb;
                     nyKunde.Salt = salt;
                     db.Kunder.Add(nyKunde);

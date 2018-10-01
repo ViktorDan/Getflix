@@ -12,23 +12,27 @@ using WebAppsMedGithub.Models;
 
 namespace WebAppsMedGithub.Models
 {
-    public class Kunder
+    public class dbKunder
     {
         [Key]
         public int KId { get; set; }
+        public string Brukernavn { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
         public string Adresse { get; set; }
         public string Postnr { get; set; }
         public string Tlf { get; set; }
-        public virtual Poststeder Poststeder { get; set; }
+        
+        public byte[] Passord { get; set; }
+        public string Salt { get; set; }
+        //public virtual Poststeder Poststeder { get; set; }
     }
     public class Poststeder
     {
         [Key]
         public string Postnr { get; set; }
         public string Poststed { get; set; }
-        public virtual Kunder Kunder { get; set; }
+        //public virtual dbKunder Kunder { get; set; }
     }
     public class Filmer
     {
@@ -50,7 +54,7 @@ namespace WebAppsMedGithub.Models
             Database.CreateIfNotExists();
         }
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
-        public DbSet<Kunder> Kunder { get; set; }
+        public DbSet<dbKunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
         public DbSet<Poststeder> Poststeder { get; set; }
 

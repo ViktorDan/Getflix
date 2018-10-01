@@ -34,7 +34,7 @@ namespace WebAppsMedGithub
         {
             using (var db = new DBContext())
             {
-                dbKunder funnetKunde = db.Kunder.FirstOrDefault(b => b.Navn == innKunde.Navn);
+                dbKunder funnetKunde = db.Kunder.FirstOrDefault(b => b.Brukernavn == innKunde.Brukernavn);
                 if (funnetKunde != null)
                 {
                     byte[] passordForTest = lagHash(innKunde.Passord + funnetKunde.Salt);
