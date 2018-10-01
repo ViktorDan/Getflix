@@ -15,7 +15,6 @@ namespace WebAppsMedGithub.Models
     public class dbKunder
     {
         [Key]
-        public int KId { get; set; }
         public string Brukernavn { get; set; }
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
