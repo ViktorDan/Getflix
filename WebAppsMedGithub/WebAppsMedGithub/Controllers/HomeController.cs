@@ -20,6 +20,23 @@ namespace WebAppsMedGithub.Controllers
 
         }
 
+        // legger kunde inn i database hvis valideringen er OK, funker ikke enda
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult KundeRegistrer(Kunde innKunde)
+        {
+            if(ModelState.IsValid)
+            {
+                var kundeDb = new DBkunde();
+                Kunde enKunde = KundeDb.settInn(innKunde);
+                if(insertOK)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(); 
+        }
+
         public ActionResult HovedSide()
         {
             return View();

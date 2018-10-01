@@ -8,6 +8,6 @@ namespace WebAppsMedGithub
 {
     public class DBFunksjonalitet
     {
-        
+
     }
 }
