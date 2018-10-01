@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using WebAppsMedGithub.Models;
 
 namespace WebAppsMedGithub.Controllers
 {
@@ -26,14 +27,15 @@ namespace WebAppsMedGithub.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(Models.Kunde innLogget)
+        public ActionResult Index(Kunde innLogget)
         {
             // sjekk om login var OK
-            if (bruker_i_db(innLogget))
+            if (DBFunk.bruker_i_db(innLogget))
             {
                 // brukernavn og passord OK
                 Session["LoggetInn"] = true;
                 ViewBag.Innlogget = true;
+                return View();
             }
             else
             {
@@ -50,21 +52,22 @@ namespace WebAppsMedGithub.Controllers
 
         }
 
-     
-
         [HttpPost]
-        public ActionResult Registrer(Models.Kunde innKunde)
+        public ActionResult Registrer(Kunde innKunde)
         {
             // åpner først databasen ved å instansiere et DB objekt.
-            using (var db = new Models.DBContext())
+            using (var db = new DBContext())
             {
                 try
                 {
-                    // add kunde til tabellen Kunder, og commit ved "savechanges".
-                    var nyKunde = new Models.dbKunder();
-                    byte[] passordDb = lagHash(innKunde.Passord);
-                    nyKunde.Fornavn = innKunde.Navn;
+                    // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
+                    var nyKunde = new dbKunder();
+                    string salt = DBFunk.lagSalt();
+                    var passordOgSalt = innKunde.Passord + salt;
+                    byte[] passordDb = DBFunk.lagHash(passordOgSalt);
+                    nyKunde.Navn = innKunde.Navn;
                     nyKunde.Passord = passordDb;
+                    nyKunde.Salt = salt;
                     db.Kunder.Add(nyKunde);
                     db.SaveChanges();
                 }
@@ -75,35 +78,25 @@ namespace WebAppsMedGithub.Controllers
             }
             // db objektet dør ut etter at using metoden er ferdig. 
             return RedirectToAction("Index");
-        }
-
-        private static byte[] lagHash(string innPassord)
-        {
-            byte[] innData, utData;
-            var algoritme = System.Security.Cryptography.SHA512.Create();
-            innData = System.Text.Encoding.ASCII.GetBytes(innPassord);
-            utData = algoritme.ComputeHash(innData);
-            return utData;
-        }
-
-        private static string lagSalt()
-        {
-            byte[] randomArray = new byte[10];
-            string randomString;
-            var rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(randomArray);
-            randomString = Convert.ToBase64String(randomArray);
-            return randomString;
-        }
+        }        
 
         public ActionResult HovedSide()
         {
             return View();
         }
 
-        public ActionResult FilmRegistrer()
+        // Side som kun sjekker om du er logget inn.
+        public ActionResult InnLogget()
         {
-            return View();
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

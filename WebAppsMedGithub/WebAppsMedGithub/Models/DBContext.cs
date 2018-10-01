@@ -15,7 +15,7 @@ namespace WebAppsMedGithub.Models
     {
         [Key]
         //public int KId { get; set; }
-        public string Fornavn { get; set; }
+        public string Navn { get; set; }
         public byte[] Passord { get; set; }
         public string Salt { get; set; }
         //public string etternavn { get; set; }
