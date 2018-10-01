@@ -9,6 +9,7 @@ namespace WebAppsMedGithub.Models
     // Kan bare ha en db tabell med filmer som filmsiden henter fra.
     public class Film
     {
+        public int fid { get; set; }
         public string navn { get; set; }
         public int lengde { get; set; }
         public int storrelse { get; set; }

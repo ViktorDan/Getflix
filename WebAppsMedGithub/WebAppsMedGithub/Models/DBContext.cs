@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using WebAppsMedGithub.Models;
 
 // Her finnes alt som har med oppretting av database å gjøre. DB metoder finner man i DBFunksjonalitet
 // Public Virtual lager connection mellom Kunder og Poststeder
