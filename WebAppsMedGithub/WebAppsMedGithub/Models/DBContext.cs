@@ -38,7 +38,7 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
-        public int Lengdxe { get; set; }
+        public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
     }
@@ -47,7 +47,6 @@ namespace WebAppsMedGithub.Models
     {
         // Oppretter database DB hvis den ikke finnes.
         public DBContext()
-            // Kaller denne bare for DB, skal sikkert ha et annet navn.
             : base("name=DB") 
         {
             Database.CreateIfNotExists();
@@ -60,6 +59,11 @@ namespace WebAppsMedGithub.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        protected override Seed(DBContext context)
+        {
+
         }
     }
 }
