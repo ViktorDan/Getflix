@@ -92,7 +92,8 @@ namespace WebAppsMedGithub.Controllers
             {
                 var filmer = db.Filmer.ToList();
                 var nedTrekk = new List<string>();
-                nedTrekk.Add("-­‐-Velg her­‐-­‐");
+                nedTrekk.Add("Velg Sjanger");
+                nedTrekk.Add("Alle Filmer");
                 foreach (var b in filmer)
                 {
                     if (!nedTrekk.Contains(b.Sjanger))
@@ -107,17 +108,49 @@ namespace WebAppsMedGithub.Controllers
         {
             using (var db = new Models.DBContext())
             {
+
                 var filmer = db.Filmer.Where(s => s.Sjanger == Sjanger);
-                String ut = "";
+                String innhold = "<table><tr>";
+                var count = 0;
                 foreach (var f in filmer)
                 {
-                    ut += "<img src='" + f.Bilde +"' width='70'> " + f.Navn + " , pris: kr " + f.Pris + ",- <br/>";
+                    count++;
+
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<td/>";
+                    if (count == 5)
+                    {
+                        innhold += "<tr/><tr>";
+                        count = 0;
+                    }
                 }
-                return ut;
+                innhold += "<tr/><table/>";
+                return innhold;
+            }
+        }
+        public String AlleFilmer(String Sjanger)
+        {
+            using (var db = new Models.DBContext())
+            {
+                var filmer = db.Filmer;
+                String innhold = "<table><tr>";
+                var count = 0;
+                foreach (var f in filmer)
+                {
+                    count++;
+
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<td/>";
+                    if(count == 5)
+                    {
+                        innhold += "<tr/><tr>";
+                        count = 0;
+                    }
+                }
+                innhold += "<tr/><table/>";
+                return innhold;
             }
         }
 
-        
+
 
         // Side som kun sjekker om du er logget inn.
         public ActionResult InnLogget()
