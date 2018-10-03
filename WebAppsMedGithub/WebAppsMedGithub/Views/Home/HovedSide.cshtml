@@ -2,10 +2,18 @@
 @{
     ViewBag.Title = "HovedSide";
 }
+<head>
+    <script src="~/Scripts/jquery-1.8.0.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
 
-<h2>HovedSide</h2>
-<table class="table">
-    <tr>
-        <td>Tittel</td><td>Lengde</td>
-    </tr>
-</table>
+<body>
+    <select>
+        <option value="Alle filmer">Alle filmer</option>
+        <option value="Action">Action</option>
+        <option value="Drama">Drama</option>
+    </select>
+    <div id="innhold">
+
+    </div>
+</body>

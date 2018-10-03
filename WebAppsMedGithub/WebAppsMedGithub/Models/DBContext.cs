@@ -38,17 +38,18 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
-        public int Lengdxe { get; set; }
+        public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
+        public string Sjanger { get; set; }
+        public string Bilde { get; set; }
     }
 
     public class DBContext : DbContext
     {
         // Oppretter database DB hvis den ikke finnes.
         public DBContext()
-            // Kaller denne bare for DB, skal sikkert ha et annet navn.
-            : base("name=DB") 
+            : base("name=WebAppsMedGithub") 
         {
             Database.CreateIfNotExists();
         }
@@ -61,5 +62,8 @@ namespace WebAppsMedGithub.Models
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+
+       
     }
 }
