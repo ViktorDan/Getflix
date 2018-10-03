@@ -41,13 +41,15 @@ namespace WebAppsMedGithub.Models
         public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
+        public string Sjanger { get; set; }
+        public string Bilde { get; set; }
     }
 
     public class DBContext : DbContext
     {
         // Oppretter database DB hvis den ikke finnes.
         public DBContext()
-            : base("name=DB") 
+            : base("name=WebAppsMedGithub") 
         {
             Database.CreateIfNotExists();
         }
@@ -61,9 +63,7 @@ namespace WebAppsMedGithub.Models
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        protected override Seed(DBContext context)
-        {
 
-        }
+       
     }
 }
