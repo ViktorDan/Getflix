@@ -47,9 +47,10 @@ namespace WebAppsMedGithub.Models
 
     public class DBContext : DbContext
     {
-        // Oppretter database DB hvis den ikke finnes.
+        // Oppretter database databasen.
         public DBContext()
             : base("name=WebAppsMedGithub") {}
+
         // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
         public DbSet<dbKunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
