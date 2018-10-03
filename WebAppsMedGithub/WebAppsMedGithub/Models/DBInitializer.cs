@@ -21,6 +21,7 @@ namespace WebAppsMedGithub.Models
             };
             poststeder.ForEach(p => context.Poststeder.Add(p));
             context.SaveChanges();
+
             var filmer = new List<Filmer>
             {
             new Filmer{FId=1, Navn="Gladiatoren", Lengde=110, Pris=349, Storrelse=10, Sjanger="Action", Bilde=""},
