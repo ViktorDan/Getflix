@@ -11,8 +11,10 @@ namespace WebAppsMedGithub.Models
     {
         public int fid { get; set; }
         public string navn { get; set; }
+        public string sjanger { get; set; }
         public int lengde { get; set; }
         public int storrelse { get; set; }
         public int pris { get; set; }
+        public string bilde { get; set; }
     }
 }

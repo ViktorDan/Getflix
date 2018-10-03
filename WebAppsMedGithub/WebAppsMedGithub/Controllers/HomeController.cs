@@ -87,8 +87,22 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult HovedSide()
         {
-            return View();
+            using (var db = new Models.DBContext())
+            {
+                var filmer = db.Filmer.ToList();
+                var nedTrekk = new List<string>();
+                nedTrekk.Add("-­‐-Velg her­‐-­‐");
+                foreach (var b in filmer)
+                {
+                    if (!nedTrekk.Contains(b.Sjanger))
+                        nedTrekk.Add(b.Sjanger);
+                }
+                return View(nedTrekk);
+            }
+            
         }
+
+        
 
         // Side som kun sjekker om du er logget inn.
         public ActionResult InnLogget()
