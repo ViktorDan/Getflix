@@ -102,6 +102,20 @@ namespace WebAppsMedGithub.Controllers
             
         }
 
+        public String HentFilm(String Sjanger)
+        {
+            using (var db = new Models.DBContext())
+            {
+                var filmer = db.Filmer.Where(s => s.Sjanger == Sjanger);
+                String ut = "";
+                foreach (var f in filmer)
+                {
+                    ut += "<img src='" + f.Bilde +"' width='70'> " + f.Navn + " , pris: kr " + f.Pris + ",- <br/>";
+                }
+                return ut;
+            }
+        }
+
         
 
         // Side som kun sjekker om du er logget inn.
