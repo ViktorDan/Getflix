@@ -12,21 +12,12 @@ namespace WebAppsMedGithub.Controllers
     {
         public ActionResult Index()
         {
-            // Sjekker om det er en aktiv login når man går inn i Index
-            if(Session["LoggetInn"] == null)
-            {
-                Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
-            }
-            else
-            {
-                ViewBag.Innlogget = (bool)Session["LoggetInn"];
-            }
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        // Verifiserer login fra bruker og sender bruker til hovedside hvis OK.
         public ActionResult Index(Kunde innLogget)
         {
             // Sjekker om login var OK
@@ -34,14 +25,12 @@ namespace WebAppsMedGithub.Controllers
             {
                 // brukernavn og passord OK
                 Session["LoggetInn"] = true;
-                ViewBag.Innlogget = true;
-                return View();
+                return RedirectToAction("HovedSide");
             }
             else
             {
                 // brukernavn og passord ikke OK
                 Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
                 return View();
             }
         }
