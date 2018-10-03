@@ -19,7 +19,7 @@ namespace WebAppsMedGithub.Controllers
                 ViewBag.Innlogget = false;
             }
             else
-            {
+            {       
                 ViewBag.Innlogget = (bool)Session["LoggetInn"];
             }
             return View();
