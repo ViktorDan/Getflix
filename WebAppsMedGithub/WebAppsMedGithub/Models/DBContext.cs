@@ -12,25 +12,6 @@ using WebAppsMedGithub.Models;
 
 namespace WebAppsMedGithub.Models
 {
-    public class DBContext : DbContext
-    {
-        // Oppretter database DB hvis den ikke finnes.
-        public DBContext()
-            // Kaller denne bare for DB, skal sikkert ha et annet navn.
-            : base("name=DB")
-        {
-            Database.CreateIfNotExists();
-        }
-        // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
-        public DbSet<dbKunder> Kunder { get; set; }
-        public DbSet<Filmer> Filmer { get; set; }
-        public DbSet<Poststeder> Poststeder { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-    }
     public class dbKunder
     {
         [Key]
@@ -57,12 +38,32 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
-        public string Sjanger { get; set; }
         public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
+        public string Sjanger { get; set; }
         public string Bilde { get; set; }
     }
 
-   
+    public class DBContext : DbContext
+    {
+        // Oppretter database DB hvis den ikke finnes.
+        public DBContext()
+            : base("name=WebAppsMedGithub") 
+        {
+            Database.CreateIfNotExists();
+        }
+        // Oppretter tabellene Kunder, Poststeder og Filmer i databasen.
+        public DbSet<dbKunder> Kunder { get; set; }
+        public DbSet<Filmer> Filmer { get; set; }
+        public DbSet<Poststeder> Poststeder { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+
+       
+    }
 }

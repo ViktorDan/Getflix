@@ -53,6 +53,7 @@ namespace WebAppsMedGithub.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Registrer(Kunde innKunde)
         {
             // åpner først databasen ved å instansiere et DB objekt.
