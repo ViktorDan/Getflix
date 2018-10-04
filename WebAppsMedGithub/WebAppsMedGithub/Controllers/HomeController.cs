@@ -42,33 +42,7 @@ namespace WebAppsMedGithub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Registrer(Kunde innKunde)
         {
-            // åpner først databasen ved å instansiere et DB objekt.
-            using (var db = new DBContext())
-            {
-                try
-                {
-                    // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
-                    var nyKunde = new dbKunder();
-                    nyKunde.Brukernavn = innKunde.Brukernavn;
-                    nyKunde.Fornavn = innKunde.Fornavn;
-                    nyKunde.Etternavn = innKunde.Etternavn;
-                    nyKunde.Adresse = innKunde.Adresse;
-                    nyKunde.Postnr = innKunde.Postnr;
-                    nyKunde.Tlf = innKunde.Tlf;
-                    string salt = DBFunk.lagSalt();
-                    var passordOgSalt = innKunde.Passord + salt;
-                    byte[] passordDb = DBFunk.lagHash(passordOgSalt);
-                    nyKunde.Passord = passordDb;
-                    nyKunde.Salt = salt;
-                    db.Kunder.Add(nyKunde);
-                    db.SaveChanges();
-                }
-                catch (Exception feil)
-                {
-                    System.Diagnostics.Debug.WriteLine(feil);
-                }
-            }
-            // db objektet dør ut etter at using metoden er ferdig. 
+            DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("Index");
         }        
 
@@ -149,6 +123,13 @@ namespace WebAppsMedGithub.Controllers
             {
                 return View();
             }
+            return RedirectToAction("Index");
+        }
+
+        // Ender Session.
+        public ActionResult LoggUt()
+        {
+            Session["LoggetInn"] = null;
             return RedirectToAction("Index");
         }
 
