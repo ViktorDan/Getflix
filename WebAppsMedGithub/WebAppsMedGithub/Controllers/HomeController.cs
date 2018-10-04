@@ -20,16 +20,13 @@ namespace WebAppsMedGithub.Controllers
         // Verifiserer login fra bruker og sender bruker til hovedside hvis OK.
         public ActionResult Index(Kunde innLogget)
         {
-            // Sjekker om login var OK
             if (DBFunk.bruker_i_db(innLogget))
             {
-                // brukernavn og passord OK
                 Session["LoggetInn"] = true;
                 return RedirectToAction("HovedSide");
             }
             else
             {
-                // brukernavn og passord ikke OK
                 Session["LoggetInn"] = false;
                 return View();
             }
@@ -77,20 +74,26 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult HovedSide()
         {
-            using (var db = new Models.DBContext())
-            {
-                var filmer = db.Filmer.ToList();
-                var nedTrekk = new List<string>();
-                nedTrekk.Add("Velg Sjanger");
-                nedTrekk.Add("Alle Filmer");
-                foreach (var b in filmer)
+            //if (SjekkLogin())
+            //{
+                using (var db = new Models.DBContext())
                 {
-                    if (!nedTrekk.Contains(b.Sjanger))
-                        nedTrekk.Add(b.Sjanger);
+                    var filmer = db.Filmer.ToList();
+                    var nedTrekk = new List<string>();
+                    nedTrekk.Add("Velg Sjanger");
+                    nedTrekk.Add("Alle Filmer");
+                    foreach (var b in filmer)
+                    {
+                        if (!nedTrekk.Contains(b.Sjanger))
+                            nedTrekk.Add(b.Sjanger);
+                    }
+                    return View(nedTrekk);
                 }
-                return View(nedTrekk);
-            }
-            
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Index");
+            //}
         }
 
         public String HentFilm(String Sjanger)
@@ -139,20 +142,35 @@ namespace WebAppsMedGithub.Controllers
             }
         }
 
-
-
         // Side som kun sjekker om du er logget inn.
         public ActionResult InnLogget()
+        {
+            if (SjekkLogin())
+            {
+                return View();
+            }
+            return RedirectToAction("Index");
+        }
+
+        // Må legge metoder et annet sted enn her.
+        public bool SjekkLogin()
         {
             if (Session["LoggetInn"] != null)
             {
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    return View();
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return false;
+            }
         }
     }
 }
