@@ -6,21 +6,39 @@
 <script src="~/Scripts/jquery-3.0.0.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script type="text/javascript">
-    function hentFilmAjax() {
-        jQuery("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
+    $(document).ready(function () {
+        $("#FilmListe").load("/Home/Allefilmer");
+    });
+    function hentFilmAjax()
+    {
+        if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
+            $("#FilmListe").load("/Home/Allefilmer");
+        } else {
+            $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
+        }
     }
+    
 </script>
+<style>
+    
+    img{
+        border-radius: 5px;
+    }
+</style>
 
 <h2>HovedSide</h2>
 
 <div>
-    <h2>Velg en sjanger fra listen under</h2>
+    
     <select id="IdListe" onchange="hentFilmAjax()">
         @foreach (var Sjanger in Model)
         {
-            <option>@Sjanger</option>}
+            <option>@Sjanger</option>
+        }
     </select>
 </div>
+<br/>
+
 <div id="FilmListe">
-    Her skal filmene komme!
+    
 </div>
