@@ -21,17 +21,16 @@ namespace WebAppsMedGithub.Models
         public string Adresse { get; set; }
         public string Postnr { get; set; }
         public string Tlf { get; set; }
-        
         public byte[] Passord { get; set; }
         public string Salt { get; set; }
-        //public virtual Poststeder Poststeder { get; set; }
+        public virtual Poststeder Poststeder { get; set; }
     }
     public class Poststeder
     {
         [Key]
         public string Postnr { get; set; }
         public string Poststed { get; set; }
-        //public virtual dbKunder Kunder { get; set; }
+        public virtual dbKunder Kunder { get; set; }
     }
     public class Filmer
     {

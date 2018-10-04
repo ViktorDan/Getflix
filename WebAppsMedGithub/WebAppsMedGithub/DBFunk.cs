@@ -39,6 +39,11 @@ namespace WebAppsMedGithub
             }
         }
 
+        public static void SjekkPoststed(Kunde innKunde)
+        {
+
+        }
+
         //Login metoder--------------------------------------------------------------------------------------------------------------------------------------
         public static byte[] lagHash(string innPassord)
         {
