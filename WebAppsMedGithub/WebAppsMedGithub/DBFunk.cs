@@ -9,8 +9,42 @@ namespace WebAppsMedGithub
 {
     public class DBFunk
     {
-        //Login metoder--------------------------------------------------------------------------------------------------------------------------------------
         // Skal disse metodene være private?
+        public static void RegistrerKunde(Kunde innKunde)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
+                    var nyKunde = new dbKunder();
+                    nyKunde.Brukernavn = innKunde.Brukernavn;
+                    nyKunde.Fornavn = innKunde.Fornavn;
+                    nyKunde.Etternavn = innKunde.Etternavn;
+                    nyKunde.Adresse = innKunde.Adresse;
+                    nyKunde.Postnr = innKunde.Postnr;
+                    nyKunde.Tlf = innKunde.Tlf;
+                    string salt = lagSalt();
+                    var passordOgSalt = innKunde.Passord + salt;
+                    byte[] passordDb = lagHash(passordOgSalt);
+                    nyKunde.Passord = passordDb;
+                    nyKunde.Salt = salt;
+                    db.Kunder.Add(nyKunde);
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    System.Diagnostics.Debug.WriteLine(feil);
+                }
+            }
+        }
+
+        public static void SjekkPoststed(Kunde innKunde)
+        {
+
+        }
+
+        //Login metoder--------------------------------------------------------------------------------------------------------------------------------------
         public static byte[] lagHash(string innPassord)
         {
             byte[] innData, utData;
