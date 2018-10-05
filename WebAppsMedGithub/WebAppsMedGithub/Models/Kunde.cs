@@ -36,7 +36,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Postnummer")]
         [Required(ErrorMessage = "Må oppgi postnummer")]
-        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Feil i brukernavn")]
+        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Feil i postnummer")]
         public string Postnr { get; set; }
 
         [Display(Name = "Telefonnummer")]
@@ -47,7 +47,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Passord")]
         [Required(ErrorMessage = "Må oppgi ønsket passord")]
-        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9 ]{2,15}", ErrorMessage = "Feil i passord")]
+        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9]{2,15}", ErrorMessage = "Feil i passord")]
         public string Passord { get; set; }
     }
 }
