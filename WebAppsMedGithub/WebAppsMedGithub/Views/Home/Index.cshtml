@@ -1,18 +1,22 @@
 ﻿@model WebAppsMedGithub.Models.Kunde
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Getflix";
 }
-
-<h2>Index</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
+    <div class="container">
+        <div class="page-header">
+            <h2>Velkommen</h2>
+        </div>
+    </div>
+    
     <div class="form-horizontal">
 
-        <h4>Kunde</h4>
+        <h4>Logg inn for på komme igang!</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,12 +28,13 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2", })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type="password" } })
                 @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
             </div>
         </div>
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -40,7 +45,5 @@
 }
 
     <div>
-        @Html.ActionLink("Registrer", "Registrer")<br/>
-        @Html.ActionLink("Hovedside", "Hovedside")<br/>
-        @Html.ActionLink("Innlogget side", "Innlogget")
+        <p>@Html.ActionLink("Registrer", "Registrer") deg om du ikke har bruker</p>
     </div>

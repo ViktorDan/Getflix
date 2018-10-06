@@ -8,6 +8,12 @@ namespace WebAppsMedGithub.Models
 {
     public class Kunde
     {
+        // setter navnet vi vil at skal vises for hver atributt i klassen
+
+        // setter at hver atributt er nødvendig å utfylle under registrering
+
+        // lager RegEx for hver atributt for validering under registrering
+
         [Display(Name = "Brukernavn")]
         [Required(ErrorMessage = "Må oppgi ønsket brukernavn")]
         [RegularExpression (@"[a-zæøåA-ZÆØÅ0-9 ]{2,15}", ErrorMessage = "Feil i brukernavn")]
@@ -30,7 +36,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Postnummer")]
         [Required(ErrorMessage = "Må oppgi postnummer")]
-        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Feil i brukernavn")]
+        [RegularExpression(@"[0-9]{4}", ErrorMessage = "Feil i postnummer")]
         public string Postnr { get; set; }
 
         [Display(Name = "Telefonnummer")]
@@ -41,13 +47,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Passord")]
         [Required(ErrorMessage = "Må oppgi ønsket passord")]
-        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9 ]{2,15}", ErrorMessage = "Feil i passord")]
+        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9]{2,15}", ErrorMessage = "Feil i passord")]
         public string Passord { get; set; }
-        
-
-        //public string Etternavn { get; set; }
-        //public string Adresse { get; set; }
-        //public string Postnr { get; set; }
-        //public string Tlf { get; set; }
     }
 }
