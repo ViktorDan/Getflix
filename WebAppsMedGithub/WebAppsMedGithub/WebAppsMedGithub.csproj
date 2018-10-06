@@ -98,6 +98,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\WebAppsMedGithub.mdf" />
+    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
+      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
+    </Content>
+    <Content Include="Bilder\22JumpStreet.jpg" />
+    <Content Include="Bilder\Avengers.jpg" />
+    <Content Include="Bilder\BatmanBegins.jpg" />
+    <Content Include="Bilder\BladeRunner.jpg" />
+    <Content Include="Bilder\DarkKnight.jpg" />
+    <Content Include="Bilder\DarkKnightRises.jpg" />
+    <Content Include="Bilder\DjangoUnchained.jpg" />
+    <Content Include="Bilder\Elysium.jpg" />
+    <Content Include="Bilder\FightClub.jpg" />
+    <Content Include="Bilder\Gladiator.jpg">
+      <BrowseToURL>~/Bilder/Gladiator.jpg</BrowseToURL>
+    </Content>
+    <Content Include="Bilder\Inception.jpg" />
+    <Content Include="Bilder\Looper.jpg" />
+    <Content Include="Bilder\SavingPrivateRyan.jpg" />
+    <Content Include="Bilder\ShutterIsland.jpg" />
+    <Content Include="Bilder\SuicideSquad.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -174,7 +195,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\_FilmView.cshtml" />
+    <Content Include="Views\Home\FilmModal.cshtml" />
+    <Content Include="Views\Home\NyHovedSide.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,9 +211,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

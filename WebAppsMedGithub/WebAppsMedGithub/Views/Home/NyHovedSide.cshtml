@@ -1,0 +1,28 @@
+﻿@model List<System.String>
+@{
+    ViewBag.Title = "NyHovedSide";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location.href;
+        var data = url.split('data=').pop();
+        $('#data').load("/Home/HentFilmInfo", { Id: data});
+
+    });
+    
+</script>
+<h2>NyHovedSide</h2>
+
+<br/>
+<p id="data"></p>
+<br/>
+
+<div id="FilmListe">
+
+</div>
+
+
+
+
+
+

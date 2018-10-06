@@ -92,7 +92,13 @@ namespace WebAppsMedGithub.Controllers
             }
             
         }
+        public ActionResult NyHovedSide()
+        {
+            return View();
+        }
+        
 
+        //Funksjon som laster in filmer i en sjanger ved hjelp av Ajax kall
         public String HentFilm(String Sjanger)
         {
             using (var db = new Models.DBContext())
@@ -105,7 +111,7 @@ namespace WebAppsMedGithub.Controllers
                 {
                     count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<td/>";
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<br/><a href='NyHovedSide?data=" + f.FId + "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><td/>";
                     if (count == 5)
                     {
                         innhold += "<tr/><tr>";
@@ -116,30 +122,58 @@ namespace WebAppsMedGithub.Controllers
                 return innhold;
             }
         }
+        
+        //Funksjon som laster in alle filmer ved hjelp av Ajax kall
         public String AlleFilmer(String Sjanger)
         {
             using (var db = new Models.DBContext())
             {
-                var filmer = db.Filmer;
+                var filmer = db.Filmer.ToList();
                 String innhold = "<table><tr>";
                 var count = 0;
                 foreach (var f in filmer)
-                {
-                    count++;
+                { 
+                   count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<td/>";
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'><br/>" + f.Navn + "<br/><a href='NyHovedSide?data=" + f.FId + "' id='button' class='btn btn-success' value='" + f.FId+ "'>Mer Info</a><br/> <td/>";
                     if(count == 5)
                     {
-                        innhold += "<tr/><tr>";
+                        innhold += "<tr/><br/><tr>";
                         count = 0;
                     }
+                  
+                    
+                }
+                innhold += "<tr/><table/>";
+                return innhold;
+            }
+        }
+        
+        public String HentFilmInfo(int id)
+        {
+            using (var db = new Models.DBContext())
+            {
+
+                var filmer = db.Filmer.Where(s => s.FId == id);
+                String innhold = "<table><tr>";
+                
+                foreach (var f in filmer)
+                {
+                    innhold += "<td><img src='" + f.Bilde + "' width='90%'></td><td><h3>" + f.Navn + "</h3><br/>" + 
+                        f.Sjanger + "<br/>" + f.Lengde + " Minutter<br/>" + f.Storrelse + " Gb<br/>" + f.Pris + 
+                        " Kr <br/><a href='' class='btn btn-success'>Kjøp</a><td/>";
                 }
                 innhold += "<tr/><table/>";
                 return innhold;
             }
         }
 
-
+        // Modal view for filmer
+        public ActionResult FilmModal()
+        {
+            
+            return View();
+        }
 
         // Side som kun sjekker om du er logget inn.
         public ActionResult InnLogget()

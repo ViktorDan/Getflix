@@ -5,31 +5,40 @@
 }
 <script src="~/Scripts/jquery-3.0.0.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#FilmListe").load("/Home/Allefilmer");
+        
+        $("#FilmListe").load("/Home/AlleFilmer");
+        
+
     });
-    function hentFilmAjax()
-    {
+    function hentFilmAjax() {
         if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
             $("#FilmListe").load("/Home/Allefilmer");
         } else {
             $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
         }
     }
-    
+    $('#button').click(function () {
+        var id = $('#button').val();
+        var url = "NyHovedside.cs.html" + '?data=' + id;
+        window.location.href = url;
+    });
 </script>
 <style>
-    
+
     img{
         border-radius: 5px;
     }
 </style>
 
+
 <h2>HovedSide</h2>
 
 <div>
-    
+
     <select id="IdListe" onchange="hentFilmAjax()">
         @foreach (var Sjanger in Model)
         {
@@ -37,7 +46,8 @@
         }
     </select>
 </div>
-<br/>
+    
+<br />
 
 <div id="FilmListe">
     
