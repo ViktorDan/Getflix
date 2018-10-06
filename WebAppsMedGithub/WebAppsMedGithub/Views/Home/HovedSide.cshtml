@@ -20,7 +20,7 @@
 </script>
 <style>
 
-    img {
+    img{
         border-radius: 5px;
     }
 </style>
@@ -29,7 +29,7 @@
 @Html.ActionLink("Logg ut", "LoggUt", new { tom = "" }, new { @class = "btn btn-danger" })
 
 <div>
-
+    
     <select id="IdListe" onchange="hentFilmAjax()">
         @foreach (var Sjanger in Model)
         {

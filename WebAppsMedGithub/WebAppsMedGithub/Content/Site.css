@@ -7,6 +7,10 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding: 3%;
+    padding-top: 2%;
+    box-shadow: 1px 10px 30px 20px #aaaaaa;
+    border: 1px solid #BFBFBF;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -15,4 +19,12 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#getflixKnapp {
+    color: red;
+    font-family: Impact, Charcoal, sans-serif;
+    font-weight: bold;
+    font-size: 200%;
+}
+
 
