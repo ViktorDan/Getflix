@@ -73,7 +73,25 @@ namespace WebAppsMedGithub.Controllers
         {
             return View();
         }
-        
+
+        public void Bestilling (int id)
+        {
+            using (var db = new DBContext())
+            {
+                var brukernavn = (string)Session["Brukernavn"];
+
+                var bestilling = new Bestillinger
+                {
+                    BId = 2,
+                    Brukernavn = brukernavn,
+                    FId = id
+                };
+
+                db.Bestillinger.Add(bestilling);
+                db.SaveChanges();
+            }
+        }
+
 
         //Funksjon som laster in filmer i en sjanger ved hjelp av Ajax kall
         public String HentFilm(String Sjanger)

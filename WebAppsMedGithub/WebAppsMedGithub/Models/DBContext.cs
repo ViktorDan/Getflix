@@ -23,14 +23,15 @@ namespace WebAppsMedGithub.Models
         public string Tlf { get; set; }
         public byte[] Passord { get; set; }
         public string Salt { get; set; }
-        //public virtual Poststeder Poststeder { get; set; }
+        public virtual Poststeder Poststeder { get; set; }
+        public virtual Bestillinger Bestillinger { get; set; }
     }
     public class Poststeder
     {
         [Key]
         public string Postnr { get; set; }
         public string Poststed { get; set; }
-        //public virtual dbKunder Kunder { get; set; }
+        public virtual List<dbKunder> Kunder { get; set; }
     }
     public class Filmer
     {
@@ -42,6 +43,17 @@ namespace WebAppsMedGithub.Models
         public int Pris { get; set; }
         public string Sjanger { get; set; }
         public string Bilde { get; set; }
+        public virtual Bestillinger Bestillinger { get; set; }
+    }
+
+    public class Bestillinger
+    {
+        [Key]
+        public int BId { get; set; }
+        public string Brukernavn { get; set; }
+        public int FId { get; set; }
+        public virtual List<dbKunder> Kunder { get; set; }
+        public virtual List<Filmer> Filmer { get; set; }
     }
 
     public class DBContext : DbContext
@@ -54,6 +66,7 @@ namespace WebAppsMedGithub.Models
         public DbSet<dbKunder> Kunder { get; set; }
         public DbSet<Filmer> Filmer { get; set; }
         public DbSet<Poststeder> Poststeder { get; set; }
+        public DbSet<Bestillinger> Bestillinger { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
