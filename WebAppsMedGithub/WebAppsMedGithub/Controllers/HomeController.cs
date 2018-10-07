@@ -23,6 +23,7 @@ namespace WebAppsMedGithub.Controllers
             if (DBFunk.bruker_i_db(innLogget))
             {
                 Session["LoggetInn"] = true;
+                Session["Brukernavn"] = innLogget.Brukernavn;
                 return RedirectToAction("HovedSide");
             }
             else
@@ -48,8 +49,8 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult HovedSide()
         {
-            //if (SjekkLogin())
-            //{
+            if (SjekkLogin())
+            {
                 using (var db = new Models.DBContext())
                 {
                     var filmer = db.Filmer.ToList();
@@ -63,15 +64,23 @@ namespace WebAppsMedGithub.Controllers
                     }
                     return View(nedTrekk);
                 }
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index");
-            //}
+            }   
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
+
         public ActionResult NyHovedSide()
         {
-            return View();
+            if (SjekkLogin())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public void Bestilling (int id)
@@ -187,7 +196,7 @@ namespace WebAppsMedGithub.Controllers
         // Ender Session.
         public ActionResult LoggUt()
         {
-            Session["LoggetInn"] = null;
+            Session.Abandon();
             return RedirectToAction("Index");
         }
 

@@ -39,6 +39,11 @@ namespace WebAppsMedGithub.Models
         [RegularExpression(@"[0-9]{4}", ErrorMessage = "Feil i postnummer")]
         public string Postnr { get; set; }
 
+        [Display(Name = "Poststed")]
+        [Required(ErrorMessage = "Må oppgi poststed")]
+        [RegularExpression(@"[a-zæøåA-ZÆØÅ -]{2,30}", ErrorMessage = "Feil i poststed")]
+        public string Poststed { get; set; }
+
         [Display(Name = "Telefonnummer")]
         [Required(ErrorMessage = "Må oppgi telefonnummer")]
         [RegularExpression(@"[0-9]{8}", ErrorMessage = "Feil i Telefonnummer")]
