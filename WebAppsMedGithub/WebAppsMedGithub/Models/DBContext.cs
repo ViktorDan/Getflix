@@ -38,6 +38,8 @@ namespace WebAppsMedGithub.Models
         [Key]
         public int FId { get; set; }
         public string Navn { get; set; }
+        public int Aar { get; set; }
+
         public int Lengde { get; set; }
         public int Storrelse { get; set; }
         public int Pris { get; set; }
