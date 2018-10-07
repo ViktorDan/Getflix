@@ -13,15 +13,18 @@
     border: 1px solid #424040;
     background-color: #424040;
     color: #D8D5D5;
-    height: 100%;
+    min-height: 100%;
 }
 
 .container {
 }
 
 #footer {
+    padding-top: 10px;
     margin-top: -30px;
     color: #D8D5D5;
+    font-family: Verdana, Geneva, sans-serif;
+    opacity: 10;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -38,4 +41,12 @@ textarea {
     font-size: 200%;
 }
 
-
+#tilbakeKnapp {
+    background-color: #808080;
+    color: #424040;
+    border-radius: 50%;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 1%;
+}

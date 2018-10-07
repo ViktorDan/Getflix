@@ -1,26 +1,16 @@
 ﻿@model List<System.String>
 
 @{
-    ViewBag.Title = "HovedSide";
+    ViewBag.Title = "Film oversiktx";
 }
 <script src="~/Scripts/jquery-3.0.0.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#FilmListe").load("/Home/Allefilmer");
-    });
-    function hentFilmAjax() {
-        if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
-             $("#FilmListe").load("/Home/Allefilmer");
-        } else {
-            $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
-        }
-    }
+<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/bootstrap.js"></script>
 
-</script>
 <style>
 
-    img{
+    img {
         border-radius: 5px;
     }
 </style>
@@ -43,17 +33,34 @@
     </div>
 </div>
 
-<div>
-    
-    <select id="IdListe" onchange="hentFilmAjax()">
-        @foreach (var Sjanger in Model)
-        {
-            <option>@Sjanger</option>
+<div class="container body-content">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#FilmListe").load("/Home/Allefilmer");
+        });
+        function hentFilmAjax() {
+            if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
+                $("#FilmListe").load("/Home/Allefilmer");
+            } else {
+                $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
+            }
         }
-    </select>
-</div>
-<br />
 
-<div id="FilmListe">
+    </script>
+    <div>
 
+        <select id="IdListe" onchange="hentFilmAjax()">
+            @foreach (var Sjanger in Model)
+            {
+                <option>@Sjanger</option>
+            }
+        </select>
+    </div>
+    <br />
+
+    <div id="FilmListe">
+
+    </div>
 </div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
