@@ -3,12 +3,19 @@
     ViewBag.Title = "NyHovedSide";
 }
 <script type="text/javascript">
+    var url = window.location.href;
+    var data = url.split('data=').pop();
     $(document).ready(function () {
-        var url = window.location.href;
-        var data = url.split('data=').pop();
+        
         $('#data').load("/Home/HentFilmInfo", { Id: data});
 
     });
+    function myAlert() {
+        if (confirm('Bekreft Kjøp')) {
+            $.load("Home/Bestilling", { Id: data });
+        }
+
+    }
     
 </script>
 <h2>NyHovedSide</h2>

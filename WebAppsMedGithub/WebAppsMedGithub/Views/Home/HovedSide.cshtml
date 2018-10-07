@@ -11,7 +11,7 @@
     });
     function hentFilmAjax() {
         if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
-            $("#FilmListe").load("/Home/Allefilmer");
+             $("#FilmListe").load("/Home/Allefilmer");
         } else {
             $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
         }
@@ -27,6 +27,7 @@
 
 <h2>HovedSide</h2>
 @Html.ActionLink("Logg ut", "LoggUt", new { tom = "" }, new { @class = "btn btn-danger" })
+<br/>
 
 <div>
     
