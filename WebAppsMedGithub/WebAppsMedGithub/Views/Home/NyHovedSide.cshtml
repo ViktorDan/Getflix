@@ -16,13 +16,10 @@
                 url: "/Home/Bestilling/" + data,
                 success: function (data) { $('#FilmListe').html('Kjøp Fullført') },
                 statusCode: {
-                    404: function (content) { alert('cannot find resource'); },
-                    500: function (content) { alert('internal server error'); }
+                    404: function (content) { alert('Kan ikke koble til database, prøv igjenn senere.'); },
+                    500: function (content) { alert('Feil på server, prøv igjen senere.'); }
                 },
-                error: function (req, status, errorObj) {
-                    // handle status === "timeout"
-                    // handle other errors
-                }
+                
             });
         }
 
@@ -54,7 +51,7 @@
 <p id="data"></p>
 <br/>
 
-<div id="FilmListe">
+<div id="FilmListe" class="text-center">
     
 </div>
 
