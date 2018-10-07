@@ -4,6 +4,8 @@
     ViewBag.Title = "Velkommen";
 }
 
+@* Navigasjonsbar med logo for å gå til logg inn og å registrere *@
+
 <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -23,42 +25,47 @@
 </div>
 
 
+@* Generer et skjema for å logge seg inn med brukernavn og passord fra database *@
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="container text-center">
-        <h2>Velkommen</h2>
-    </div><br/>
-    
-    <div class="form-horizontal" id="index">
+    <div class="container text-center" id="velkommen">
+        <h3>Velkommen til Getflix!</h3>
+        <h4>Stedet for å kjøpe de største filmene i verden digitalt!</h4>
+    </div>    
+          <div class="form-horizontal" id="index">
 
-        <h4>Logg inn for å komme igang!</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Brukernavn, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
-            </div>
-        </div>
+              <h4>Logg inn for å komme igang!</h4>
+              <hr />
+              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+              <div class="form-group">
+                  @Html.LabelFor(model => model.Brukernavn, htmlAttributes: new { @class = "control-label col-md-2" })
+                  <div class="col-md-10">
+                      @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { @class = "form-control" } })
+                      @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
+                  </div>
+              </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2", })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type="password" } })
-                @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        
+              <div class="form-group">
+                  @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2", })
+                  <div class="col-md-10">
+                      @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                      @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+                  </div>
+              </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Logg inn" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-10">
+                      <input type="submit" value="Logg inn" class="btn btn-default" />
+                  </div>
+              </div>
+              <p class="text-danger">@Session["FeilMelding"]</p>
+
+          </div>
+   
 }
 
     <div id="index">

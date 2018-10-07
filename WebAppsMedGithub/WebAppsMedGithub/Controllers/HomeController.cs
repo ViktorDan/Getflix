@@ -26,11 +26,13 @@ namespace WebAppsMedGithub.Controllers
             {
                 Session["LoggetInn"] = true;
                 Session["Brukernavn"] = innLogget.Brukernavn;
+                Session["FeilMelding"] = "";
                 return RedirectToAction("HovedSide");
             }
             else
             {
                 Session["LoggetInn"] = false;
+                Session["FeilMelding"] = "Feil brukernavn og passord";
                 return View();
             }
         }
@@ -85,13 +87,6 @@ namespace WebAppsMedGithub.Controllers
             }
         }
 
-        // Modal view for filmer
-        public ActionResult FilmModal()
-        {
-            
-            return View();
-        }
-
         // Ender Session.
         public ActionResult LoggUt()
         {
@@ -99,7 +94,7 @@ namespace WebAppsMedGithub.Controllers
             return RedirectToAction("Index");
         }
 
-        // Funksjoner----------------------------------------------------------------------------------------------------------------------------------------
+        // Funksjoner
         public bool SjekkLogin()
         {
             if (Session["LoggetInn"] != null)

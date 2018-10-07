@@ -1,8 +1,13 @@
-﻿html, body {
+﻿
+/* Siden for styling for prosjektet */
+
+html, body {
     padding-top: 0;
     padding-bottom: 0;
     height: 100%;
 }
+
+
 
 .body-content {
     padding-left: 15px;
@@ -50,10 +55,35 @@ textarea {
 }
 
 #index {
-    margin: 10%;
+    margin: 8% 10% 0 10%;
+}
+
+#midtStill {
+    display: flex;
+    justify-content: center;
+}
+
+#data {
+    display: flex;
+    justify-content: center;
+}
+#data img {
+    border-radius: 5px;
+}
+
+#IdListe {
+    margin-left: 1%;
+}
+
+#FilmListe img {
+    border-radius: 5px;
+}
+
+#velkommen {
+    margin-top: 5%;
 }
 
 .form-horizontal {
-    padding-left: 5%;
-    padding-right: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
