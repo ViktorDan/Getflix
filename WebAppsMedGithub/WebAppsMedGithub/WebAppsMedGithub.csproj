@@ -98,10 +98,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WebAppsMedGithub.mdf" />
-    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
-      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
-    </Content>
     <Content Include="Bilder\22JumpStreet.jpg" />
     <Content Include="Bilder\Avengers.jpg" />
     <Content Include="Bilder\BatmanBegins.jpg" />
@@ -210,7 +206,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
