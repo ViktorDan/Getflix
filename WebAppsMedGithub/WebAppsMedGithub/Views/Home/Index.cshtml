@@ -4,6 +4,8 @@
     ViewBag.Title = "Velkommen";
 }
 
+@* Navigasjonsbar med logo for å gå til logg inn og å registrere *@
+
 <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -23,6 +25,8 @@
 </div>
 
 
+@* Generer et skjema for å logge seg inn med brukernavn og passord fra database *@
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -33,7 +37,7 @@
     </div>    
           <div class="form-horizontal" id="index">
 
-              <h4>Logg inn for på komme igang!</h4>
+              <h4>Logg inn for å komme igang!</h4>
               <hr />
               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
               <div class="form-group">
@@ -58,7 +62,7 @@
                       <input type="submit" value="Logg inn" class="btn btn-default" />
                   </div>
               </div>
-              <p style="color:red;">@Session["FeilMelding"]</p>
+              <p class="text-danger">@Session["FeilMelding"]</p>
 
           </div>
    

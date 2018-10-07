@@ -26,10 +26,12 @@
     <h2>Registrer deg</h2>
 </div>
 
+@* Generer et skjema for kunde-klassen for registrering av kunder *@
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Vennligst fyll inn informasjonen:</h4>
     <hr />

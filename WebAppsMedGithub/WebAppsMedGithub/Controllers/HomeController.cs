@@ -94,7 +94,7 @@ namespace WebAppsMedGithub.Controllers
             return RedirectToAction("Index");
         }
 
-        // Funksjoner----------------------------------------------------------------------------------------------------------------------------------------
+        // Funksjoner
         public bool SjekkLogin()
         {
             if (Session["LoggetInn"] != null)
