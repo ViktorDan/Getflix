@@ -119,7 +119,7 @@ namespace WebAppsMedGithub.Controllers
                 return false;
             }
         }
-
+        // Funksjon som legger inn kjøp av film i databasen
         public void Bestilling(int id)
         {
             using (var db = new DBContext())
@@ -153,7 +153,7 @@ namespace WebAppsMedGithub.Controllers
 
                     innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
-                        "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><td/>";
+                        "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/><td/>";
                     if (count == 5)
                     {
                         innhold += "<tr/><tr>";
@@ -192,7 +192,7 @@ namespace WebAppsMedGithub.Controllers
                 return innhold;
             }
         }
-
+        // Funksjon som laster inn informasjon om valgt film ved hjelp av Ajax
         public String HentFilmInfo(int id)
         {
             using (var db = new Models.DBContext())

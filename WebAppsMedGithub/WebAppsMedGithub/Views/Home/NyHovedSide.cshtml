@@ -3,14 +3,16 @@
     ViewBag.Title = "Kjøp film";
 }
 <script type="text/javascript">
+    // Henter filmens id far url
     var url = window.location.href;
     var data = url.split('data=').pop();
+    // Når siden Lastes inn hentes info om filmen med riktig id. hentes til div med id=data
     $(document).ready(function () {
-        
         $('#data').load("/Home/HentFilmInfo", { Id: data});
-
     });
+    // Allert for å bekrefte kjøp av film
     function myAlert() {
+        // Ajax legger til kjøpet i database
         if (confirm('Bekreft Kjøp')) {
             $.ajax({
                 url: "/Home/Bestilling/" + data,
@@ -26,7 +28,7 @@
     }
    
 </script>
-
+<!--Navbar-->
 <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -47,13 +49,15 @@
 
 <a id="tilbakeKnapp" href="/Home/HovedSide" class="previous round">&#8249;</a>
 
+<!--Her kommer info om filmen-->
 <br/>
 <p id="data"></p>
 <br/>
 
-<div id="FilmListe" class="text-center">
-    
-</div>
+<h3 id="FilmListe" class="text-center">
+
+</h3>
+
 
 
 

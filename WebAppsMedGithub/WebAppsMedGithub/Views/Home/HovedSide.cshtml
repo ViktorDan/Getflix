@@ -8,9 +8,11 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="~/Scripts/bootstrap.js"></script>
 <script type="text/javascript">
+    // Når siden lastes inn, hentes alle filmer fra databasen til div-en med id FilmListe
     $(document).ready(function () {
         $("#FilmListe").load("/Home/Allefilmer");
     });
+    // Når sjanger er valgt hentes filmer i gjellende sjanger fra databasen til div-en med id FilmListe
     function hentFilmAjax() {
         if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
             $("#FilmListe").load("/Home/Allefilmer");
@@ -27,7 +29,7 @@
         border-radius: 5px;
     }
 </style>
-
+<!--Navbar øverst på siden, med logo og logg ut knapp-->
 <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -47,9 +49,8 @@
 </div>
 
 <div class="container body-content">
-    
+    <!--Nedtrekk liste for valg av sjanger-->
     <div>
-
         <select class="form-control" id="IdListe" onchange="hentFilmAjax()">
             @foreach (var Sjanger in Model)
             {
@@ -58,7 +59,7 @@
         </select>
     </div>
     <br />
-
+    <!--Sidens innhold, blir hentet med Jquery/Ajax basert på valgt sjanger-->
     <div id="FilmListe">
 
     </div>
