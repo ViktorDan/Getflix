@@ -52,7 +52,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Passord")]
         [Required(ErrorMessage = "Må oppgi ønsket passord")]
-        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9]{2,15}", ErrorMessage = "Feil i passord")]
+        [RegularExpression(@"[a-zæøåA-ZÆØÅ0-9]{5,15}", ErrorMessage = "Feil i passord")]
         public string Passord { get; set; }
     }
 }

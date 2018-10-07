@@ -96,7 +96,7 @@
         @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-            <button class="btn btn-default btnsm" type="button" onclick="alert('Passord kan bare inneholde store og små bokstaver, samt tall.\nMå være mellom 8 og 15 tegn.')">
+            <button class="btn btn-default btnsm" type="button" onclick="alert('Passord kan bare inneholde store og små bokstaver, samt tall.\nMå være mellom 5 og 15 tegn.')">
                 <span class="glyphicon glyphicon-question-sign"></span>
             </button>
             @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
