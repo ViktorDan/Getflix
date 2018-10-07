@@ -73,7 +73,25 @@ namespace WebAppsMedGithub.Controllers
         {
             return View();
         }
-        
+
+        public void Bestilling (int id)
+        {
+            using (var db = new DBContext())
+            {
+                var brukernavn = (string)Session["Brukernavn"];
+
+                var bestilling = new Bestillinger
+                {
+                    BId = 2,
+                    Brukernavn = brukernavn,
+                    FId = id
+                };
+
+                db.Bestillinger.Add(bestilling);
+                db.SaveChanges();
+            }
+        }
+
 
         //Funksjon som laster in filmer i en sjanger ved hjelp av Ajax kall
         public String HentFilm(String Sjanger)
@@ -88,7 +106,9 @@ namespace WebAppsMedGithub.Controllers
                 {
                     count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn + "<br/><a href='NyHovedSide?data=" + f.FId + "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><td/>";
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn +
+                        "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId + 
+                        "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><td/>";
                     if (count == 5)
                     {
                         innhold += "<tr/><tr>";
@@ -112,7 +132,9 @@ namespace WebAppsMedGithub.Controllers
                 { 
                    count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'><br/>" + f.Navn + "<br/><a href='NyHovedSide?data=" + f.FId + "' id='button' class='btn btn-success' value='" + f.FId+ "'>Mer Info</a><br/> <td/>";
+                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'><br/>" + f.Navn +
+                        "<br/><a href='"+ Url.Action("NyHovedSide") + "?data=" + f.FId + 
+                        "' id='button' class='btn btn-success' value='" + f.FId+ "'>Mer Info</a><br/> <td/>";
                     if(count == 5)
                     {
                         innhold += "<tr/><br/><tr>";
@@ -137,8 +159,8 @@ namespace WebAppsMedGithub.Controllers
                 foreach (var f in filmer)
                 {
                     innhold += "<td><img src='" + f.Bilde + "' width='90%'></td><td><h3>" + f.Navn + "</h3><br/>" + 
-                        f.Sjanger + "<br/>" + f.Lengde + " Minutter<br/>" + f.Storrelse + " Gb<br/>" + f.Pris + 
-                        " Kr <br/><a href='' class='btn btn-success'>Kjøp</a><td/>";
+                        f.Sjanger + "<br/>" + f.Lengde + " Minutter<br/>" + f.Storrelse + " Gb<br/>" + f.Pris +
+                        " Kr <br/><button id='kjop' class='btn btn-success' onclick='myAlert()'>Kjøp</button><td/>";
                 }
                 innhold += "<tr/><table/>";
                 return innhold;
