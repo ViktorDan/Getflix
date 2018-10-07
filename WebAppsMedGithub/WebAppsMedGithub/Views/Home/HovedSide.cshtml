@@ -7,6 +7,19 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
 <script src="~/Scripts/bootstrap.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#FilmListe").load("/Home/Allefilmer");
+    });
+    function hentFilmAjax() {
+        if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
+            $("#FilmListe").load("/Home/Allefilmer");
+        } else {
+            $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
+        }
+    }
+
+</script>
 
 <style>
 
@@ -34,19 +47,7 @@
 </div>
 
 <div class="container body-content">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#FilmListe").load("/Home/Allefilmer");
-        });
-        function hentFilmAjax() {
-            if ($("#IdListe").val() == "Alle Filmer" || $("#IdListe").val() == "Velg Sjanger") {
-                $("#FilmListe").load("/Home/Allefilmer");
-            } else {
-                $("#FilmListe").load("/Home/HentFilm", { Sjanger: $("#IdListe").val() });
-            }
-        }
-
-    </script>
+    
     <div>
 
         <select id="IdListe" onchange="hentFilmAjax()">
