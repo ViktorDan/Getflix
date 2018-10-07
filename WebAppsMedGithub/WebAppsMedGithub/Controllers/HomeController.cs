@@ -26,11 +26,13 @@ namespace WebAppsMedGithub.Controllers
             {
                 Session["LoggetInn"] = true;
                 Session["Brukernavn"] = innLogget.Brukernavn;
+                Session["FeilMelding"] = "";
                 return RedirectToAction("HovedSide");
             }
             else
             {
                 Session["LoggetInn"] = false;
+                Session["FeilMelding"] = "Feil brukernavn og passord";
                 return View();
             }
         }

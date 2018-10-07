@@ -53,7 +53,19 @@ textarea {
     margin: 10%;
 }
 
-.form-horizontal {
-    padding-left: 5%;
-    padding-right: 5%;
+#midtStill {
+    display: flex;
+    justify-content: center;
+}
+
+#data {
+    display: flex;
+    justify-content: center;
+}
+#data img {
+    border-radius: 5px;
+}
+
+#FilmListe img {
+    border-radius: 5px;
 }
