@@ -23,6 +23,7 @@ namespace WebAppsMedGithub.Controllers
             if (DBFunk.bruker_i_db(innLogget))
             {
                 Session["LoggetInn"] = true;
+                Session["Brukernavn"] = innLogget.Brukernavn;
                 return RedirectToAction("HovedSide");
             }
             else
@@ -73,7 +74,7 @@ namespace WebAppsMedGithub.Controllers
         {
             return View();
         }
-
+        
         public void Bestilling (int id)
         {
             using (var db = new DBContext())
@@ -82,7 +83,7 @@ namespace WebAppsMedGithub.Controllers
 
                 var bestilling = new Bestillinger
                 {
-                    BId = 2,
+                   
                     Brukernavn = brukernavn,
                     FId = id
                 };

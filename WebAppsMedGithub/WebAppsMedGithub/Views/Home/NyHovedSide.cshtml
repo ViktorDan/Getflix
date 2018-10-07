@@ -12,7 +12,18 @@
     });
     function myAlert() {
         if (confirm('Bekreft Kjøp')) {
-            $.load("Home/Bestilling", { Id: data });
+            $.ajax({
+                url: "/Home/Bestilling/" + data,
+                success: function (data) { $('#FilmListe').html('Kjøp Fullført') },
+                statusCode: {
+                    404: function (content) { alert('cannot find resource'); },
+                    500: function (content) { alert('internal server error'); }
+                },
+                error: function (req, status, errorObj) {
+                    // handle status === "timeout"
+                    // handle other errors
+                }
+            });
         }
 
     }
@@ -25,7 +36,7 @@
 <br/>
 
 <div id="FilmListe">
-
+    
 </div>
 
 
