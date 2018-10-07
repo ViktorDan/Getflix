@@ -1,16 +1,27 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html, body {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    padding: 3%;
-    padding-top: 2%;
-    box-shadow: 1px 10px 30px 20px #aaaaaa;
-    border: 1px solid #BFBFBF;
+    padding-top: 4%;
+    box-shadow: 1px 30px 1000px #424040;
+    border: 1px solid #424040;
+    background-color: #424040;
+    color: #D8D5D5;
+    height: 100%;
+}
+
+.container {
+}
+
+#footer {
+    margin-top: -30px;
+    color: #D8D5D5;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

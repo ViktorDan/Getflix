@@ -82,7 +82,7 @@ namespace WebAppsMedGithub.Controllers
                 return RedirectToAction("Index");
             }
         }
-
+        
         public void Bestilling (int id)
         {
             using (var db = new DBContext())
@@ -91,7 +91,7 @@ namespace WebAppsMedGithub.Controllers
 
                 var bestilling = new Bestillinger
                 {
-                    BId = 2,
+                   
                     Brukernavn = brukernavn,
                     FId = id
                 };
