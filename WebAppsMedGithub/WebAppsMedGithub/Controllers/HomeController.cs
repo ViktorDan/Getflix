@@ -87,13 +87,6 @@ namespace WebAppsMedGithub.Controllers
             }
         }
 
-        // Modal view for filmer
-        public ActionResult FilmModal()
-        {
-            
-            return View();
-        }
-
         // Ender Session.
         public ActionResult LoggUt()
         {

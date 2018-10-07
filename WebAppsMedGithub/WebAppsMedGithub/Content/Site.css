@@ -50,7 +50,8 @@ textarea {
 }
 
 #index {
-    margin: 10%;
+    margin: 8% 10% 0 10%;
+
 }
 
 #midtStill {
@@ -68,4 +69,8 @@ textarea {
 
 #FilmListe img {
     border-radius: 5px;
+}
+
+#velkommen {
+    margin-top: 5%;
 }
