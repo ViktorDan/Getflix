@@ -48,3 +48,12 @@ textarea {
     padding: 8px 16px;
     margin: 1%;
 }
+
+#index {
+    margin: 10%;
+}
+
+.form-horizontal {
+    padding-left: 5%;
+    padding-right: 5%;
+}
