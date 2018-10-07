@@ -46,7 +46,7 @@ namespace WebAppsMedGithub.Models
 
         [Display(Name = "Telefonnummer")]
         [Required(ErrorMessage = "Må oppgi telefonnummer")]
-        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Ugyldig Telefonnummer")]
+        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Ugyldig telefonnummer")]
         public string Tlf { get; set; }
 
 
