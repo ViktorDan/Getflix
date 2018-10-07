@@ -42,13 +42,6 @@ namespace WebAppsMedGithub.Models
             };
             filmer.ForEach(f => context.Filmer.Add(f));
             context.SaveChanges();
-
-            var bestillinger = new List<Bestillinger>
-            {
-            new Bestillinger{BId=1, Brukernavn="admin", FId=1}
-            };
-            bestillinger.ForEach(b => context.Bestillinger.Add(b));
-            context.SaveChanges();
         }
     }
 }

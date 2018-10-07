@@ -17,12 +17,27 @@ namespace WebAppsMedGithub
                 try
                 {
                     // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
-                    var nyKunde = new dbKunder();
-                    nyKunde.Brukernavn = innKunde.Brukernavn;
-                    nyKunde.Fornavn = innKunde.Fornavn;
-                    nyKunde.Etternavn = innKunde.Etternavn;
-                    nyKunde.Adresse = innKunde.Adresse;
-                    nyKunde.Postnr = innKunde.Postnr;
+                    var nyKunde = new dbKunder
+                    {
+                        Brukernavn = innKunde.Brukernavn,
+                        Fornavn = innKunde.Fornavn,
+                        Etternavn = innKunde.Etternavn,
+                        Adresse = innKunde.Adresse,
+                        Postnr = innKunde.Postnr
+                    };
+
+                    var eksistererPostnr = db.Poststeder.Find(innKunde.Postnr);
+
+                    if (eksistererPostnr == null)
+                    {
+                        var nyttPoststed = new Poststeder()
+                        {
+                            Postnr = innKunde.Postnr,
+                            Poststed = innKunde.Poststed
+                        };
+                        nyKunde.Poststeder = nyttPoststed;
+                    }
+
                     nyKunde.Tlf = innKunde.Tlf;
                     string salt = lagSalt();
                     var passordOgSalt = innKunde.Passord + salt;
