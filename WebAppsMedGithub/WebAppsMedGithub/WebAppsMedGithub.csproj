@@ -179,7 +179,6 @@
     </Compile>
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\DBInitializer.cs" />
-    <Compile Include="Models\Film.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

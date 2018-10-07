@@ -9,7 +9,6 @@ namespace WebAppsMedGithub
 {
     public class DBFunk
     {
-        // Skal disse metodene være private?
         public static void RegistrerKunde(Kunde innKunde)
         {
             using (var db = new DBContext())
@@ -59,7 +58,6 @@ namespace WebAppsMedGithub
 
         }
 
-        //Login metoder--------------------------------------------------------------------------------------------------------------------------------------
         public static byte[] lagHash(string innPassord)
         {
             byte[] innData, utData;
@@ -96,6 +94,5 @@ namespace WebAppsMedGithub
                 }
             }
         }
-        //Login metoder slutt--------------------------------------------------------------------------------------------------------------------------------
     }
 }
