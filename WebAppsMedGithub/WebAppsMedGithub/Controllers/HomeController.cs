@@ -75,6 +75,11 @@ namespace WebAppsMedGithub.Controllers
             }
         }
 
+        public ActionResult AdminSide()
+        {
+            return RedirectToAction("AdminSide");
+        }
+
         public ActionResult NyHovedSide()
         {
             if (SjekkLogin())

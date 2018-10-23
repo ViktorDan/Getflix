@@ -26,6 +26,19 @@ namespace WebAppsMedGithub.Models
         public virtual Poststeder Poststeder { get; set; }
         public virtual Bestillinger Bestillinger { get; set; }
     }
+
+    public class dbAdmin
+    {
+        [Key]
+        public string Brukernavn { get; set; }
+        public string Postnr { get; set; }
+        public string Tlf { get; set; }
+        public byte[] Passord { get; set; }
+        public string Salt { get; set; }
+        public virtual Poststeder Poststeder { get; set; }
+        public virtual Bestillinger Bestillinger { get; set; }
+    }
+
     public class Poststeder
     {
         [Key]
@@ -69,6 +82,7 @@ namespace WebAppsMedGithub.Models
         public DbSet<Filmer> Filmer { get; set; }
         public DbSet<Poststeder> Poststeder { get; set; }
         public DbSet<Bestillinger> Bestillinger { get; set; }
+        public DbSet<>
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

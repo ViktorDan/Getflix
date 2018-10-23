@@ -15,36 +15,72 @@ namespace WebAppsMedGithub
             {
                 try
                 {
-                    // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
-                    var nyKunde = new dbKunder
+                    if (innKunde.Brukernavn == "Admin")
                     {
-                        Brukernavn = innKunde.Brukernavn,
-                        Fornavn = innKunde.Fornavn,
-                        Etternavn = innKunde.Etternavn,
-                        Adresse = innKunde.Adresse,
-                        Postnr = innKunde.Postnr
-                    };
-
-                    var eksistererPostnr = db.Poststeder.Find(innKunde.Postnr);
-
-                    if (eksistererPostnr == null)
-                    {
-                        var nyttPoststed = new Poststeder()
+                        var nyAdmin = new dbAdmin
                         {
-                            Postnr = innKunde.Postnr,
-                            Poststed = innKunde.Poststed
+                            Brukernavn = innKunde.Brukernavn,
+                            Fornavn = innKunde.Fornavn,
+                            Etternavn = innKunde.Etternavn,
+                            Adresse = innKunde.Adresse,
+                            Postnr = innKunde.Postnr
                         };
-                        nyKunde.Poststeder = nyttPoststed;
-                    }
+                        var eksistererPostnr = db.Poststeder.Find(innKunde.Postnr);
 
-                    nyKunde.Tlf = innKunde.Tlf;
-                    string salt = lagSalt();
-                    var passordOgSalt = innKunde.Passord + salt;
-                    byte[] passordDb = lagHash(passordOgSalt);
-                    nyKunde.Passord = passordDb;
-                    nyKunde.Salt = salt;
-                    db.Kunder.Add(nyKunde);
-                    db.SaveChanges();
+                        if (eksistererPostnr == null)
+                        {
+                            var nyttPoststed = new Poststeder()
+                            {
+                                Postnr = innKunde.Postnr,
+                                Poststed = innKunde.Poststed
+                            };
+                            nyAdmin.Poststeder = nyttPoststed;
+                        }
+
+                        nyAdmin.Tlf = innKunde.Tlf;
+                        string salt = lagSalt();
+                        var passordOgSalt = innKunde.Passord + salt;
+                        byte[] passordDb = lagHash(passordOgSalt);
+                        nyAdmin.Passord = passordDb;
+                        nyAdmin.Salt = salt;
+                        db.Kunder.Add(nyAdmin);
+                        db.SaveChanges();
+                    }
+                }
+
+                    else
+                    {
+                        // lag kunde med passord salt+hash, add kunde til tabellen Kunder, og commit ved "savechanges".
+                        var nyKunde = new dbKunder
+                        {
+                            Brukernavn = innKunde.Brukernavn,
+                            Fornavn = innKunde.Fornavn,
+                            Etternavn = innKunde.Etternavn,
+                            Adresse = innKunde.Adresse,
+                            Postnr = innKunde.Postnr
+                        };
+
+                        var eksistererPostnr = db.Poststeder.Find(innKunde.Postnr);
+
+                        if (eksistererPostnr == null)
+                        {
+                            var nyttPoststed = new Poststeder()
+                            {
+                                Postnr = innKunde.Postnr,
+                                Poststed = innKunde.Poststed
+                            };
+                            nyKunde.Poststeder = nyttPoststed;
+                        }
+
+                        nyKunde.Tlf = innKunde.Tlf;
+                        string salt = lagSalt();
+                        var passordOgSalt = innKunde.Passord + salt;
+                        byte[] passordDb = lagHash(passordOgSalt);
+                        nyKunde.Passord = passordDb;
+                        nyKunde.Salt = salt;
+                        db.Kunder.Add(nyKunde);
+                        db.SaveChanges();
+                    }
                 }
                 catch (Exception feil)
                 {
