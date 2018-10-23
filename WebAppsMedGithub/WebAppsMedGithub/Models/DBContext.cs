@@ -24,7 +24,7 @@ namespace WebAppsMedGithub.Models
         public byte[] Passord { get; set; }
         public string Salt { get; set; }
         public virtual Poststeder Poststeder { get; set; }
-        public virtual Bestillinger Bestillinger { get; set; }
+       
     }
     public class Poststeder
     {

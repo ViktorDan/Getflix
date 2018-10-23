@@ -112,9 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\WebAppsMedGithub.mdf" />
-    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
-      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\WebAppsMedGithub_log.ldf" />
     <Content Include="Bilder\22JumpStreet.jpg" />
     <Content Include="Bilder\Avengers.jpg" />
     <Content Include="Bilder\BatmanBegins.jpg" />
@@ -208,6 +206,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\NyHovedSide.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Home\AdminKunder.cshtml" />
+    <Content Include="Views\Home\AdminFilm.cshtml" />
+    <Content Include="Views\Home\AdminBestilling.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

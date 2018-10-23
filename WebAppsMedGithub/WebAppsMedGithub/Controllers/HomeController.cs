@@ -49,8 +49,28 @@ namespace WebAppsMedGithub.Controllers
         {
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("Index");
-        }        
+        }     
 
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        public ActionResult AdminKunder()
+        {
+            using (var db = new Models.DBContext())
+            {
+                var kunder = db.Kunder.ToList();
+                return View(kunder);
+            }
+        }
+        public ActionResult AdminFilm()
+        {
+            return View();
+        }
+        public ActionResult AdminBestilling()
+        {
+            return View();
+        }
         public ActionResult HovedSide()
         {
             if (SjekkLogin())
