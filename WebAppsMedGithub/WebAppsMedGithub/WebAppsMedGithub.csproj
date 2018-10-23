@@ -114,6 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\WebAppsMedGithub.mdf" />
+    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
+      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Bilder\22JumpStreet.jpg" />
     <Content Include="Bilder\Avengers.jpg" />
     <Content Include="Bilder\BatmanBegins.jpg" />
@@ -222,7 +227,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{29277410-f5c5-424e-8953-fb321dbf8ee2}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{f61943c6-a67e-4428-bbca-01a8ce0bc641}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
