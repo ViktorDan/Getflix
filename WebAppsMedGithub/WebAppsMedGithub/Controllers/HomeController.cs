@@ -33,7 +33,7 @@ namespace WebAppsMedGithub.Controllers
             {
                 Session["LoggetInn"] = false;
                 Session["FeilMelding"] = "Feil brukernavn og passord";
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -47,6 +47,7 @@ namespace WebAppsMedGithub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Registrer(Kunde innKunde)
         {
+            Session["FeilMelding"] = "";
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("Index");
         }        
