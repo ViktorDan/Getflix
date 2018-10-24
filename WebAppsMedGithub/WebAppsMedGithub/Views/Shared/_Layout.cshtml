@@ -14,20 +14,23 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </head>
 <body style=" background-color: #808080; height: 100%; ">
-    
+
     @* Lager et felles layout, hvor innholdet skal rendres, og vi får en felles footer *@
 
     <div class="container body-content">
-        @RenderBody()
-        <hr />
+        <div>
+            @RenderBody()
+        </div>
     </div>
 
-    <div class="container text-center">
+    <div class= "text-center">
         <footer id="footer">
             <p>&copy; @DateTime.Now.Year - Andreas Klophmann - Viktor Danielsen - Alexander William Ingvarsson Hals - Kristian Ludvig Grønvold</p>
         </footer>
     </div>
-    
+
+
+
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

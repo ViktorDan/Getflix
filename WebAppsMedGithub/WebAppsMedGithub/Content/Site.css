@@ -10,9 +10,7 @@ html, body {
 
 
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 4%;
+    padding: 4% 15px 15px 15px;
     box-shadow: 1px 30px 1000px #424040;
     border: 1px solid #424040;
     background-color: #424040;
@@ -21,12 +19,12 @@ html, body {
 }
 
 #footer {
-    padding-top: 10px;
-    margin-top: -30px;
+    margin-top: -2%;
+    margin-bottom: 0;
     color: #D8D5D5;
     font-family: Verdana, Geneva, sans-serif;
     font-weight: 100;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -56,6 +54,14 @@ textarea {
 
 #index {
     margin: 8% 10% 0 10%;
+    padding: 2% 0 0.5% 0;
+    box-shadow: 0px 0px 20px 0px #222222;
+}
+
+#login {
+    width: 50%;
+    margin-top: 5%;
+    justify-content: center;
 }
 
 #midtStill {
@@ -81,6 +87,8 @@ textarea {
 
 #velkommen {
     margin-top: 5%;
+    font-size: 500%;
+    opacity: 0.8;
 }
 
 .form-horizontal {
