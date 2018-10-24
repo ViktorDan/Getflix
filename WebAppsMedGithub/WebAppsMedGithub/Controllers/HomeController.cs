@@ -13,6 +13,12 @@ namespace WebAppsMedGithub.Controllers
 {
     public class HomeController : Controller
     {
+        // logger funksjonen
+        private static readonly log4net.ILog log
+            = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        // når man vil logge noe så skriver man bare: log.Info("Alexander Hals"), så blir det skrevet til logg
+
         public ActionResult Index()
         {
             return View();
@@ -42,9 +48,6 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult Log()
         {
-
-            
-
 
             var db = new DBContext();
 
