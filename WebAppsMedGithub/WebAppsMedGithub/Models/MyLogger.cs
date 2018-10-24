@@ -8,18 +8,14 @@ namespace WebAppsMedGithub.Models
 {
     public class MyLogger
     {
-        public void Log(string component, string message)
-        {
-            Console.WriteLine("Component: {0} Message: {1} ", component, message);
-        }
+        private static readonly log4net.ILog log 
+            = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        static async void WriteCharacters()
+        public static void LoggDa()
         {
-            using (System.IO.StreamWriter writer = File.CreateText("newfile.txt"))
-            {
-                await writer.WriteLineAsync("First line of example");
-                await writer.WriteLineAsync("and second line");
-            }
+            log.Info("Hello logging world!");
+            Console.WriteLine("Hit enter");
+            //Console.ReadLine();
         }
     }
 }

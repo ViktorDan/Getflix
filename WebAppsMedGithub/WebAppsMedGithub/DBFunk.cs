@@ -9,6 +9,9 @@ namespace WebAppsMedGithub
 {
     public class DBFunk
     {
+        private static readonly log4net.ILog log
+            = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static void RegistrerKunde(Kunde innKunde)
         {
             using (var db = new DBContext())
@@ -24,6 +27,8 @@ namespace WebAppsMedGithub
                         Adresse = innKunde.Adresse,
                         Postnr = innKunde.Postnr
                     };
+                    log.Info(nyKunde);
+                    
 
                     var eksistererPostnr = db.Poststeder.Find(innKunde.Postnr);
 

@@ -38,26 +38,24 @@ namespace WebAppsMedGithub.Controllers
             }
         }
 
+        /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public ActionResult Log()
         {
-            var db = new DBContext();
-            //db.Database.Log = Response.Write;
 
-            WriteCharacters();
+            
+
+
+            var db = new DBContext();
+
 
             var kunder = db.Kunder.ToList();
 
             return View(kunder);
         }
 
-        static async void WriteCharacters()
-        {
-            using (System.IO.StreamWriter writer = File.CreateText("newfile.txt"))
-            {
-                await writer.WriteLineAsync("First line of example");
-                await writer.WriteLineAsync("and second line");
-            }
-        }
+        /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
         public ActionResult Registrer()
         {
