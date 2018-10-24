@@ -11,6 +11,28 @@
     // Når siden lastes inn, hentes alle filmer fra databasen til div-en med id FilmListe
     $(document).ready(function () {
         $("#FilmListe").load("/Home/Allefilmer");
+
+        $('a[data-filmModal=true]').click(function () {
+                var dataNavn = $(this).data('navn');
+                var dataId = $(this).data('id');
+
+                $('#slettNavn').html(dataId);
+
+                $('#sletteModalKnapp').click(function () {
+                    $.ajax({
+                        url: '@Url.Action("SlettKunde", "Home")',
+                        data: { id: dataId },
+                        success: function () {
+                            $.ajax({
+                                url: '@Url.Action("AdminKunder", "Home")',
+                                success: function () {
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+                });
+        });
     });
     // Når sjanger er valgt hentes filmer i gjellende sjanger fra databasen til div-en med id FilmListe
     function hentFilmAjax() {
@@ -58,6 +80,8 @@
     <div class="text-center" id="FilmListe">
 
     </div>
+    @Html.Partial("filmModal") 
 </div>
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>

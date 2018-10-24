@@ -54,6 +54,7 @@ namespace WebAppsMedGithub.Models
         public int BId { get; set; }
         public string Brukernavn { get; set; }
         public int FId { get; set; }
+        public DateTime dato { get; set; }
         public virtual List<dbKunder> Kunder { get; set; }
         public virtual List<Filmer> Filmer { get; set; }
     }

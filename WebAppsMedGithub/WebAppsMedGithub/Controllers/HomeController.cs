@@ -65,11 +65,40 @@ namespace WebAppsMedGithub.Controllers
         }
         public ActionResult AdminFilm()
         {
-            return View();
+            using (var db = new Models.DBContext())
+            {
+                var filmer = db.Filmer.ToList();
+                return View(filmer);
+            }
         }
         public ActionResult AdminBestilling()
         {
-            return View();
+            using (var db = new Models.DBContext())
+            {
+                var best = db.Bestillinger.ToList();
+                return View(best);
+            }
+        }
+        public void SlettKunde(String id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettKunde(id);
+            // kunne returnert en feil dersom slettingen feilet....
+        }
+        public void SlettFilm(int id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettFilm(id);
+            // kunne returnert en feil dersom slettingen feilet....
+        }
+        public void SlettBestilling(int id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettBestilling(id);
+            // kunne returnert en feil dersom slettingen feilet....
         }
         public ActionResult HovedSide()
         {
@@ -145,7 +174,8 @@ namespace WebAppsMedGithub.Controllers
                 {
 
                     Brukernavn = brukernavn,
-                    FId = id
+                    FId = id,
+                    dato = DateTime.UtcNow.Date
                 };
 
                 db.Bestillinger.Add(bestilling);
@@ -166,7 +196,8 @@ namespace WebAppsMedGithub.Controllers
                 {
                     count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn +
+                    innhold += "<td id='element' width='20%'><a href='#filmModal' data-id='"+ f.FId +
+                        "' data-toggle='modal' data-filmModal='true'><img src='" + f.Bilde + "' width='90%'></a> <br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
                         "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/><td/>";
                     if (count == 5)

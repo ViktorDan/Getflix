@@ -94,5 +94,51 @@ namespace WebAppsMedGithub
                 }
             }
         }
+
+        public bool slettKunde(String slettId)
+        {
+            var db = new DBContext();
+            try
+            {
+                var slettKunde = db.Kunder.Find(slettId);
+                db.Kunder.Remove(slettKunde);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
+        public bool slettFilm(int slettId)
+        {
+            var db = new DBContext();
+            try
+            {
+                var slettFilm = db.Filmer.Find(slettId);
+                db.Filmer.Remove(slettFilm);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
+        public bool slettBestilling(int slettId)
+        {
+            var db = new DBContext();
+            try
+            {
+                var slettBestilling = db.Bestillinger.Find(slettId);
+                db.Bestillinger.Remove(slettBestilling);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
     }
 }
