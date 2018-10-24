@@ -31,43 +31,45 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="container text-center" id="velkommen">
-        <h3>Velkommen til Getflix!</h3>
-        <h4>Stedet for å kjøpe de største filmene i verden digitalt!</h4>
+    <div class="container text-center">
+        <h1 id="velkommen">Velkommen til Getflix!</h1>
+        <h3>Stedet for å kjøpe de største filmene i verden digitalt!</h3>
     </div>    
-          <div class="form-horizontal" id="index">
+    <div class="form-horizontal" id="index">
 
-              <h4>Logg inn for å komme igang!</h4>
-              <hr />
-              @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-              <div class="form-group">
-                  @Html.LabelFor(model => model.Brukernavn, htmlAttributes: new { @class = "control-label col-md-2" })
-                  <div class="col-md-10">
-                      @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { @class = "form-control" } })
-                      @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
-                  </div>
-              </div>
+        <h4 class="text-center" style="font-weight:600">Logg inn for å komme igang!</h4><br/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Brukernavn, htmlAttributes: new { @class = "control-label col-md-offset-2 col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-              <div class="form-group">
-                  @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-2", })
-                  <div class="col-md-10">
-                      @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
-                      @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
-                  </div>
-              </div>
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.Passord, htmlAttributes: new { @class = "control-label col-md-offset-2 col-md-2", })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
 
-              <div class="form-group">
-                  <div class="col-md-offset-2 col-md-10">
-                      <input type="submit" value="Logg inn" class="btn btn-default" />
-                  </div>
-              </div>
-              <p class="text-danger">@Session["FeilMelding"]</p>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Logg inn" class="btn btn-success" />
+            </div>
+        </div>
+        <p class="text-danger text-center">@Session["FeilMelding"]</p>
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8" style="padding-top:3%;">
+                <p>Har du ikke bruker? @Html.ActionLink("Registrer deg her", "Registrer").</p>
+            </div>
+        </div>
 
-          </div>
+    </div>
    
 }
 
-    <div id="index">
-        <p>@Html.ActionLink("Registrer", "Registrer") deg om du ikke har bruker</p>
-    </div>
+    
