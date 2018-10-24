@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using WebAppsMedGithub.Models;
 
 
@@ -34,6 +35,27 @@ namespace WebAppsMedGithub.Controllers
                 Session["LoggetInn"] = false;
                 Session["FeilMelding"] = "Feil brukernavn og passord";
                 return View();
+            }
+        }
+
+        public ActionResult Log()
+        {
+            var db = new DBContext();
+            //db.Database.Log = Response.Write;
+
+            WriteCharacters();
+
+            var kunder = db.Kunder.ToList();
+
+            return View(kunder);
+        }
+
+        static async void WriteCharacters()
+        {
+            using (System.IO.StreamWriter writer = File.CreateText("newfile.txt"))
+            {
+                await writer.WriteLineAsync("First line of example");
+                await writer.WriteLineAsync("and second line");
             }
         }
 
