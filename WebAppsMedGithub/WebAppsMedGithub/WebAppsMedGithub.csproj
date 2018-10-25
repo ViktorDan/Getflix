@@ -114,10 +114,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\WebAppsMedGithub.mdf" />
-    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
-      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Bilder\22JumpStreet.jpg" />
     <Content Include="Bilder\Avengers.jpg" />
@@ -244,6 +240,9 @@
       <Project>{f61943c6-a67e-4428-bbca-01a8ce0bc641}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
