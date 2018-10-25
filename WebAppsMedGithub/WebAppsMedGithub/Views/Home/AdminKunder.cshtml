@@ -1,0 +1,128 @@
+﻿@model List<WebAppsMedGithub.Models.dbKunder>
+@{
+    ViewBag.Title = "AdminKunder";
+}
+<head>
+    <style>
+        th{
+            width:14%;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a[data-sletteModal=true]').click(function () {
+                var dataNavn = $(this).data('navn');
+                var dataId = $(this).data('id');
+
+                $('#slettNavn').html(dataNavn);
+
+                $('#sletteModalKnapp').click(function () {
+                    $.ajax({
+                        url: '@Url.Action("SlettKunde", "Home")',
+                        data: { id: dataId },
+                        success: function () {
+                            $.ajax({
+                                url: '@Url.Action("AdminKunder", "Home")',
+                                success: function () {
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+            $('a[data-endreModal=true]').click(function () {
+                var dataBNavn = $(this).data('bn');
+                var dataFNavn = $(this).data('fn');
+                var dataENavn = $(this).data('en');
+                var dataAdr = $(this).data('adr');
+                var dataPost = $(this).data('post');
+                var dataTlf = $(this).data('tlf');
+                var dataId = $(this).data('id');
+
+                $('#endreNavn').html("<tr><td>Brukernavn</td><td><input value='" + dataId +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Fornavn</td><td><input value='"+dataFNavn+"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Etternavn</td><td><input value='" + dataENavn +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Adresse</td><td><input value='" + dataAdr +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Postnr</td><td><input value='" + dataPost +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Tlf</td><td><input value='" + dataTlf +"' class='form-control'></input></td></tr>");
+
+                $('#endreModalKnapp').click(function () {
+                    $.ajax({
+                        url: '@Url.Action("EndreKunde", "Home")',
+                        data: { id: dataId },
+                        success: function () {
+                            $.ajax({
+                                url: '@Url.Action("AdminKunder", "Home")',
+                                success: function () {
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Getflix - Admin", "Admin", "Home", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Kunder", "AdminKunder")</li>
+                    <li>@Html.ActionLink("Filmer", "AdminFilm")</li>
+                    <li>@Html.ActionLink("Bestilling", "AdminBestilling")</li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li>@Html.ActionLink("Logg ut", "LoggUt")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2>Administrer Kunder</h2>
+    <br />
+    <div>
+        <table>
+            <tr>
+                <th>Brukernavn</th>
+                <th>Fornavn</th>
+                <th>Etternavn</th>
+                <th>Adresse</th>
+                <th>Postnummer</th>
+                <th>Tlf</th>
+            </tr>
+            @foreach (var kunde in Model)
+            {
+                <tr>
+                    <td>@kunde.Brukernavn</td>
+                    <td>@kunde.Fornavn</td>
+                    <td>@kunde.Etternavn</td>
+                    <td>@kunde.Adresse</td>
+                    <td>@kunde.Postnr</td>
+                    <td>@kunde.Tlf</td>
+                    <td>
+                        <a href="#endreModal" class="btn btn-default" id="endreKnapp"
+                           data-bn="@kunde.Brukernavn" data-fn="@kunde.Fornavn" data-en="@kunde.Etternavn"
+                           data-adr="@kunde.Adresse" data-post="@kunde.Postnr" data-tlf="@kunde.Tlf"
+                           data-id="@kunde.Brukernavn" data-toggle="modal" data-endreModal="true">Endre</a>
+                        <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
+                           data-navn="@kunde.Brukernavn @kunde.Fornavn @kunde.Etternavn"
+                           data-id="@kunde.Brukernavn" data-toggle="modal" data-sletteModal="true">Slett</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.Partial("sletteModal")
+        @Html.Partial("endreModal")
+    </div>
+</body>

@@ -33,7 +33,7 @@ namespace WebAppsMedGithub.Controllers
             {
                 Session["LoggetInn"] = false;
                 Session["FeilMelding"] = "Feil brukernavn og passord";
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
@@ -47,10 +47,60 @@ namespace WebAppsMedGithub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Registrer(Kunde innKunde)
         {
+            Session["FeilMelding"] = "";
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("Index");
-        }        
+        }     
 
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        public ActionResult AdminKunder()
+        {
+            using (var db = new Models.DBContext())
+            {
+                var kunder = db.Kunder.ToList();
+                return View(kunder);
+            }
+        }
+        public ActionResult AdminFilm()
+        {
+            using (var db = new Models.DBContext())
+            {
+                var filmer = db.Filmer.ToList();
+                return View(filmer);
+            }
+        }
+        public ActionResult AdminBestilling()
+        {
+            using (var db = new Models.DBContext())
+            {
+                var best = db.Bestillinger.ToList();
+                return View(best);
+            }
+        }
+        public void SlettKunde(String id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettKunde(id);
+            // kunne returnert en feil dersom slettingen feilet....
+        }
+        public void SlettFilm(int id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettFilm(id);
+            // kunne returnert en feil dersom slettingen feilet....
+        }
+        public void SlettBestilling(int id)
+        {
+            // denne kalles via et Ajax-kall
+            var kundeDb = new DBFunk();
+            bool slettOK = kundeDb.slettBestilling(id);
+            // kunne returnert en feil dersom slettingen feilet....
+        }
         public ActionResult HovedSide()
         {
             if (SjekkLogin())
@@ -125,7 +175,8 @@ namespace WebAppsMedGithub.Controllers
                 {
 
                     Brukernavn = brukernavn,
-                    FId = id
+                    FId = id,
+                    dato = DateTime.UtcNow.Date
                 };
 
                 db.Bestillinger.Add(bestilling);
@@ -146,7 +197,8 @@ namespace WebAppsMedGithub.Controllers
                 {
                     count++;
 
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'> <br/>" + f.Navn +
+                    innhold += "<td id='element' width='20%'><a href='#filmModal' data-id='"+ f.FId +
+                        "' data-toggle='modal' data-filmModal='true'><img src='" + f.Bilde + "' width='90%'></a> <br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
                         "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/><td/>";
                     if (count == 5)
