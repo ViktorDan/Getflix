@@ -79,6 +79,11 @@ textarea {
 
 #IdListe {
     margin-left: 1%;
+    color: #fff;
+    background-color: transparent;
+}
+#IdListe option {
+    background-color: #424040;
 }
 
 #FilmListe img {
