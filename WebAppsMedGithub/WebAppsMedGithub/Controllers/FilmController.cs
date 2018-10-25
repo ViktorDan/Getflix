@@ -8,7 +8,6 @@ namespace WebAppsMedGithub.Controllers
 {
     public class FilmController : Controller
     {
-        // GET: Film
         public ActionResult Index()
         {
             return View();
