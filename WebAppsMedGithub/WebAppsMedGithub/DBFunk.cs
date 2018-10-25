@@ -4,6 +4,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using WebAppsMedGithub.Models;
+using Model;
+using BLL;
+using DAL;
 
 namespace WebAppsMedGithub
 {
@@ -53,10 +56,7 @@ namespace WebAppsMedGithub
             }
         }
 
-        public static void SjekkPoststed(Kunde innKunde)
-        {
 
-        }
 
         public static byte[] lagHash(string innPassord)
         {
@@ -85,7 +85,7 @@ namespace WebAppsMedGithub
                 if (funnetKunde != null)
                 {
                     byte[] passordForTest = lagHash(innKunde.Passord + funnetKunde.Salt);
-                    bool riktigBruker = funnetKunde.Passord.SequenceEqual(passordForTest);  // merk denne testen!
+                    bool riktigBruker = funnetKunde.Passord.SequenceEqual(passordForTest);  
                     return riktigBruker;
                 }
                 else

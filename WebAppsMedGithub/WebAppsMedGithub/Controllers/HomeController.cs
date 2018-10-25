@@ -5,6 +5,9 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using WebAppsMedGithub.Models;
+using Model;
+using BLL;
+using DAL;
 
 
 
@@ -50,63 +53,14 @@ namespace WebAppsMedGithub.Controllers
             Session["FeilMelding"] = "";
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("Index");
-        }     
+        }
 
-        public ActionResult Admin()
-        {
-            return View();
-        }
-        public ActionResult AdminKunder()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var kunder = db.Kunder.ToList();
-                return View(kunder);
-            }
-        }
-        public ActionResult AdminFilm()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var filmer = db.Filmer.ToList();
-                return View(filmer);
-            }
-        }
-        public ActionResult AdminBestilling()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var best = db.Bestillinger.ToList();
-                return View(best);
-            }
-        }
-        
-        public void SlettKunde(String id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettKunde(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
-        public void SlettFilm(int id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettFilm(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
-        public void SlettBestilling(int id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettBestilling(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
+
         public ActionResult HovedSide()
         {
             if (SjekkLogin())
             {
-                using (var db = new Models.DBContext())
+                using (var db = new DBContext())
                 {
                     var filmer = db.Filmer.ToList();
                     var nedTrekk = new List<string>();
@@ -119,7 +73,7 @@ namespace WebAppsMedGithub.Controllers
                     }
                     return View(nedTrekk);
                 }
-            }   
+            }
             else
             {
                 return RedirectToAction("Index");
@@ -188,7 +142,7 @@ namespace WebAppsMedGithub.Controllers
         //Funksjon som laster in filmer i en sjanger ved hjelp av Ajax kall
         public String HentFilm(String Sjanger)
         {
-            using (var db = new Models.DBContext())
+            using (var db = new DBContext())
             {
 
                 var filmer = db.Filmer.Where(s => s.Sjanger == Sjanger);
@@ -198,7 +152,7 @@ namespace WebAppsMedGithub.Controllers
                 {
                     count++;
 
-                    innhold += "<td id='element' width='20%'><a href='#filmModal' data-id='"+ f.FId +
+                    innhold += "<td id='element' width='20%'><a href='#filmModal' data-id='" + f.FId +
                         "' data-toggle='modal' data-filmModal='true'><img src='" + f.Bilde + "' width='90%'></a> <br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
                         "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/><td/>";
@@ -216,7 +170,7 @@ namespace WebAppsMedGithub.Controllers
         //Funksjon som laster in alle filmer ved hjelp av Ajax kall
         public String AlleFilmer(String Sjanger)
         {
-            using (var db = new Models.DBContext())
+            using (var db = new DBContext())
             {
                 var filmer = db.Filmer.ToList();
                 String innhold = "<table><tr>";
@@ -243,7 +197,7 @@ namespace WebAppsMedGithub.Controllers
         // Funksjon som laster inn informasjon om valgt film ved hjelp av Ajax
         public String HentFilmInfo(int id)
         {
-            using (var db = new Models.DBContext())
+            using (var db = new DBContext())
             {
 
                 var filmer = db.Filmer.Where(s => s.FId == id);

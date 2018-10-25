@@ -1,11 +1,12 @@
-﻿@model List<WebAppsMedGithub.Models.dbKunder>
+﻿@model List<Model.Bestillinger>
+
 @{
-    ViewBag.Title = "AdminKunder";
+    ViewBag.Title = "AdminBestilling";
 }
 <head>
     <style>
-        th{
-            width:14%;
+        th {
+            width: 14%;
         }
     </style>
     <script type="text/javascript">
@@ -18,11 +19,11 @@
 
                 $('#sletteModalKnapp').click(function () {
                     $.ajax({
-                        url: '@Url.Action("SlettKunde", "Home")',
+                        url: '@Url.Action("SlettBestilling", "Admin")',
                         data: { id: dataId },
                         success: function () {
                             $.ajax({
-                                url: '@Url.Action("AdminKunder", "Home")',
+                                url: '@Url.Action("AdminBestilling", "Admin")',
                                 success: function () {
                                     window.location.reload();
                                 }
@@ -32,28 +33,24 @@
                 });
             });
             $('a[data-endreModal=true]').click(function () {
-                var dataBNavn = $(this).data('bn');
-                var dataFNavn = $(this).data('fn');
-                var dataENavn = $(this).data('en');
-                var dataAdr = $(this).data('adr');
-                var dataPost = $(this).data('post');
-                var dataTlf = $(this).data('tlf');
                 var dataId = $(this).data('id');
+                var dataBn = $(this).data('bn');
+                var dataFId = $(this).data('fId');
+                var dataDato = $(this).data('dato');
+                
 
-                $('#endreNavn').html("<tr><td>Brukernavn</td><td><input value='" + dataId +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Fornavn</td><td><input value='"+dataFNavn+"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Etternavn</td><td><input value='" + dataENavn +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Adresse</td><td><input value='" + dataAdr +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Postnr</td><td><input value='" + dataPost +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Tlf</td><td><input value='" + dataTlf +"' class='form-control'></input></td></tr>");
+                $('#endreNavn').html("<tr><td>Bestillings id</td><td><input value='" + dataId +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Brukernavn</td><td><input value='"+dataBn+"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Film id</td><td><input value='" + dataFId + "' class='form-control'></input></td></tr>"
+                    + "<tr><td>Dato</td><td><input value='" + dataDato + "' class='form-control'></input></td></tr>");
 
                 $('#endreModalKnapp').click(function () {
                     $.ajax({
-                        url: '@Url.Action("EndreKunde", "Home")',
+                        url: '@Url.Action("EndreBestilling", "Home")',
                         data: { id: dataId },
                         success: function () {
                             $.ajax({
-                                url: '@Url.Action("AdminKunder", "Home")',
+                                url: '@Url.Action("AdminBestilling", "Home")',
                                 success: function () {
                                     window.location.reload();
                                 }
@@ -89,43 +86,40 @@
         </div>
     </div>
 
-    <h2>Administrer Kunder</h2>
+    <h2>Administrer Bestillinger</h2>
     <br />
     <div>
         <table>
             <tr>
+                <th></th>
+                <th>Bestillingsid id</th>
                 <th>Brukernavn</th>
-                <th>Fornavn</th>
-                <th>Etternavn</th>
-                <th>Adresse</th>
-                <th>Postnummer</th>
-                <th>Tlf</th>
+                <th>Film id</th>
+                <th>Dato</th>
+
             </tr>
-            @foreach (var kunde in Model)
+            @foreach (var best in Model)
             {
                 <tr>
-                    <td>@kunde.Brukernavn</td>
-                    <td>@kunde.Fornavn</td>
-                    <td>@kunde.Etternavn</td>
-                    <td>@kunde.Adresse</td>
-                    <td>@kunde.Postnr</td>
-                    <td>@kunde.Tlf</td>
+                    <td><input type="checkbox" /></td>
+                    <td>@best.BId</td>
+                    <td>@best.Brukernavn</td>
+                    <td>@best.FId</td>
+                    <td>@best.dato.ToShortDateString()</td>
+
                     <td>
                         <a href="#endreModal" class="btn btn-default" id="endreKnapp"
-                           data-bn="@kunde.Brukernavn" data-fn="@kunde.Fornavn" data-en="@kunde.Etternavn"
-                           data-adr="@kunde.Adresse" data-post="@kunde.Postnr" data-tlf="@kunde.Tlf"
-                           data-id="@kunde.Brukernavn" data-toggle="modal" data-endreModal="true">Endre</a>
+                           data-id="@best.BId" data-bn="@best.Brukernavn" data-fId="@best.FId"
+                           data-dato="@best.dato" data-toggle="modal" data-endreModal="true">Endre</a>
                         <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
-                           data-navn="@kunde.Brukernavn @kunde.Fornavn @kunde.Etternavn"
-                           data-id="@kunde.Brukernavn" data-toggle="modal" data-sletteModal="true">Slett</a>
+                           data-navn="@best.BId @best.Brukernavn @best.FId"
+                           data-id="@best.BId" data-toggle="modal" data-sletteModal="true">Slett</a>
                     </td>
                 </tr>
             }
         </table>
-        <br />
-        <a href="@Url.Action("Registrer", "Home")" class="btn btn-default">Ny kunde</a>
-
         @Html.Partial("sletteModal")
         @Html.Partial("endreModal")
     </div>
+
 </body>
