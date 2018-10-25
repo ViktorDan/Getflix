@@ -52,60 +52,12 @@ namespace WebAppsMedGithub.Controllers
             return RedirectToAction("Index");
         }     
 
-        public ActionResult Admin()
-        {
-            return View();
-        }
-        public ActionResult AdminKunder()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var kunder = db.Kunder.ToList();
-                return View(kunder);
-            }
-        }
-        public ActionResult AdminFilm()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var filmer = db.Filmer.ToList();
-                return View(filmer);
-            }
-        }
-        public ActionResult AdminBestilling()
-        {
-            using (var db = new Models.DBContext())
-            {
-                var best = db.Bestillinger.ToList();
-                return View(best);
-            }
-        }
-        public void SlettKunde(String id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettKunde(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
-        public void SlettFilm(int id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettFilm(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
-        public void SlettBestilling(int id)
-        {
-            // denne kalles via et Ajax-kall
-            var kundeDb = new DBFunk();
-            bool slettOK = kundeDb.slettBestilling(id);
-            // kunne returnert en feil dersom slettingen feilet....
-        }
+       
         public ActionResult HovedSide()
         {
             if (SjekkLogin())
             {
-                using (var db = new Models.DBContext())
+                using (var db = new DBContext())
                 {
                     var filmer = db.Filmer.ToList();
                     var nedTrekk = new List<string>();

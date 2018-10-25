@@ -18,11 +18,11 @@
 
                 $('#sletteModalKnapp').click(function () {
                     $.ajax({
-                        url: '@Url.Action("SlettKunde", "Home")',
+                        url: '@Url.Action("SlettKunde", "Admin")',
                         data: { id: dataId },
                         success: function () {
                             $.ajax({
-                                url: '@Url.Action("AdminKunder", "Home")',
+                                url: '@Url.Action("AdminKunder", "Admin")',
                                 success: function () {
                                     window.location.reload();
                                 }
