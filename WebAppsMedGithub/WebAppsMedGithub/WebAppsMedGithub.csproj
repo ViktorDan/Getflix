@@ -178,13 +178,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KundeController.cs" />
     <Compile Include="DBFunk.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBContext.cs" />
-    <Compile Include="Models\DBInitializer.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -210,12 +211,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\NyHovedSide.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Home\AdminKunder.cshtml" />
-    <Content Include="Views\Home\AdminFilm.cshtml" />
-    <Content Include="Views\Home\AdminBestilling.cshtml" />
-    <Content Include="Views\Home\sletteModal.cshtml" />
-    <Content Include="Views\Home\endreModal.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Admin\AdminKunder.cshtml" />
+    <Content Include="Views\Admin\AdminFilm.cshtml" />
+    <Content Include="Views\Admin\AdminBestilling.cshtml" />
+    <Content Include="Views\Admin\sletteModal.cshtml" />
+    <Content Include="Views\Admin\endreModal.cshtml" />
     <Content Include="Views\Home\filmModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -236,6 +237,10 @@
       <Project>{29277410-f5c5-424e-8953-fb321dbf8ee2}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5e6feb00-d6ef-4c55-95ef-185db8d0037f}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f61943c6-a67e-4428-bbca-01a8ce0bc641}</Project>
       <Name>Model</Name>
@@ -243,6 +248,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Film\" />
+    <Folder Include="Views\Kunde\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

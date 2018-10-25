@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Model;
 
-namespace WebAppsMedGithub.Models
+namespace DAL
 {
     public class DBInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<DBContext>
     {
