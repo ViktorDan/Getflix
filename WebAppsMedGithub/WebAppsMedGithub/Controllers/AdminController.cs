@@ -53,5 +53,33 @@ namespace WebAppsMedGithub.Controllers
             bool slettOK = adminDb.SlettBestilling(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
+     
+        
+        //public bool SjekkLogin()
+        //{
+        //    if (Session["LoggetInn"] != null)
+        //    {
+        //        bool loggetInn = (bool)Session["LoggetInn"];
+        //        if (loggetInn)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+
+        // Ender Session.
+        public ActionResult LoggUt()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
