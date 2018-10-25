@@ -215,8 +215,8 @@
     <Content Include="Views\Admin\AdminKunder.cshtml" />
     <Content Include="Views\Admin\AdminFilm.cshtml" />
     <Content Include="Views\Admin\AdminBestilling.cshtml" />
-    <Content Include="Views\Home\sletteModal.cshtml" />
-    <Content Include="Views\Home\endreModal.cshtml" />
+    <Content Include="Views\Admin\sletteModal.cshtml" />
+    <Content Include="Views\Admin\endreModal.cshtml" />
     <Content Include="Views\Home\filmModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -236,6 +236,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{29277410-f5c5-424e-8953-fb321dbf8ee2}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{5e6feb00-d6ef-4c55-95ef-185db8d0037f}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{f61943c6-a67e-4428-bbca-01a8ce0bc641}</Project>
