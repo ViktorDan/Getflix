@@ -80,6 +80,7 @@ namespace WebAppsMedGithub.Controllers
                 return View(best);
             }
         }
+        
         public void SlettKunde(String id)
         {
             // denne kalles via et Ajax-kall
