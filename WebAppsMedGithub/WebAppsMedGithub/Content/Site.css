@@ -37,8 +37,10 @@ textarea {
 #getflixKnapp {
     color: red;
     font-family: Impact, Charcoal, sans-serif;
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 200%;
+    /*-webkit-text-stroke: 1px black;*/
+    
 }
 
 
@@ -53,7 +55,7 @@ textarea {
 }
 
 #index {
-    margin: 8% 10% 0 10%;
+    margin: 5% 10% 0 10%;
     padding: 2% 0 0.5% 0;
     box-shadow: 0px 0px 20px 0px #222222;
 }

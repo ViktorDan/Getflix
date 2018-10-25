@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Enhetstest
 {
     [TestClass]
-    class HomeControllerTest
+    class AdminControllerTest
     {
            
     }
