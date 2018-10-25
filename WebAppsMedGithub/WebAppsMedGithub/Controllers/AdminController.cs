@@ -20,7 +20,6 @@ namespace WebAppsMedGithub.Controllers
             List<dbKunder> kunder = adminDb.HentAlleKunder();
             return View(kunder);
         }
-
         public ActionResult AdminFilm()
         {
             var adminDb = new AdminBLL();

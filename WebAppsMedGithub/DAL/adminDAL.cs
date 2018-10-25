@@ -50,8 +50,6 @@ namespace DAL
                 return false;
             }
         }
-
-
         public bool SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
@@ -69,7 +67,6 @@ namespace DAL
                 return false;
             }
         }
-
         public bool SlettBestilling(int id)
         {
             // denne kalles via et Ajax-kall

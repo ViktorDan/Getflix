@@ -1,4 +1,4 @@
-﻿@model List<WebAppsMedGithub.Models.Bestillinger>
+﻿@model List<Model.Bestillinger>
 
 @{
     ViewBag.Title = "AdminBestilling";
@@ -19,11 +19,11 @@
 
                 $('#sletteModalKnapp').click(function () {
                     $.ajax({
-                        url: '@Url.Action("SlettBestilling", "Home")',
+                        url: '@Url.Action("SlettBestilling", "Admin")',
                         data: { id: dataId },
                         success: function () {
                             $.ajax({
-                                url: '@Url.Action("AdminBestilling", "Home")',
+                                url: '@Url.Action("AdminBestilling", "Admin")',
                                 success: function () {
                                     window.location.reload();
                                 }
