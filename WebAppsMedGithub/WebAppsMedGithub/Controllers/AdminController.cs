@@ -32,12 +32,22 @@ namespace WebAppsMedGithub.Controllers
             List<Bestillinger> bestillinger = adminDb.HentAlleBestillinger();
             return View(bestillinger);
         }
-        public void SlettKunde(String id)
+        public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        {
+            var adminDb = new AdminBLL();
+            bool endreOK = adminDb.EndreKunde(id, bn, fn, en, ad, post, tlf);
+        }
+        public void SlettKunde(int id)
         {
             // denne kalles via et Ajax-kall
             var adminDb = new AdminBLL();
             bool slettOK = adminDb.SlettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
+        }
+        public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        {
+            var adminDb = new AdminBLL();
+            bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
         public void SlettFilm(int id)
         {

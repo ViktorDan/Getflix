@@ -40,26 +40,36 @@
                 var dataTlf = $(this).data('tlf');
                 var dataId = $(this).data('id');
 
-                $('#endreNavn').html("<tr><td>Brukernavn</td><td><input value='" + dataId +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Fornavn</td><td><input value='"+dataFNavn+"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Etternavn</td><td><input value='" + dataENavn +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Adresse</td><td><input value='" + dataAdr +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Postnr</td><td><input value='" + dataPost +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Tlf</td><td><input value='" + dataTlf +"' class='form-control'></input></td></tr>");
-
+                $('#endreNavn').html("<tr><td>Brukernavn</td><td><input id='bn' value='" + dataBNavn +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Fornavn</td><td><input id='fn' value='"+dataFNavn+"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Etternavn</td><td><input id='en' value='" + dataENavn +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Adresse</td><td><input id='ad' value='" + dataAdr +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Postnr</td><td><input id='post' value='" + dataPost +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Tlf</td><td><input id='tlf' value='" + dataTlf + "' class='form-control'></input></td></tr>");
+                
                 $('#endreModalKnapp').click(function () {
+                    var id = dataId;
+                    var bn = $('#bn').val();
+                    var fn = $('#fn').val();
+                    var en = $('#en').val();
+                    var ad = $('#ad').val();
+                    var post = $('#post').val();
+                    var tlf = $('#tlf').val();
+                    
                     $.ajax({
-                        url: '@Url.Action("EndreKunde", "Home")',
-                        data: { id: dataId },
+                        url: '@Url.Action("EndreKunde", "Admin")',
+                        data: { id: id, bn: bn, fn: fn, en: en, ad: ad, post: post, tlf: tlf },
                         success: function () {
                             $.ajax({
-                                url: '@Url.Action("AdminKunder", "Home")',
+                                url: '@Url.Action("AdminKunder", "Admin")',
                                 success: function () {
                                     window.location.reload();
                                 }
                             });
                         }
                     });
+                    
+                     
                 });
             });
         });
@@ -114,15 +124,16 @@
                         <a href="#endreModal" class="btn btn-default" id="endreKnapp"
                            data-bn="@kunde.Brukernavn" data-fn="@kunde.Fornavn" data-en="@kunde.Etternavn"
                            data-adr="@kunde.Adresse" data-post="@kunde.Postnr" data-tlf="@kunde.Tlf"
-                           data-id="@kunde.Brukernavn" data-toggle="modal" data-endreModal="true">Endre</a>
+                           data-id="@kunde.Id" data-toggle="modal" data-endreModal="true">Endre</a>
                         <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
                            data-navn="@kunde.Brukernavn @kunde.Fornavn @kunde.Etternavn"
-                           data-id="@kunde.Brukernavn" data-toggle="modal" data-sletteModal="true">Slett</a>
+                           data-id="@kunde.Id" data-toggle="modal" data-sletteModal="true">Slett</a>
                     </td>
                 </tr>
             }
         </table>
         <br />
+        
         <a href="@Url.Action("Registrer", "Home")" class="btn btn-default">Ny kunde</a>
 
         @Html.Partial("sletteModal")

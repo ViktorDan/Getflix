@@ -33,7 +33,29 @@ namespace DAL
                 return bestillinger;
             }
         }
-        public bool SlettKunde(String id)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        {
+            var db = new DBContext();
+            try
+            {
+                dbKunder kunde = db.Kunder.SingleOrDefault(k => k.Id == id);
+                kunde.Brukernavn = bn;
+                kunde.Fornavn = fn;
+                kunde.Etternavn = en;
+                kunde.Adresse = ad;
+                kunde.Postnr = post;
+                kunde.Tlf = tlf;
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool SlettKunde(int id)
         {
             // denne kalles via et Ajax-kall
             // kunne returnert en feil dersom slettingen feilet....
@@ -46,6 +68,27 @@ namespace DAL
                 return true;
             }
             catch (Exception feil)
+            {
+                return false;
+            }
+        }
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        {
+            var db = new DBContext();
+            try
+            {
+                Filmer film = db.Filmer.SingleOrDefault(f => f.FId == id);
+                film.Navn = tittel;
+                film.Aar = aar;
+                film.Sjanger = sjan;
+                film.Lengde = len;
+                film.Storrelse = stor;
+                film.Pris = pris;
+                db.SaveChanges();
+
+                return true;
+            }
+            catch
             {
                 return false;
             }

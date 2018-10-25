@@ -28,10 +28,20 @@ namespace BLL
             List<Bestillinger> bestillinger = AdminDAL.HentAlleBestillinger();
             return bestillinger;
         }
-        public bool SlettKunde(String id)
+        public bool EndreKunde(int id, String bl, String fn, String en, String ad, int post, int tlf)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.EndreKunde(id, bl, fn, en, ad, post, tlf);
+        }
+        public bool SlettKunde(int id)
         {
             var AdminDAL = new AdminDAL();
             return AdminDAL.SlettKunde(id);
+        }
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        {
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
         public bool SlettFilm(int id)
         {
