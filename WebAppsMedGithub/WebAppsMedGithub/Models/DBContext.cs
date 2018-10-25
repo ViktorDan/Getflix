@@ -58,6 +58,15 @@ namespace WebAppsMedGithub.Models
         public virtual List<Filmer> Filmer { get; set; }
     }
 
+    /*  TEST  TEST TEST 
+    public class log
+    {
+        public int IDENTITY { get; set; }
+        public DateTime { get; set; }
+
+
+    }
+    */ 
     public class DBContext : DbContext
     {
         // Oppretter database databasen.
