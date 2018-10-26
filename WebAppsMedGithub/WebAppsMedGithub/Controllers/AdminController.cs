@@ -10,26 +10,36 @@ namespace WebAppsMedGithub.Controllers
 {
     public class AdminController : Controller
     {
+
+        private IAdminBLL _AdminBLL;
+
+        public AdminController()
+        {
+            _AdminBLL = new AdminBLL();
+        }
+
+        public AdminController(IAdminBLL stub)
+        {
+            _AdminBLL = stub;
+        }
+
         public ActionResult Admin()
         {
             return View();
         }
         public ActionResult AdminKunder()
         {
-            var adminDb = new AdminBLL();
-            List<dbKunder> kunder = adminDb.HentAlleKunder();
+            List<dbKunder> kunder = _AdminBLL.HentAlleKunder();
             return View(kunder);
         }
         public ActionResult AdminFilm()
         {
-            var adminDb = new AdminBLL();
-            List<Filmer> filmer = adminDb.HentAlleFilmer();
+            List<Filmer> filmer = _AdminBLL.HentAlleFilmer();
             return View(filmer);
         }
         public ActionResult AdminBestilling()
         {
-            var adminDb = new AdminBLL();
-            List<Bestillinger> bestillinger = adminDb.HentAlleBestillinger();
+            List<Bestillinger> bestillinger = _AdminBLL.HentAlleBestillinger();
             return View(bestillinger);
         }
         public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)

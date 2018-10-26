@@ -7,7 +7,7 @@ using Model;
 
 namespace DAL
 {
-    public class AdminDAL
+    public class AdminDAL : DAL.IAdminRepository
     {
         public List<dbKunder> HentAlleKunder()
         {
