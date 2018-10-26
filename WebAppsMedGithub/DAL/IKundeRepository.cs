@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebAppsMedGit.Model;
+using WebAppsMedGithub.Model;
 
-namespace WebAppsMedGit.DAL
+namespace WebAppsMedGithub.DAL
 {
     public interface IKundeRepository
     {
-        bool endreKunde(int id,  dbKunder innKunde);
+        bool endreKunde(int id,  Kunde innKunde);
     }
 }
