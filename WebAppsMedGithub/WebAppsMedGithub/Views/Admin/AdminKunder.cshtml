@@ -4,11 +4,6 @@
     ViewBag.Title = "AdminKunder";
 }
 <head>
-    <style>
-        th {
-            width: 14%;
-        }
-    </style>
     <script type="text/javascript">
         $(document).ready(function () {
             $('a[data-sletteModal=true]').click(function () {
@@ -47,7 +42,7 @@
                     + "<tr><td>Adresse</td><td><input id='ad' value='" + dataAdr +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Postnr</td><td><input id='post' value='" + dataPost +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Tlf</td><td><input id='tlf' value='" + dataTlf + "' class='form-control'></input></td></tr>");
-                
+
                 $('#endreModalKnapp').click(function () {
                     var id = dataId;
                     var bn = $('#bn').val();
@@ -76,7 +71,7 @@
                         }
                         else { console.log("feil");}
                     });
-                    
+
                 });
             });
         });
@@ -91,7 +86,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Getflix - Admin", "Admin", "Home", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
+                @Html.ActionLink("Getflix - Admin", "Admin", "Admin", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -106,18 +101,18 @@
         </div>
     </div>
 
-    <h2>Administrer Kunder</h2>
+    <h2 class="text-center">Administrer Kunder</h2>
     <br />
     <div>
-        <table>
-            <tr>
-                <th>Brukernavn</th>
-                <th>Fornavn</th>
-                <th>Etternavn</th>
-                <th>Adresse</th>
-                <th>Postnummer</th>
-                <th>Tlf</th>
-            </tr>
+        <table class="table-striped col-sm-offset-1 col-md-10">
+                <tr>
+                    <th>Brukernavn</th>
+                    <th>Fornavn</th>
+                    <th>Etternavn</th>
+                    <th>Adresse</th>
+                    <th>Postnummer</th>
+                    <th colspan="3">Tlf</th>
+                </tr>
             @foreach (var kunde in Model)
             {
                 <tr>
@@ -127,8 +122,8 @@
                     <td>@kunde.Adresse</td>
                     <td>@kunde.Postnr</td>
                     <td>@kunde.Tlf</td>
-                    <td>
-                        <a href="#endreModal" class="btn btn-default" id="endreKnapp"
+                    <td class="text-right">
+                            <a href="#endreModal" class="btn btn-default" id="endreKnapp"
                            data-bn="@kunde.Brukernavn" data-fn="@kunde.Fornavn" data-en="@kunde.Etternavn"
                            data-adr="@kunde.Adresse" data-post="@kunde.Postnr" data-tlf="@kunde.Tlf"
                            data-id="@kunde.Id" data-toggle="modal" data-endreModal="true">Endre</a>
@@ -139,9 +134,8 @@
                 </tr>
             }
         </table>
-        <br />
 
-        @Html.ActionLink("Ny Kunde","AdminRegistrerKunde", "Admin", new { @class="btn btn-default"})
+        @Html.ActionLink("Registrer ny Kunde","AdminRegistrerKunde", "Admin", new { @class="btn btn-success col-sm-offset-5 col-md-2"})
 
         @Html.Partial("sletteModal")
         @Html.Partial("endreModal")

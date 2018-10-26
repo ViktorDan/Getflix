@@ -11,7 +11,7 @@ html, body {
 
 .body-content {
     padding: 4% 15px 15px 15px;
-    box-shadow: 1px 30px 1000px #424040;
+    box-shadow: 0 0 1000px #424040;
     border: 1px solid #424040;
     background-color: #424040;
     color: #D8D5D5;
@@ -100,4 +100,14 @@ textarea {
 .form-horizontal {
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: red;
+}
+
+#endreNavn {
+    margin-left: 20%;
+    margin-right: 20%;
+    min-width: 60%;
 }

@@ -4,11 +4,6 @@
     ViewBag.Title = "AdminFilm";
 }
 <head>
-    <style>
-        th {
-            width: 14%;
-        }
-    </style>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#fil').click.(function () {
@@ -108,12 +103,12 @@
     <br />
     <div>
         
-        <table>
+        <table class="table-striped col-sm-offset-1 col-md-10">
             <tr>
                 <th></th>
-                <th>Film id</th>
+                <th>Film Id</th>
                 <th>Tittel</th>
-                <th>År</th>
+                <th colspan="3">År</th>
 
             </tr>
             @foreach (var film in Model)
@@ -124,7 +119,7 @@
                     <td>@film.Navn</td>
                     <td>@film.Aar</td>
                     
-                    <td>
+                    <td class="text-right">
                         <a href="#endreModal" class="btn btn-default" id="endreKnapp"
                            data-id="@film.FId" data-tittel="@film.Navn" data-aar="@film.Aar"
                            data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger" 
