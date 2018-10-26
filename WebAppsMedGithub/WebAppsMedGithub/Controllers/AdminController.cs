@@ -12,25 +12,43 @@ namespace WebAppsMedGithub.Controllers
     {
         public ActionResult Admin()
         {
-            return View();
+            if (SjekkLogin())
+                return View();
+            else
+                return RedirectToAction("Index", "Home");
         }
         public ActionResult AdminKunder()
         {
-            var adminDb = new AdminBLL();
-            List<dbKunder> kunder = adminDb.HentAlleKunder();
-            return View(kunder);
+            if (SjekkLogin())
+            {
+                var adminDb = new AdminBLL();
+                List<dbKunder> kunder = adminDb.HentAlleKunder();
+                return View(kunder);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
         public ActionResult AdminFilm()
         {
-            var adminDb = new AdminBLL();
-            List<Filmer> filmer = adminDb.HentAlleFilmer();
-            return View(filmer);
+            if (SjekkLogin())
+            {
+                var adminDb = new AdminBLL();
+                List<Filmer> filmer = adminDb.HentAlleFilmer();
+                return View(filmer);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
         public ActionResult AdminBestilling()
         {
-            var adminDb = new AdminBLL();
-            List<Bestillinger> bestillinger = adminDb.HentAlleBestillinger();
-            return View(bestillinger);
+            if (SjekkLogin())
+            {
+                var adminDb = new AdminBLL();
+                List<Bestillinger> bestillinger = adminDb.HentAlleBestillinger();
+                return View(bestillinger);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
         public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
         {
@@ -63,33 +81,30 @@ namespace WebAppsMedGithub.Controllers
             bool slettOK = adminDb.SlettBestilling(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
-     
-        
-        //public bool SjekkLogin()
-        //{
-        //    if (Session["LoggetInn"] != null)
-        //    {
-        //        bool loggetInn = (bool)Session["LoggetInn"];
-        //        if (loggetInn)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
         // Ender Session.
         public ActionResult LoggUt()
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+        public bool SjekkLogin()
+        {
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
