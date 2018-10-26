@@ -11,6 +11,9 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+            $('#fil').click.(function () {
+                
+            })
             $('a[data-sletteModal=true]').click(function () {
                 var dataNavn = $(this).data('navn');
                 var dataId = $(this).data('id');
@@ -48,7 +51,8 @@
                     + "<tr><td>Sjanger</td><td><input id='sjan' value='" + dataSjanger + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Lengde</td><td><input id='len' value='" + dataLen +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Størrelse</td><td><input id='stor' value='" + dataStor +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Pris</td><td><input id='pris' value='" + dataPris +"' class='form-control'></input></td></tr>");
+                    + "<tr><td>Pris</td><td><input id='pris' value='" + dataPris + "' class='form-control'></input></td></tr>"
+                    + "<img src='" + dataBilde + "'>");
 
                 $('#endreModalKnapp').click(function () {
                     
@@ -103,6 +107,7 @@
     <h2>Administrer Film</h2>
     <br />
     <div>
+        
         <table>
             <tr>
                 <th></th>

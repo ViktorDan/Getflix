@@ -33,7 +33,7 @@ namespace DAL
                 return bestillinger;
             }
         }
-        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, int tlf)
         {
             var db = new DBContext();
             try

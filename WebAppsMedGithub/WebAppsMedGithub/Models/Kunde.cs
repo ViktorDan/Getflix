@@ -37,7 +37,7 @@ namespace WebAppsMedGithub.Models
         [Display(Name = "Postnummer")]
         [Required(ErrorMessage = "Må oppgi postnummer")]
         [RegularExpression(@"[0-9]{4}", ErrorMessage = "Ugyldig postnummer")]
-        public int Postnr { get; set; }
+        public string Postnr { get; set; }
 
         [Display(Name = "Poststed")]
         [Required(ErrorMessage = "Må oppgi poststed")]

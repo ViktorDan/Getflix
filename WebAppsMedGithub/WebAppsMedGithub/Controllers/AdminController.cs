@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppsMedGithub.Models;
 using Model;
 using BLL;
 
@@ -50,7 +51,21 @@ namespace WebAppsMedGithub.Controllers
             else
                 return RedirectToAction("Index", "Home");
         }
-        public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        public ActionResult AdminRegistrerKunde()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminRegistrerKunde(Kunde innKunde)
+        {
+            Session["FeilMelding"] = "";
+            DBFunk.RegistrerKunde(innKunde);
+            return RedirectToAction("AdminKunder");
+        }
+        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, int tlf)
         {
             var adminDb = new AdminBLL();
             bool endreOK = adminDb.EndreKunde(id, bn, fn, en, ad, post, tlf);

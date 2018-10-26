@@ -10,7 +10,7 @@ namespace Model
     public class Poststeder
     {
         [Key]
-        public int Postnr { get; set; }
+        public string Postnr { get; set; }
         public string Poststed { get; set; }
         public virtual List<dbKunder> Kunder { get; set; }
     }
