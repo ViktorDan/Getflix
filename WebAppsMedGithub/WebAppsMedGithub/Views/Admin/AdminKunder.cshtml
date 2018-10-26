@@ -99,18 +99,20 @@
         </div>
     </div>
 
-    <h2>Administrer Kunder</h2>
+    <h2 class="text-center">Administrer Kunder</h2>
     <br />
     <div>
-        <table>
-            <tr>
-                <th>Brukernavn</th>
-                <th>Fornavn</th>
-                <th>Etternavn</th>
-                <th>Adresse</th>
-                <th>Postnummer</th>
-                <th>Tlf</th>
-            </tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Brukernavn</th>
+                    <th scope="col">Fornavn</th>
+                    <th scope="col">Etternavn</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Postnummer</th>
+                    <th scope="col">Tlf</th>
+                </tr>
+            </thead>
             @foreach (var kunde in Model)
             {
                 <tr>
@@ -132,9 +134,8 @@
                 </tr>
             }
         </table>
-        <br />
         
-        <a href="@Url.Action("Registrer", "Home")" class="btn btn-default">Ny kunde</a>
+        <a href="@Url.Action("Registrer", "Home")" class="btn btn-success col-md-offset-5 col-md-2">Registrer ny kunde</a>
 
         @Html.Partial("sletteModal")
         @Html.Partial("endreModal")
