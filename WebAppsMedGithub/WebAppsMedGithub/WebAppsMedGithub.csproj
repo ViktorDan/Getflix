@@ -216,6 +216,9 @@
     <Content Include="Views\Admin\sletteModal.cshtml" />
     <Content Include="Views\Admin\endreModal.cshtml" />
     <Content Include="Views\Home\filmModal.cshtml" />
+    <Content Include="Views\Admin\nyKundeModal.cshtml" />
+    <Content Include="Views\Admin\kundeForm.cshtml" />
+    <Content Include="Views\Admin\AdminRegistrerKunde.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

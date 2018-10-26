@@ -12,13 +12,13 @@ namespace DAL
         {
             var poststeder = new List<Poststeder>
             {
-            new Poststeder{Postnr=1111,Poststed="Oslo"},
-            new Poststeder{Postnr=2222,Poststed="Hamar"},
-            new Poststeder{Postnr=3333,Poststed="Tønsberg"},
-            new Poststeder{Postnr=4444,Poststed="Trondheim"},
-            new Poststeder{Postnr=5555,Poststed="Asker"},
-            new Poststeder{Postnr=6666,Poststed="Bærum"},
-            new Poststeder{Postnr=7777,Poststed="Fredrikstad"}
+            new Poststeder{Postnr="1111",Poststed="Oslo"},
+            new Poststeder{Postnr="2222",Poststed="Hamar"},
+            new Poststeder{Postnr="3333",Poststed="Tønsberg"},
+            new Poststeder{Postnr="4444",Poststed="Trondheim"},
+            new Poststeder{Postnr="5555",Poststed="Asker"},
+            new Poststeder{Postnr="6666",Poststed="Bærum"},
+            new Poststeder{Postnr="7777",Poststed="Fredrikstad"}
             };
             poststeder.ForEach(p => context.Poststeder.Add(p));
             context.SaveChanges();

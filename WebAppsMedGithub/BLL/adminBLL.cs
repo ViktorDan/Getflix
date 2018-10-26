@@ -28,7 +28,7 @@ namespace BLL
             List<Bestillinger> bestillinger = AdminDAL.HentAlleBestillinger();
             return bestillinger;
         }
-        public bool EndreKunde(int id, String bl, String fn, String en, String ad, int post, int tlf)
+        public bool EndreKunde(int id, String bl, String fn, String en, String ad, String post, int tlf)
         {
             var AdminDAL = new AdminDAL();
             return AdminDAL.EndreKunde(id, bl, fn, en, ad, post, tlf);

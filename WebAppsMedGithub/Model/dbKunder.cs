@@ -15,7 +15,7 @@ namespace Model
         public string Fornavn { get; set; }
         public string Etternavn { get; set; }
         public string Adresse { get; set; }
-        public int Postnr { get; set; }
+        public string Postnr { get; set; }
         public int Tlf { get; set; }
         public byte[] Passord { get; set; }
         public string Salt { get; set; }
