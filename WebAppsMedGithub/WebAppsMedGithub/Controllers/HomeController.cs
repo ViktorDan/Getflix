@@ -36,6 +36,7 @@ namespace WebAppsMedGithub.Controllers
                 if (nøkkelOrd == true)
                 {
                     Session["AdminLoggetInn"] = true;
+                    Session["AdminNavn"] = innLogget.Brukernavn;
                     return RedirectToAction("Admin", "Admin");
                 }
 

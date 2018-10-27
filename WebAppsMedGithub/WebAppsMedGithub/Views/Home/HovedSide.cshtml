@@ -45,25 +45,24 @@
 
 </script>
 
-@* Endrer at å trykke på logoen sender deg til hovedsiden vår med oversikt over filmer, legger til logg ut - knapp *@
 
-<div class="container body-content">
-    <!--Nedtrekk liste for valg av sjanger-->
-    <div>
-        <select class="form-control" id="IdListe" onchange="hentFilmAjax()">
-            @foreach (var Sjanger in Model)
-            {
-                <option>@Sjanger</option>
-            }
-        </select>
-    </div>
-    <br />
+<h3 class="text-center">Velkommen @Session["Brukernavn"]</h3>
 
-    <div class="text-center" id="FilmListe">
-
-    </div>
-    @Html.Partial("filmModal") 
+<!--Nedtrekk liste for valg av sjanger-->
+<div>
+    <select class="form-control" id="IdListe" onchange="hentFilmAjax()">
+        @foreach (var Sjanger in Model)
+        {
+            <option>@Sjanger</option>
+        }
+    </select>
 </div>
+<br />
+
+<div class="text-center" id="FilmListe">
+
+</div>
+@Html.Partial("filmModal")
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
