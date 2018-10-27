@@ -33,7 +33,7 @@ namespace DAL
                 return bestillinger;
             }
         }
-        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, int tlf)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
         {
             var db = new DBContext();
             try
@@ -44,6 +44,19 @@ namespace DAL
                 kunde.Etternavn = en;
                 kunde.Adresse = ad;
                 kunde.Postnr = post;
+
+                var eksistererPostnr = db.Poststeder.Find(post);
+
+                if (eksistererPostnr == null)
+                {
+                    var nyttPoststed = new Poststeder()
+                    {
+                        Postnr = post,
+                        Poststed = postSted
+                    };
+                    kunde.Poststeder = nyttPoststed;
+                }
+
                 kunde.Tlf = tlf;
                 db.SaveChanges();
 

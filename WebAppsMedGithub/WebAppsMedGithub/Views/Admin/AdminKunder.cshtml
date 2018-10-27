@@ -33,6 +33,7 @@
                 var dataENavn = $(this).data('en');
                 var dataAdr = $(this).data('adr');
                 var dataPost = $(this).data('post');
+                var dataPostSted = $(this).data('postSted');
                 var dataTlf = $(this).data('tlf');
                 var dataId = $(this).data('id');
 
@@ -41,6 +42,7 @@
                     + "<tr><td>Etternavn</td><td><input id='en' value='" + dataENavn +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Adresse</td><td><input id='ad' value='" + dataAdr +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Postnr</td><td><input id='post' value='" + dataPost +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>PostSted</td><td><input id='postSted' value='" + dataPostSted +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Tlf</td><td><input id='tlf' value='" + dataTlf + "' class='form-control'></input></td></tr>");
 
                 $('#endreModalKnapp').click(function () {
@@ -50,15 +52,16 @@
                     var en = $('#en').val();
                     var ad = $('#ad').val();
                     var post = $('#post').val().toString();
+                    var postSted = $('#postSted').val();
                     var tlf = $('#tlf').val();
                     $(function regex() {
                         if (bn.match(/^[a-zæøåA-ZÆØÅ0-9]{2,20}$/) && fn.match(/^[a-zæøåA-ZÆØÅ]{2,15}$/)
                             && en.match(/^[a-zæøåA-ZÆØÅ]{2,15}$/) && ad.match(/^[a-zæøåA-ZÆØÅ 0-9]{2,20}$/)
-                            && post.match(/^[0-9]{4}$/) && tlf.match(/^[0-9]{8}$/)) {
+                            && post.match(/^[0-9]{4}$/) && postSted.match(/^[a-zæøåA-ZÆØÅ0-9]{2,20}$/) && tlf.match(/^[0-9]{8}$/)) {
                             console.log("regex 2");
                             $.ajax({
                                 url: '@Url.Action("EndreKunde", "Admin")',
-                                data: { id: id, bn: bn, fn: fn, en: en, ad: ad, post: post, tlf: tlf },
+                                data: { id: id, bn: bn, fn: fn, en: en, ad: ad, post: post, postSted: postSted, tlf: tlf },
                                 success: function () {
                                     $.ajax({
                                         url: '@Url.Action("AdminKunder", "Admin")',
