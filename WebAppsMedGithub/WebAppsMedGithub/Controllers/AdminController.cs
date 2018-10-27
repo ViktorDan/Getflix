@@ -82,6 +82,7 @@ namespace WebAppsMedGithub.Controllers
             var adminDb = new AdminBLL();
             bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
+        
         public void SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
