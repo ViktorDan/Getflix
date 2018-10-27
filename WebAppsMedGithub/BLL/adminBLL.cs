@@ -22,6 +22,7 @@ namespace BLL
             List<Filmer> filmer = AdminDAL.HentAlleFilmer();
             return filmer;
         }
+
         public List<Bestillinger> HentAlleBestillinger()
         {
             var AdminDAL = new AdminDAL();
