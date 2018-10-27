@@ -132,17 +132,70 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
         }
-
         [TestMethod]
-        public void EndreKunde()
+        public void SlettKundeRiktig()
         {
             // Arrange
             var forventetResultat = true;
             var AdminRepositoryStub = new AdminRepositoryStub();
-
             // Act
-            var resultat = AdminRepositoryStub.EndreKunde(1, "bruker", "Hans", "Gruber", "Diehardveien 1", 1881, 91919191);
+            var resultat = AdminRepositoryStub.SlettKunde(1);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettKundeFeil()
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(0);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
 
+        [TestMethod]
+        public void SlettFilmRiktig(int id)
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(1);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettFilmFeil(int id)
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(0);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettBestillingRiktig(int id)
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettBestilling(1);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettBestillingFeil(int id)
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettBestilling(0);
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
         }
