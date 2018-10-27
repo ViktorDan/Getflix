@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -13,7 +14,7 @@ namespace DAL
         {
             using (var db = new DBContext())
             {
-                var kunder = db.Kunder.ToList();
+                var kunder = db.Kunder.Include(k => k.Poststeder).ToList();
                 return kunder;
             }
         }
@@ -38,7 +39,7 @@ namespace DAL
             var db = new DBContext();
             try
             {
-                dbKunder kunde = db.Kunder.SingleOrDefault(k => k.Id == id);
+                dbKunder kunde = db.Kunder.Include(k => k.Poststeder).SingleOrDefault(k => k.Id == id);
                 kunde.Brukernavn = bn;
                 kunde.Fornavn = fn;
                 kunde.Etternavn = en;
@@ -52,7 +53,7 @@ namespace DAL
                     var nyttPoststed = new Poststeder()
                     {
                         Postnr = post,
-                        Poststed = postSted
+                        Poststed = postSted,
                     };
                     kunde.Poststeder = nyttPoststed;
                 }
