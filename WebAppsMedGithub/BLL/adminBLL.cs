@@ -53,7 +53,7 @@ namespace BLL
         public bool SlettFilm(int id)
         {
             var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettFilm(id);
+            return _Repository.SlettFilm(id);
         }
         public bool SlettBestilling(int id)
         {

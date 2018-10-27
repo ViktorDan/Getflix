@@ -132,21 +132,35 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
         }
+        //[TestMethod]
+        //public void SlettKunde()
+        //{
+        //    // Arrange
+        //    var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+        //    // Act
+        //    var actionResult = (ViewResult)controller.SlettKunde(1);
+        //    var resultat = (Kunde)actionResult.Model;
+
+        //    // Assert
+        //    Assert.AreEqual(actionResult.ViewName, "");
+
+
+        //}
+
         [TestMethod]
-        public void SlettKunde()
+        public void SlettFilm(int id)
         {
             // Arrange
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
 
             // Act
-            var actionResult = (ViewResult)controller.SlettKunde(1);
+            var actionResult = (ViewResult)controller.Slett(1);
             var resultat = (Kunde)actionResult.Model;
 
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
-
-
         }
-        
+
     }
 }

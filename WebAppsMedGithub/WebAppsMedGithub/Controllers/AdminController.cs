@@ -62,7 +62,7 @@ namespace WebAppsMedGithub.Controllers
         public void SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
-            var adminDb = new AdminBLL();
+            Filmer enFilm = _AdminBLL.SlettFilm(id);
             bool slettOK = adminDb.SlettFilm(id);
             // kunne returnert en feil dersom slettingen feilet....
         }

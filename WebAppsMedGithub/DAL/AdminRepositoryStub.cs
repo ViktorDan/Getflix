@@ -83,17 +83,17 @@ namespace DAL
         //    }
 
         //}
-        public bool SlettKunde(int id)
-        {
-            if (id == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        //public bool SlettKunde(int id)
+        //{
+        //    if (id == 0)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
         //public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         //{
         //    var db = new DBContext();
@@ -126,16 +126,16 @@ namespace DAL
                 return true;
             }
         }
-        public bool SlettBestilling(int id)
-        {
-            if (id == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+        //public bool SlettBestilling(int id)
+        //{
+        //    if (id == 0)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
     }
 }
