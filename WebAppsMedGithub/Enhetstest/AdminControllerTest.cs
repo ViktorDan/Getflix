@@ -139,11 +139,12 @@ namespace Enhetstest
             // Arrange
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
 
+            int id = 1;
+
             // Act
-            var actionResult = (ViewResult)controller.EndreKunde(1);
-            
-            // Assert
-            Assert.AreEqual(actionResult.ViewName, "");
+            var actionResult = (ViewResult)controller.EndreKunde(1, "bruker1", "Hans", "Gruber", "Gateveien 1", 1313, 91919191);
+
+
         }
     }
 }

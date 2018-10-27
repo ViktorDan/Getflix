@@ -35,10 +35,9 @@ namespace BLL
             List<Bestillinger> bestillinger = _Repository.HentAlleBestillinger();
             return bestillinger;
         }
-        public bool EndreKunde(int id, String bl, String fn, String en, String ad, int post, int tlf)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
         {
-            var AdminDAL = _AdminBLL.EndreKunde(id, bl, fn, en, ad, post, tlf);
-            return AdminDAL.EndreKunde(id, bl, fn, en, ad, post, tlf);
+            return _Repository.EndreKunde(id, bn, fn, en, ad, post, tlf);
         }
         public bool SlettKunde(int id)
         {
