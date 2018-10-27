@@ -104,9 +104,9 @@ namespace WebAppsMedGithub.Controllers
         }
         public bool SjekkLogin()
         {
-            if (Session["LoggetInn"] != null)
+            if (Session["AdminLoggetInn"] != null)
             {
-                bool loggetInn = (bool)Session["LoggetInn"];
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
                 if (loggetInn)
                 {
                     return true;
