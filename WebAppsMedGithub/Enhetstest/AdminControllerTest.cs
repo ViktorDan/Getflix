@@ -134,7 +134,7 @@ namespace Enhetstest
         }
 
         [TestMethod]
-        public void EndreKunde()
+        public void EndreKundeRiktig()
         {
             // Arrange
             var forventetResultat = true;
@@ -145,6 +145,20 @@ namespace Enhetstest
 
             // Assert
             Assert.IsTrue(resultat == forventetResultat);
+        }
+
+        [TestMethod]
+        public void EndreKundeFeil()
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+
+            // Act
+            var resultat = AdminRepositoryStub.EndreKunde(0, "bruker", "Hans", "Gruber", "Skurkeveien 1", 1313, 99119911);
+
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
         }
 
         [TestMethod]
@@ -172,20 +186,49 @@ namespace Enhetstest
         }
 
         [TestMethod]
-        public void SlettFilmRiktig(int id)
+        public void SlettFilmRiktig()
         {
             // Arrange
             var forventetResultat = true;
             var AdminRepositoryStub = new AdminRepositoryStub();
+
             // Act
             var resultat = AdminRepositoryStub.SlettFilm(1);
 
             // Assert
-            Assert.IsTrue(forventetResultat == resultat);
+            Assert.AreEqual(forventetResultat, resultat);
         }
 
         [TestMethod]
-        public void SlettFilmFeil(int id)
+        public void EndreFilmRiktig()
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+
+            // Act
+            var resultat = AdminRepositoryStub.EndreFilm(1, "Pulp Fiction", 1995, "Action", 155, 15, 110);
+
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+
+        [TestMethod]
+        public void EndreFilmFeil()
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+
+            // Act
+            var resultat = AdminRepositoryStub.EndreFilm(0, "Pulp Fiction", 1995, "Action", 155, 15, 110);
+
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+
+        [TestMethod]
+        public void SlettFilmFeil()
         {
             // Arrange
             var forventetResultat = false;
@@ -199,7 +242,7 @@ namespace Enhetstest
         }
 
         [TestMethod]
-        public void SlettBestillingRiktig(int id)
+        public void SlettBestillingRiktig()
         {
             // Arrange
             var forventetResultat = true;
@@ -211,7 +254,7 @@ namespace Enhetstest
         }
 
         [TestMethod]
-        public void SlettBestillingFeil(int id)
+        public void SlettBestillingFeil()
         {
             // Arrange
             var forventetResultat = false;

@@ -27,21 +27,25 @@ namespace WebAppsMedGithub.Controllers
         {
             return View();
         }
+
         public ActionResult AdminKunder()
         {
             List<dbKunder> kunder = _AdminBLL.HentAlleKunder();
             return View(kunder);
         }
+
         public ActionResult AdminFilm()
         {
             List<Filmer> filmer = _AdminBLL.HentAlleFilmer();
             return View(filmer);
         }
+
         public ActionResult AdminBestilling()
         {
             List<Bestillinger> bestillinger = _AdminBLL.HentAlleBestillinger();
             return View(bestillinger);
         }
+
         public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
         {
             bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, tlf);
@@ -57,15 +61,16 @@ namespace WebAppsMedGithub.Controllers
 
         public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         {
-            var adminDb = new AdminBLL();
-            bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
+            bool endreOK = _AdminBLL.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
+
         public void SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
             bool slettOK = _AdminBLL.SlettFilm(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
+
         public void SlettBestilling(int id)
         {
             // denne kalles via et Ajax-kall

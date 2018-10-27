@@ -7,7 +7,8 @@ using Model;
 
 namespace BLL
 {
-    public interface IAdminBLL    {
+    public interface IAdminBLL
+    {
         List<dbKunder> HentAlleKunder();
         List<Filmer> HentAlleFilmer();
         List<Bestillinger> HentAlleBestillinger();

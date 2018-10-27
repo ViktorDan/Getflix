@@ -45,8 +45,7 @@ namespace BLL
         }
         public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
+            return _Repository.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
         public bool SlettFilm(int id)
         {
