@@ -132,5 +132,18 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
         }
+
+        [TestMethod]
+        public void EndreKunde()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+
+            // Act
+            var actionResult = (ViewResult)controller.EndreKunde(1);
+            
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
     }
 }

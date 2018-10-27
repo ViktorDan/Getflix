@@ -61,28 +61,19 @@ namespace DAL
             BestillListe.Add(bestilling);
             return BestillListe;
         }
-        //public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
-        //{
-        //    var db = new DBContext();
-        //    try
-        //    {
-        //        dbKunder kunde = db.Kunder.SingleOrDefault(k => k.Id == id);
-        //        kunde.Brukernavn = bn;
-        //        kunde.Fornavn = fn;
-        //        kunde.Etternavn = en;
-        //        kunde.Adresse = ad;
-        //        kunde.Postnr = post;
-        //        kunde.Tlf = tlf;
-        //        db.SaveChanges();
 
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        {
+            if (id==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
-        //}
         //public bool SlettKunde(int id)
         //{
         //    // denne kalles via et Ajax-kall
