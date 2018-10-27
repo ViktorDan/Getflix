@@ -42,8 +42,7 @@ namespace BLL
         }
         public bool SlettKunde(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettKunde(id);
+            return _Repository.SlettKunde(id);
         }
         public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         {
@@ -52,13 +51,11 @@ namespace BLL
         }
         public bool SlettFilm(int id)
         {
-            var AdminDAL = new AdminDAL();
             return _Repository.SlettFilm(id);
         }
         public bool SlettBestilling(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettBestilling(id);
+            return _Repository.SlettBestilling(id);
         }
     }
 }

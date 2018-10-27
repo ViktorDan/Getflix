@@ -50,8 +50,8 @@ namespace WebAppsMedGithub.Controllers
         public void SlettKunde(int id)
         {
             // denne kalles via et Ajax-kall
-            var adminDb = new AdminBLL();
-            bool slettOK = adminDb.SlettKunde(id);
+
+            bool slettOK = _AdminBLL.SlettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
         public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
@@ -62,15 +62,13 @@ namespace WebAppsMedGithub.Controllers
         public void SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
-            Filmer enFilm = _AdminBLL.SlettFilm(id);
-            bool slettOK = adminDb.SlettFilm(id);
+            bool slettOK = _AdminBLL.SlettFilm(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
         public void SlettBestilling(int id)
         {
             // denne kalles via et Ajax-kall
-            var adminDb = new AdminBLL();
-            bool slettOK = adminDb.SlettBestilling(id);
+            bool slettOK = _AdminBLL.SlettBestilling(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
      

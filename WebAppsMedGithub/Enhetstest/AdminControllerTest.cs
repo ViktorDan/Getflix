@@ -132,35 +132,72 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
         }
-        //[TestMethod]
-        //public void SlettKunde()
-        //{
-        //    // Arrange
-        //    var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-
-        //    // Act
-        //    var actionResult = (ViewResult)controller.SlettKunde(1);
-        //    var resultat = (Kunde)actionResult.Model;
-
-        //    // Assert
-        //    Assert.AreEqual(actionResult.ViewName, "");
-
-
-        //}
-
         [TestMethod]
-        public void SlettFilm(int id)
+        public void SlettKundeRiktig()
         {
             // Arrange
-            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
             // Act
-            var actionResult = (ViewResult)controller.Slett(1);
-            var resultat = (Kunde)actionResult.Model;
-
+            var resultat = AdminRepositoryStub.SlettKunde(1);
             // Assert
-            Assert.AreEqual(actionResult.ViewName, "");
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettKundeFeil()
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(0);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
         }
 
+        [TestMethod]
+        public void SlettFilmRiktig(int id)
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(1);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettFilmFeil(int id)
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettFilm(0);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettBestillingRiktig(int id)
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettBestilling(1);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
+        [TestMethod]
+        public void SlettBestillingFeil(int id)
+        {
+            // Arrange
+            var forventetResultat = false;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+            // Act
+            var resultat = AdminRepositoryStub.SlettBestilling(0);
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
+        }
     }
 }
