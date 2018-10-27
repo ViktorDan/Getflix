@@ -83,23 +83,17 @@ namespace DAL
         //    }
 
         //}
-        //public bool SlettKunde(int id)
-        //{
-        //    // denne kalles via et Ajax-kall
-        //    // kunne returnert en feil dersom slettingen feilet....
-        //    var db = new DBContext();
-        //    try
-        //    {
-        //        var slettKunde = db.Kunder.Find(id);
-        //        db.Kunder.Remove(slettKunde);
-        //        db.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception feil)
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool SlettKunde(int id)
+        {
+            if (id == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         //public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         //{
         //    var db = new DBContext();
@@ -121,38 +115,27 @@ namespace DAL
         //        return false;
         //    }
         //}
-        //public bool SlettFilm(int id)
-        //{
-        //    // denne kalles via et Ajax-kall
-        //    // kunne returnert en feil dersom slettingen feilet....
-        //    var db = new DBContext();
-        //    try
-        //    {
-        //        var slettFilm = db.Filmer.Find(id);
-        //        db.Filmer.Remove(slettFilm);
-        //        db.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception feil)
-        //    {
-        //        return false;
-        //    }
-        //}
-        //public bool SlettBestilling(int id)
-        //{
-        //    // denne kalles via et Ajax-kall
-        //    // kunne returnert en feil dersom slettingen feilet....
-        //    var db = new DBContext();
-        //    try
-        //    {
-        //        var slettBestilling = db.Bestillinger.Find(id);
-        //        db.Bestillinger.Remove(slettBestilling);
-        //        db.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception feil)
-        //    {
-        //        return false;
-        //    }
+        public bool SlettFilm(int id)
+        {
+            if (id == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool SlettBestilling(int id)
+        {
+            if (id == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
