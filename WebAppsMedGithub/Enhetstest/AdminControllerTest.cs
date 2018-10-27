@@ -137,14 +137,14 @@ namespace Enhetstest
         public void EndreKunde()
         {
             // Arrange
-            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-
-            int id = 1;
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
 
             // Act
-            var actionResult = (ViewResult)controller.EndreKunde(1, "bruker1", "Hans", "Gruber", "Gateveien 1", 1313, 91919191);
+            var resultat = AdminRepositoryStub.EndreKunde(1, "bruker", "Hans", "Gruber", "Diehardveien 1", 1881, 91919191);
 
-
+            // Assert
+            Assert.AreEqual(forventetResultat, resultat);
         }
     }
 }

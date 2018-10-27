@@ -44,8 +44,7 @@ namespace WebAppsMedGithub.Controllers
         }
         public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
         {
-            var adminDb = new AdminBLL();
-            bool endreOK = adminDb.EndreKunde(id, bn, fn, en, ad, post, tlf);
+            bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, tlf);
         }
         public void SlettKunde(int id)
         {
