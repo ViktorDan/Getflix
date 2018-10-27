@@ -29,15 +29,19 @@ namespace WebAppsMedGithub.Controllers
         {
             if (DBFunk.bruker_i_db(innLogget))
             {
-                Session["LoggetInn"] = true;
-                Session["Brukernavn"] = innLogget.Brukernavn;
                 Session["FeilMelding"] = "";
 
                 // Sjekker om det er admin som logger inn.
-                bool allowedCharacters = Regex.IsMatch(innLogget.Brukernavn, "admin");
-                if (allowedCharacters == true)
+                bool nøkkelOrd = Regex.IsMatch(innLogget.Brukernavn, "admin");
+                if (nøkkelOrd == true)
+                {
+                    Session["AdminLoggetInn"] = true;
                     return RedirectToAction("Admin", "Admin");
-               
+                }
+
+                Session["LoggetInn"] = true;
+                Session["Brukernavn"] = innLogget.Brukernavn;
+
                 return RedirectToAction("HovedSide");
             }
             else
