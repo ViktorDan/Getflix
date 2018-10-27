@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -13,7 +14,7 @@ namespace DAL
         {
             using (var db = new DBContext())
             {
-                var kunder = db.Kunder.ToList();
+                var kunder = db.Kunder.Include(k => k.Poststeder).ToList();
                 return kunder;
             }
         }
@@ -33,17 +34,30 @@ namespace DAL
                 return bestillinger;
             }
         }
-        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, int tlf)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
         {
             var db = new DBContext();
             try
             {
-                dbKunder kunde = db.Kunder.SingleOrDefault(k => k.Id == id);
+                dbKunder kunde = db.Kunder.Include(k => k.Poststeder).SingleOrDefault(k => k.Id == id);
                 kunde.Brukernavn = bn;
                 kunde.Fornavn = fn;
                 kunde.Etternavn = en;
                 kunde.Adresse = ad;
                 kunde.Postnr = post;
+
+                var eksistererPostnr = db.Poststeder.Find(post);
+
+                if (eksistererPostnr == null)
+                {
+                    var nyttPoststed = new Poststeder()
+                    {
+                        Postnr = post,
+                        Poststed = postSted,
+                    };
+                    kunde.Poststeder = nyttPoststed;
+                }
+
                 kunde.Tlf = tlf;
                 db.SaveChanges();
 

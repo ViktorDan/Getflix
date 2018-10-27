@@ -65,10 +65,10 @@ namespace WebAppsMedGithub.Controllers
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("AdminKunder");
         }
-        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, int tlf)
+        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
         {
             var adminDb = new AdminBLL();
-            bool endreOK = adminDb.EndreKunde(id, bn, fn, en, ad, post, tlf);
+            bool endreOK = adminDb.EndreKunde(id, bn, fn, en, ad, post, postSted, tlf);
         }
         public void SlettKunde(int id)
         {
