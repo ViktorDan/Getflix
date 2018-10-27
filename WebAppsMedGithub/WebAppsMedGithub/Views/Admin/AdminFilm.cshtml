@@ -6,11 +6,11 @@
 <head>
     <script type="text/javascript">
         $(document).ready(function () {
-            
+            console.log('test');
             $('a[data-sletteModal=true]').click(function () {
                 var dataNavn = $(this).data('navn');
                 var dataId = $(this).data('id');
-
+                console.log('test2');
                 $('#slettNavn').html(dataNavn);
 
                 $('#sletteModalKnapp').click(function () {
@@ -74,6 +74,7 @@
     </script>
 </head>
 <body>
+
     <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
