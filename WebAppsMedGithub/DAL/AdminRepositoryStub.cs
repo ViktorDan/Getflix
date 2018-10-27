@@ -73,8 +73,7 @@ namespace DAL
                 return true;
             }
         }
-
-        //}
+        
         public bool SlettKunde(int id)
         {
             if (id == 0)
@@ -86,27 +85,19 @@ namespace DAL
                 return true;
             }
         }
-        //public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
-        //{
-        //    var db = new DBContext();
-        //    try
-        //    {
-        //        Filmer film = db.Filmer.SingleOrDefault(f => f.FId == id);
-        //        film.Navn = tittel;
-        //        film.Aar = aar;
-        //        film.Sjanger = sjan;
-        //        film.Lengde = len;
-        //        film.Storrelse = stor;
-        //        film.Pris = pris;
-        //        db.SaveChanges();
 
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        {
+            if (id == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public bool SlettFilm(int id)
         {
             if (id == 0)
@@ -118,6 +109,7 @@ namespace DAL
                 return true;
             }
         }
+
         public bool SlettBestilling(int id)
         {
             if (id == 0)

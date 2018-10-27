@@ -132,6 +132,21 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
         }
+
+        [TestMethod]
+        public void EndreKunde()
+        {
+            // Arrange
+            var forventetResultat = true;
+            var AdminRepositoryStub = new AdminRepositoryStub();
+
+            // Act
+            var resultat = AdminRepositoryStub.EndreKunde(1, "bruker", "Hans", "Gruber", "Skurkeveien 1", 1313, 99119911);
+
+            // Assert
+            Assert.IsTrue(resultat == forventetResultat);
+        }
+
         [TestMethod]
         public void SlettKundeRiktig()
         {
@@ -143,6 +158,7 @@ namespace Enhetstest
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
         }
+
         [TestMethod]
         public void SlettKundeFeil()
         {
@@ -163,20 +179,25 @@ namespace Enhetstest
             var AdminRepositoryStub = new AdminRepositoryStub();
             // Act
             var resultat = AdminRepositoryStub.SlettFilm(1);
+
             // Assert
-            Assert.AreEqual(forventetResultat, resultat);
+            Assert.IsTrue(forventetResultat == resultat);
         }
+
         [TestMethod]
         public void SlettFilmFeil(int id)
         {
             // Arrange
             var forventetResultat = false;
             var AdminRepositoryStub = new AdminRepositoryStub();
+
             // Act
             var resultat = AdminRepositoryStub.SlettFilm(0);
+
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
         }
+
         [TestMethod]
         public void SlettBestillingRiktig(int id)
         {
@@ -188,6 +209,7 @@ namespace Enhetstest
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
         }
+
         [TestMethod]
         public void SlettBestillingFeil(int id)
         {

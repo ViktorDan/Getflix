@@ -46,6 +46,7 @@ namespace WebAppsMedGithub.Controllers
         {
             bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, tlf);
         }
+
         public void SlettKunde(int id)
         {
             // denne kalles via et Ajax-kall
@@ -53,6 +54,7 @@ namespace WebAppsMedGithub.Controllers
             bool slettOK = _AdminBLL.SlettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
+
         public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
         {
             var adminDb = new AdminBLL();
