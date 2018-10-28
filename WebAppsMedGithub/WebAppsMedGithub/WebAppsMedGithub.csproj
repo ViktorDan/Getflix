@@ -114,6 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\error-2018-10-27144332Z-8c1e5bd5-85b9-4fdf-84ed-c2ff5a7422d5.xml" />
+    <Content Include="App_Data\WebAppsMedGithub.mdf" />
+    <Content Include="App_Data\WebAppsMedGithub_log.ldf">
+      <DependentUpon>WebAppsMedGithub.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Bilder\22JumpStreet.jpg" />
     <Content Include="Bilder\Avengers.jpg" />
@@ -250,9 +255,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
