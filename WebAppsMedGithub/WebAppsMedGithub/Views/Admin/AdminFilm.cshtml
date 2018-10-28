@@ -6,7 +6,6 @@
 <head>
     <script type="text/javascript">
         $(document).ready(function () {
-            console.log('test');
             $('a[data-sletteModal=true]').click(function () {
                 var dataNavn = $(this).data('navn');
                 var dataId = $(this).data('id');
@@ -39,7 +38,7 @@
                 var dataBilde = $(this).data('bilde');
 
                 $('#endreNavn').html("<img src='" + dataBilde + "' style='width:30%;' class='col-sm-offset-4' /><br/>"
-                    + "<tr><td>Tittel</td><td><input id='tittel' value='" + dataTittel + "' class='form-control'></input></td></tr>"
+                    + "<table><tr><td>Tittel</td><td><input id='tittel' value='" + dataTittel + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Utgitt år</td><td><input id='aar' value='" + dataAar + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Sjanger</td><td><input id='sjan' value='" + dataSjanger + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Lengde</td><td><input id='len' value='" + dataLen + "' class='form-control'></input></td></tr>"
