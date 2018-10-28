@@ -12,3 +12,5 @@ Vi har hatt problemer med innlogging i Azure og har derfor ikke
 mulighet til å kjøre prosjektet på skytjenesten.
 
 Logging av feilsituasjoner blir gjort ved hjelp av Elmah, Elmah oppretter en fil i app.data  for alle feilhendelser og det finnes link til elmah logs på admin sidene. 
+
+For tilgang til admin sidene lag en bruker med brukernavn: "admin" deretter logg inn. 
