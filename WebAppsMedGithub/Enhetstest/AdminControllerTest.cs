@@ -228,7 +228,7 @@ namespace Enhetstest
             var AdminRepositoryStub = new AdminRepositoryStub();
 
             // Act
-            var resultat = AdminRepositoryStub.EndreFilm(1, "Pulp Fiction", 1995, "Action", 155, 15, 110);
+            var resultat = AdminRepositoryStub.EndreFilm(1, "Pulp Fiction", 1995, "Action", 155, 15, 110, "");
 
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
@@ -242,7 +242,7 @@ namespace Enhetstest
             var AdminRepositoryStub = new AdminRepositoryStub();
 
             // Act
-            var resultat = AdminRepositoryStub.EndreFilm(0, "Pulp Fiction", 1995, "Action", 155, 15, 110);
+            var resultat = AdminRepositoryStub.EndreFilm(0, "Pulp Fiction", 1995, "Action", 155, 15, 110, "");
 
             // Assert
             Assert.AreEqual(forventetResultat, resultat);

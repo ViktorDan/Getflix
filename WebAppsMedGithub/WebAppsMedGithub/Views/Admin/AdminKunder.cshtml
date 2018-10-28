@@ -139,7 +139,7 @@
 <body>
     <h2 class="text-center">Administrer Kunder</h2>
     <br />
-    
+    @Html.ActionLink("Registrer ny Kunde", "AdminRegistrerKunde", "Admin", new { @class = "btn btn-success col-sm-offset-5 col-md-2" })
     <div>
         <table class="table-striped col-sm-offset-1 col-md-10">
             <tr>
@@ -173,7 +173,6 @@
                 </tr>
             }
         </table>
-        @Html.ActionLink("Registrer ny Kunde", "AdminRegistrerKunde", "Admin", new { @class = "btn btn-success col-sm-offset-5 col-md-2" })
 
 
         @Html.Partial("sletteModal")
