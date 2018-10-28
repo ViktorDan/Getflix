@@ -10,7 +10,7 @@
             $('a[data-sletteModal=true]').click(function () {
                 var dataNavn = $(this).data('navn');
                 var dataId = $(this).data('id');
-                console.log('test2');
+                
                 $('#slettNavn').html(dataNavn);
 
                 $('#sletteModalKnapp').click(function () {
@@ -36,18 +36,19 @@
                 var dataStor = $(this).data('stor');
                 var dataSjanger = $(this).data('sjanger');
                 var dataPris = $(this).data('pris');
-                //var dataBilde = $(this).data('bilde');
+                var dataBilde = $(this).data('bilde');
 
-                $('#endreNavn').html("<tr><td>Id</td><td>"+ dataId +"</td></tr>"
-                    + "<tr><td>Tittel</td><td><input id='tittel' value='"+dataTittel+"' class='form-control'></input></td></tr>"
+                $('#endreNavn').html("<img src='" + dataBilde + "' style='width:30%;' class='col-sm-offset-4' /><br/>"
+                    + "<tr><td>Tittel</td><td><input id='tittel' value='" + dataTittel + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Utgitt år</td><td><input id='aar' value='" + dataAar + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Sjanger</td><td><input id='sjan' value='" + dataSjanger + "' class='form-control'></input></td></tr>"
-                    + "<tr><td>Lengde</td><td><input id='len' value='" + dataLen +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Størrelse</td><td><input id='stor' value='" + dataStor +"' class='form-control'></input></td></tr>"
+                    + "<tr><td>Lengde</td><td><input id='len' value='" + dataLen + "' class='form-control'></input></td></tr>"
+                    + "<tr><td>Størrelse</td><td><input id='stor' value='" + dataStor + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Pris</td><td><input id='pris' value='" + dataPris + "' class='form-control'></input></td></tr>"
-                    
-                    
-
+                    + "<tr><td>Bilde</td><td><input id='bilde' value='" + dataBilde + "' class='form-control'></input></td></tr></table>"
+                );
+                console.log($("#bilde").val());
+                
                 $('#endreModalKnapp').click(function () {
                     
                     var tittel = $('#tittel').val();
@@ -56,19 +57,24 @@
                     var len = $('#len').val();
                     var stor = $('#stor').val();
                     var pris = $('#pris').val();
-
-                    $.ajax({
-                        url: '@Url.Action("EndreFilm", "Admin")',
-                        data: { id: dataId, tittel: tittel, aar: aar, sjan: sjan, len: len, stor: stor, pris: pris },
-                        success: function () {
-                            $.ajax({
-                                url: '@Url.Action("AdminFilm", "Admin")',
-                                success: function () {
-                                    window.location.reload();
-                                }
-                            });
-                        }
-                    });
+                    var bilde = $('#bilde').val();
+                    console.log(bilde);
+                    if (tittel.match(/^[a-zæøåA-ZÆØÅ 0-9]{2,20}$/) && aar.match(/^[0-9]{4}$/)
+                        && sjan.match(/^[a-zæøåA-ZÆØÅ]{2,15}$/) && len.match(/^[0-9]{1,3}$/)
+                        && stor.match(/^[0-9]{1,3}$/) && pris.match(/^[0-9]{1,4}$/) && bilde.match(/^[a-zæøåA-ZÆØÅ0-9./]{2,20}$/)) {
+                        $.ajax({
+                            url: '@Url.Action("EndreFilm", "Admin")',
+                            data: { id: dataId, tittel: tittel, aar: aar, sjan: sjan, len: len, stor: stor, pris: pris, bilde: bilde },
+                            success: function () {
+                                $.ajax({
+                                    url: '@Url.Action("AdminFilm", "Admin")',
+                                    success: function () {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                        });
+                    }
                 });
             });
         });
@@ -103,8 +109,16 @@
     <h2 class="text-center">Administrer Film</h2>
     <br />
     <div>
-        
-        
+        <div>
+            @Html.ActionLink("Registrer ny Film", "AdminRegistrerFilm", "Admin", new { @class = "btn btn-success col-sm-offset-2 col-md-2" })
+            <div class="col-sm-offset-8 list-inline">
+                @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="file" value="Endre bilde" />
+                    <input type="submit" name="Submit" id="Submit" value="Last opp" />
+                }
+            </div>
+        </div>
         <table class="table-striped col-sm-offset-1 col-md-10">
             <tr>
                 <th></th>
@@ -116,15 +130,15 @@
             @foreach (var film in Model)
             {
                 <tr>
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" /></td>
                     <td>@film.FId</td>
                     <td>@film.Navn</td>
                     <td>@film.Aar</td>
-                    
+
                     <td class="text-right">
                         <a href="#endreModal" class="btn btn-default" id="endreKnapp"
                            data-id="@film.FId" data-tittel="@film.Navn" data-aar="@film.Aar"
-                           data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger" 
+                           data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger"
                            data-pris="@film.Pris" data-bilde="@film.Bilde" data-toggle="modal" data-endreModal="true">Endre</a>
                         <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
                            data-navn="@film.FId @film.Navn @film.Bilde"

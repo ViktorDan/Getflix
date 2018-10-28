@@ -31,7 +31,7 @@ namespace DAL
             new Filmer{FId=4, Navn="Elysium", Aar=2013, Lengde=109, Pris=49, Storrelse=10, Sjanger="SiFi", Bilde="../Bilder/Elysium.jpg"},
             new Filmer{FId=5, Navn="Fight Club", Aar=1999, Lengde=139, Pris=49, Storrelse=10, Sjanger="Drama", Bilde="../Bilder/FightClub.jpg"},
             new Filmer{FId=6, Navn="Saving Private Ryan", Aar=1998, Lengde=169, Pris=49, Storrelse=10, Sjanger="Drama", Bilde="../Bilder/SavingPrivateRyan.jpg"},
-            new Filmer{FId=7, Navn="Batman Begins", Aar=2005, Lengde=140, Pris=49, Storrelse=10, Sjanger="Action", Bilde="../Bilder/BatmanBegins.jpg"},
+            new Filmer{FId=7, Navn="Batman Begins", Aar=2005, Lengde=140, Pris=49, Storrelse=10, Sjanger="Action", Bilde=""},
             new Filmer{FId=8, Navn="The Dark Knight", Aar=2008, Lengde=152, Pris=49, Storrelse=10, Sjanger="Action", Bilde="../Bilder/DarkKnight.jpg"},
             new Filmer{FId=9, Navn="The Dark Knight Rises", Aar=2012, Lengde=164, Pris=49, Storrelse=10, Sjanger="Action", Bilde="../Bilder/DarkKnightRises.jpg"},
             new Filmer{FId=10, Navn="22 Jump Street", Aar=2014, Lengde=112, Pris=49, Storrelse=10, Sjanger="Komedie", Bilde="../Bilder/22JumpStreet.jpg"},

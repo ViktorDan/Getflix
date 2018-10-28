@@ -86,7 +86,7 @@ namespace DAL
                 return false;
             }
         }
-        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
             var db = new DBContext();
             try
@@ -98,6 +98,7 @@ namespace DAL
                 film.Lengde = len;
                 film.Storrelse = stor;
                 film.Pris = pris;
+                film.Bilde = bilde;
                 db.SaveChanges();
 
                 return true;

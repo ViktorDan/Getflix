@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebAppsMedGithub.Models;
 using Model;
 using BLL;
+using System.IO;
 
 namespace WebAppsMedGithub.Controllers
 {
@@ -77,11 +78,43 @@ namespace WebAppsMedGithub.Controllers
             bool slettOK = adminDb.SlettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
-        public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        public ActionResult AdminRegistrerFilm()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminRegistrerFilm(Film innFilm)
+        {
+            Session["FeilMelding"] = "";
+            DBFunk.RegistrerFilm(innFilm);
+            return RedirectToAction("AdminFilm");
+        }
+        public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
             var adminDb = new AdminBLL();
-            bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
+            bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
         }
+        
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Bilder/"), fileName);
+                    file.SaveAs(path);
+                }
+            }
+            return RedirectToAction("AdminFilm", "Admin");
+        }
+        
         
         public void SlettFilm(int id)
         {

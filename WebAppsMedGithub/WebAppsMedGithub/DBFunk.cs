@@ -56,7 +56,32 @@ namespace WebAppsMedGithub
             }
         }
 
+        public static void RegistrerFilm(Film innFilm)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var nyFilm = new Filmer()
+                    {
+                        Navn = innFilm.Navn,
+                        Aar = innFilm.Aar,
+                        Lengde = innFilm.Lengde,
+                        Pris = innFilm.Pris,
+                        Storrelse = innFilm.Str,
+                        Sjanger = innFilm.Sjanger,
+                        Bilde = innFilm.Bilde
+                    };
 
+                    db.Filmer.Add(nyFilm);
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    System.Diagnostics.Debug.WriteLine(feil);
+                }
+            }
+        }
 
         public static byte[] lagHash(string innPassord)
         {

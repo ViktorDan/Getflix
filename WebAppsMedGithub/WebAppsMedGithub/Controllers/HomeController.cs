@@ -163,9 +163,14 @@ namespace WebAppsMedGithub.Controllers
                 foreach (var f in filmer)
                 {
                     count++;
-
+                    var bilde = "";
+                    if (f.Bilde == null || f.Bilde == "")
+                    {
+                        bilde = "../Bilder/noImage.png";
+                    }
+                    else { bilde = f.Bilde; }
                     innhold += "<td id='element' width='20%'><a href='#filmModal' data-id='" + f.FId +
-                        "' data-toggle='modal' data-filmModal='true'><img src='" + f.Bilde + "' width='90%'></a> <br/>" + f.Navn +
+                        "' data-toggle='modal' data-filmModal='true'><img src='" + bilde + "' width='90%'></a> <br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
                         "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/><td/>";
                     if (count == 5)
@@ -190,8 +195,13 @@ namespace WebAppsMedGithub.Controllers
                 foreach (var f in filmer)
                 {
                     count++;
-
-                    innhold += "<td id='element' width='20%'><img src='" + f.Bilde + "' width='90%'><br/>" + f.Navn +
+                    var bilde = "";
+                    if (f.Bilde == null || f.Bilde == "")
+                    {
+                        bilde = "../Bilder/noImage.png";
+                    }
+                    else { bilde = f.Bilde; }
+                    innhold += "<td id='element' width='20%'><img src='" + bilde + "' width='90%'><br/>" + f.Navn +
                         "<br/><a href='" + Url.Action("NyHovedSide") + "?data=" + f.FId +
                         "' id='button' class='btn btn-success' value='" + f.FId + "'>Mer Info</a><br/><br/> <td/>";
                     if (count == 5)

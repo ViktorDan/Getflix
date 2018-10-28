@@ -39,10 +39,10 @@ namespace BLL
             var AdminDAL = new AdminDAL();
             return AdminDAL.SlettKunde(id);
         }
-        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
             var AdminDAL = new AdminDAL();
-            return AdminDAL.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
+            return AdminDAL.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
         }
         public bool SlettFilm(int id)
         {

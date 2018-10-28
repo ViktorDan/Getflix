@@ -6,13 +6,24 @@
         </div>
         <div class="modal-body">
             <p class="text-center">Endre informasjon:</p>
+            <div>
+                @*
+                @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input type="file" name="file" />
+                    <input type="submit" name="Submit" id="Submit" value="Last opp" />
+                }
+                *@
+                
+            </div>
+            <br/>
             <div id="endreNavn">
 
             </div>
         </div>
         <div id="data">
             <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" id="endreModalKnapp">Endre</button>
+            <button type="submit" name="Submit" class="btn btn-danger" data-dismiss="modal" id="endreModalKnapp">Endre</button>
         </div>
     </div>
 </div>
