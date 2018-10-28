@@ -7,8 +7,6 @@ html, body {
     height: 100%;
 }
 
-
-
 .body-content {
     padding: 4% 15px 1.5% 15px;
     box-shadow: 0 0 1000px #424040;
@@ -95,33 +93,18 @@ textarea {
     margin-right: 5%;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: red;
-}
-
 #endreNavn {
     margin-left: 20%;
     margin-right: 20%;
     min-width: 60%;
 }
 
-/*.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+.footer {
+    height: 2%;
     color: #D8D5D5;
     font-family: Verdana, Geneva, sans-serif;
-    text-align: center;
-    height: 3%;
-    color: #D8D5D5;
-    background-color: #424040;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0.5;
-}*/
-
-.footer, .push {
-    height: 142px; /* .push must be the same height as .footer */
-    bottom: 0;
-    text-align: center;
+    font-weight: 100;
+    opacity: 0.8;
+    width: 100%;
+    background-color: black;
 }
