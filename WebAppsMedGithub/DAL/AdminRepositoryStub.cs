@@ -18,7 +18,7 @@ namespace DAL
                 Fornavn = "Henrik",
                 Etternavn = "Karlsen",
                 Adresse = "Kirkeveien 11",
-                Postnr = 1234,
+                Postnr = "1234",
                 Tlf = 12345678,
             };
             KundeListe.Add(kunde);
@@ -62,7 +62,7 @@ namespace DAL
             return BestillListe;
         }
 
-        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        public bool EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
         {
             if (id==0)
             {

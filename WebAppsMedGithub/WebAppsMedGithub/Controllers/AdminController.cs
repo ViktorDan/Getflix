@@ -67,9 +67,12 @@ namespace WebAppsMedGithub.Controllers
             else
                 return RedirectToAction("Index", "Home");
         }
-        
 
-        
+        public ActionResult AdminRegistrerKunde()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -79,10 +82,9 @@ namespace WebAppsMedGithub.Controllers
             DBFunk.RegistrerKunde(innKunde);
             return RedirectToAction("AdminKunder");
         }
-        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
-        {
 
-            
+        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
+        {     
             bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, postSted, tlf);
         }
 

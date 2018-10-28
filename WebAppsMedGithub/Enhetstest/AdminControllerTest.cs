@@ -31,7 +31,7 @@ namespace Enhetstest
                 Fornavn = "Henrik",
                 Etternavn = "Karlsen",
                 Adresse = "Kirkeveien 11",
-                Postnr = 1234,
+                Postnr = "1234",
                 Tlf = 12345678,
             };
             forventetResultat.Add(kunde);
@@ -141,7 +141,7 @@ namespace Enhetstest
             var AdminRepositoryStub = new AdminRepositoryStub();
 
             // Act
-            var resultat = AdminRepositoryStub.EndreKunde(1, "bruker", "Hans", "Gruber", "Skurkeveien 1", 1313, 99119911);
+            var resultat = AdminRepositoryStub.EndreKunde(1, "bruker", "Hans", "Gruber", "Skurkeveien 1", "1313", "Dubai", 99119911);
 
             // Assert
             Assert.IsTrue(resultat == forventetResultat);
@@ -155,7 +155,7 @@ namespace Enhetstest
             var AdminRepositoryStub = new AdminRepositoryStub();
 
             // Act
-            var resultat = AdminRepositoryStub.EndreKunde(0, "bruker", "Hans", "Gruber", "Skurkeveien 1", 1313, 99119911);
+            var resultat = AdminRepositoryStub.EndreKunde(0, "bruker", "Hans", "Gruber", "Skurkeveien 1", "1313", "Dubai", 99119911);
 
             // Assert
             Assert.AreEqual(forventetResultat, resultat);
