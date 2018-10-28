@@ -16,6 +16,7 @@ html, body {
     background-color: #424040;
     color: #D8D5D5;
     min-height: 100%;
+    height: auto !important;
     margin-bottom: 0;
 }
 
@@ -104,7 +105,7 @@ textarea {
     min-width: 60%;
 }
 
-.footer {
+/*.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -117,4 +118,10 @@ textarea {
     background-color: #424040;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0.5;
+}*/
+
+.footer, .push {
+    height: 142px; /* .push must be the same height as .footer */
+    bottom: 0;
+    text-align: center;
 }
