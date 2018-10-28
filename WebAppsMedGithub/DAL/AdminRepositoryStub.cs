@@ -21,6 +21,7 @@ namespace DAL
                 Postnr = "1234",
                 Tlf = 12345678,
             };
+
             KundeListe.Add(kunde);
             KundeListe.Add(kunde);
             KundeListe.Add(kunde);

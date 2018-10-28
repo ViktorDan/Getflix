@@ -16,14 +16,23 @@ namespace Enhetstest
     [TestClass]
     public class AdminControllerTest
     {
-
+        [TestMethod]
+        public void Admin()
+        {
+            // Arrange 
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            // Act 
+            var resultat = (ViewResult)controller.Admin();
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+       
         [TestMethod]
         public void AdminKunder()
         {
             // Arrange
 
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-
             var forventetResultat = new List<dbKunder>();
             var kunde = new dbKunder()
             {
@@ -34,6 +43,7 @@ namespace Enhetstest
                 Postnr = "1234",
                 Tlf = 12345678,
             };
+
             forventetResultat.Add(kunde);
             forventetResultat.Add(kunde);
             forventetResultat.Add(kunde);
@@ -131,6 +141,17 @@ namespace Enhetstest
                 Assert.AreEqual(forventetResultat[i].FId, resultat[i].FId);
                 Assert.AreEqual(forventetResultat[i].dato, resultat[i].dato);
             }
+        }
+
+        [TestMethod]
+        public void AdminRegistrerKunde()
+        {
+            // Arrange 
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            // Act 
+            var resultat = (ViewResult)controller.AdminRegistrerKunde();
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
         }
 
         [TestMethod]
