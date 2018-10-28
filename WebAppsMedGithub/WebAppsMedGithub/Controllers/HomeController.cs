@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 using WebAppsMedGithub.Models;
 using Model;
 using BLL;
@@ -27,9 +29,20 @@ namespace WebAppsMedGithub.Controllers
         {
             if (DBFunk.bruker_i_db(innLogget))
             {
+                Session["FeilMelding"] = "";
+
+                // Sjekker om det er admin som logger inn.
+                bool nøkkelOrd = Regex.IsMatch(innLogget.Brukernavn, "admin");
+                if (nøkkelOrd == true)
+                {
+                    Session["AdminLoggetInn"] = true;
+                    Session["AdminNavn"] = innLogget.Brukernavn;
+                    return RedirectToAction("Admin", "Admin");
+                }
+
                 Session["LoggetInn"] = true;
                 Session["Brukernavn"] = innLogget.Brukernavn;
-                Session["FeilMelding"] = "";
+
                 return RedirectToAction("HovedSide");
             }
             else

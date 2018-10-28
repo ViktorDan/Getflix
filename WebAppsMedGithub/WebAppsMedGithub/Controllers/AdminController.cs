@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAppsMedGithub.Models;
 using Model;
 using BLL;
 
@@ -25,30 +26,64 @@ namespace WebAppsMedGithub.Controllers
 
         public ActionResult Admin()
         {
-            return View();
+            if (SjekkLogin())
+                return View();
+            else
+                return RedirectToAction("Index", "Home");
         }
 
         public ActionResult AdminKunder()
         {
-            List<dbKunder> kunder = _AdminBLL.HentAlleKunder();
-            return View(kunder);
+            if (SjekkLogin())
+            {
+                List<dbKunder> kunder = _AdminBLL.HentAlleKunder();
+                return View(kunder);
+            }
+            else
+                return RedirectToAction("Index", "Home");
+            
         }
 
         public ActionResult AdminFilm()
         {
-            List<Filmer> filmer = _AdminBLL.HentAlleFilmer();
-            return View(filmer);
+            if (SjekkLogin())
+            {
+                List<Filmer> filmer = _AdminBLL.HentAlleFilmer();
+                return View(filmer);
+            }
+            else
+                return RedirectToAction("Index", "Home");
+        
+            
         }
 
         public ActionResult AdminBestilling()
         {
-            List<Bestillinger> bestillinger = _AdminBLL.HentAlleBestillinger();
-            return View(bestillinger);
+            if (SjekkLogin())
+            {
+                List<Bestillinger> bestillinger = _AdminBLL.HentAlleBestillinger();
+                return View(bestillinger);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
+        
 
-        public void EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdminRegistrerKunde(Kunde innKunde)
         {
-            bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, tlf);
+            Session["FeilMelding"] = "";
+            DBFunk.RegistrerKunde(innKunde);
+            return RedirectToAction("AdminKunder");
+        }
+        public void EndreKunde(int id, String bn, String fn, String en, String ad, String post, String postSted, int tlf)
+        {
+
+            
+            bool endreOK = _AdminBLL.EndreKunde(id, bn, fn, en, ad, post, postSted, tlf);
         }
 
         public void SlettKunde(int id)
@@ -63,7 +98,6 @@ namespace WebAppsMedGithub.Controllers
         {
             bool endreOK = _AdminBLL.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
-
         public void SlettFilm(int id)
         {
             // denne kalles via et Ajax-kall
@@ -77,33 +111,30 @@ namespace WebAppsMedGithub.Controllers
             bool slettOK = _AdminBLL.SlettBestilling(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
-     
-        
-        //public bool SjekkLogin()
-        //{
-        //    if (Session["LoggetInn"] != null)
-        //    {
-        //        bool loggetInn = (bool)Session["LoggetInn"];
-        //        if (loggetInn)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
         // Ender Session.
         public ActionResult LoggUt()
         {
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+        public bool SjekkLogin()
+        {
+            if (Session["AdminLoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["AdminLoggetInn"];
+                if (loggetInn)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

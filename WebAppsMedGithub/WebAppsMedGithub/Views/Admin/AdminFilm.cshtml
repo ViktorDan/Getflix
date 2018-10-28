@@ -4,17 +4,13 @@
     ViewBag.Title = "AdminFilm";
 }
 <head>
-    <style>
-        th {
-            width: 14%;
-        }
-    </style>
     <script type="text/javascript">
         $(document).ready(function () {
+            console.log('test');
             $('a[data-sletteModal=true]').click(function () {
                 var dataNavn = $(this).data('navn');
                 var dataId = $(this).data('id');
-
+                console.log('test2');
                 $('#slettNavn').html(dataNavn);
 
                 $('#sletteModalKnapp').click(function () {
@@ -40,7 +36,7 @@
                 var dataStor = $(this).data('stor');
                 var dataSjanger = $(this).data('sjanger');
                 var dataPris = $(this).data('pris');
-                var dataBilde = $(this).data('bilde');
+                //var dataBilde = $(this).data('bilde');
 
                 $('#endreNavn').html("<tr><td>Id</td><td>"+ dataId +"</td></tr>"
                     + "<tr><td>Tittel</td><td><input id='tittel' value='"+dataTittel+"' class='form-control'></input></td></tr>"
@@ -48,7 +44,9 @@
                     + "<tr><td>Sjanger</td><td><input id='sjan' value='" + dataSjanger + "' class='form-control'></input></td></tr>"
                     + "<tr><td>Lengde</td><td><input id='len' value='" + dataLen +"' class='form-control'></input></td></tr>"
                     + "<tr><td>Størrelse</td><td><input id='stor' value='" + dataStor +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Pris</td><td><input id='pris' value='" + dataPris +"' class='form-control'></input></td></tr>");
+                    + "<tr><td>Pris</td><td><input id='pris' value='" + dataPris + "' class='form-control'></input></td></tr>"
+                    
+                    
 
                 $('#endreModalKnapp').click(function () {
                     
@@ -77,38 +75,18 @@
     </script>
 </head>
 <body>
-    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Getflix - Admin", "Admin", "Admin", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Kunder", "AdminKunder")</li>
-                    <li>@Html.ActionLink("Filmer", "AdminFilm")</li>
-                    <li>@Html.ActionLink("Bestilling", "AdminBestilling")</li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li>@Html.ActionLink("Logg ut", "LoggUt")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <h2>Administrer Film</h2>
+    <h2 class="text-center">Administrer Film</h2>
     <br />
     <div>
-        <table>
+        
+        
+        <table class="table-striped col-sm-offset-1 col-md-10">
             <tr>
                 <th></th>
-                <th>Film id</th>
+                <th>Film Id</th>
                 <th>Tittel</th>
-                <th>År</th>
+                <th colspan="3">År</th>
 
             </tr>
             @foreach (var film in Model)
@@ -119,7 +97,7 @@
                     <td>@film.Navn</td>
                     <td>@film.Aar</td>
                     
-                    <td>
+                    <td class="text-right">
                         <a href="#endreModal" class="btn btn-default" id="endreKnapp"
                            data-id="@film.FId" data-tittel="@film.Navn" data-aar="@film.Aar"
                            data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger" 

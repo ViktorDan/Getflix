@@ -30,14 +30,16 @@ namespace BLL
             List<Filmer> filmer = _Repository.HentAlleFilmer();
             return filmer;
         }
+
         public List<Bestillinger> HentAlleBestillinger()
         {
             List<Bestillinger> bestillinger = _Repository.HentAlleBestillinger();
             return bestillinger;
         }
-        public bool EndreKunde(int id, String bn, String fn, String en, String ad, int post, int tlf)
+        public bool EndreKunde(int id, String bl, String fn, String en, String ad, String post, String postSted, int tlf)
         {
-            return _Repository.EndreKunde(id, bn, fn, en, ad, post, tlf);
+            var AdminDAL = new AdminDAL();
+            return AdminDAL.EndreKunde(id, bl, fn, en, ad, post, postSted, tlf);
         }
         public bool SlettKunde(int id)
         {

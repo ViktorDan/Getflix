@@ -10,21 +10,13 @@ html, body {
 
 
 .body-content {
-    padding: 4% 15px 15px 15px;
-    box-shadow: 1px 30px 1000px #424040;
+    padding: 4% 15px 1.5% 15px;
+    box-shadow: 0 0 1000px #424040;
     border: 1px solid #424040;
     background-color: #424040;
     color: #D8D5D5;
     min-height: 100%;
-}
-
-#footer {
-    margin-top: -2%;
     margin-bottom: 0;
-    color: #D8D5D5;
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: 100;
-    opacity: 0.8;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -100,4 +92,29 @@ textarea {
 .form-horizontal {
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: red;
+}
+
+#endreNavn {
+    margin-left: 20%;
+    margin-right: 20%;
+    min-width: 60%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #D8D5D5;
+    font-family: Verdana, Geneva, sans-serif;
+    text-align: center;
+    height: 3%;
+    color: #D8D5D5;
+    background-color: #424040;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
 }

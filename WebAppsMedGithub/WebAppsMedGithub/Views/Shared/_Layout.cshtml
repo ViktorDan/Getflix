@@ -15,7 +15,56 @@
 </head>
 <body style=" background-color: #808080; height: 100%; ">
 
-    @* Lager et felles layout, hvor innholdet skal rendres, og vi får en felles footer *@
+    @* Lager et felles layout, hvor innholdet skal rendres *@
+
+    @* Lager felles navbar *@
+
+    <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (Session["AdminLoggetInn"] is bool && (bool)Session["AdminLoggetInn"] == true)
+                {
+                    @Html.ActionLink("Getflix - Admin", "Admin", "Admin", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
+                }
+                else
+                {
+                    @Html.ActionLink("Getflix", "HovedSide", "Home", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+
+                @if (Session["AdminLoggetInn"] is bool && (bool)Session["AdminLoggetInn"] == true)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Kunder", "AdminKunder")</li>
+                        <li>@Html.ActionLink("Filmer", "AdminFilm")</li>
+                        <li>@Html.ActionLink("Bestilling", "AdminBestilling")</li>
+                        <li><a href="http://localhost:63592/elmah.axd">Elmah Logs</a></li>
+                    </ul>
+                }
+
+                @if ((Session["LoggetInn"] is bool && (bool)Session["LoggetInn"] == true) || (Session["AdminLoggetInn"] is bool && (bool)Session["AdminLoggetInn"] == true))
+                {
+                    <ul class="nav navbar-nav pull-right">
+                        <li>@Html.ActionLink("Logg ut", "LoggUt")</li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav pull-right">
+                        <li>@Html.ActionLink("Registrer deg", "Registrer", "Home")</li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+
+    @* Lager en felles body *@
 
     <div class="container body-content">
         <div>
@@ -23,10 +72,16 @@
         </div>
     </div>
 
-    <div class= "text-center">
+    @* Lager felles footer *@
+
+    @*<div class="text-center">
         <footer id="footer">
             <p>&copy; @DateTime.Now.Year - Andreas Klophmann - Viktor Danielsen - Alexander William Ingvarsson Hals - Kristian Ludvig Grønvold</p>
         </footer>
+    </div>*@
+
+    <div class="footer">
+        <p>&copy; @DateTime.Now.Year - Andreas Klophmann - Viktor Danielsen - Alexander William Ingvarsson Hals - Kristian Ludvig Grønvold</p>
     </div>
 
 
