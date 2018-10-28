@@ -81,50 +81,49 @@
     </script>
 </head>
 <body>
-
     <h2 class="text-center">Administrer Film</h2>
     <br />
     <div>
-        <div>
-            @Html.ActionLink("Registrer ny Film", "AdminRegistrerFilm", "Admin", new { @class = "btn btn-success col-sm-offset-2 col-md-2" })
-            <div class="col-sm-offset-8 list-inline">
+        @Html.ActionLink("Registrer ny Film", "AdminRegistrerFilm", "Admin", new { @class = "btn btn-success col-sm-offset-2 col-md-2" })
+        <div class="col-sm-offset-7">
+            <div>
                 @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <input type="file" name="file" value="Endre bilde" />
-                    <input type="submit" name="Submit" id="Submit" value="Last opp" />
+                    <input class="col-sm-6" type="file" name="file" value="Endre bilde"/>
+                    <input type="submit" name="Submit" id="Submit" value="Last opp"/>
                 }
+
             </div>
         </div>
-        <table class="table-striped col-sm-offset-1 col-md-10">
+    <table class="table-striped col-sm-offset-1 col-md-10">
+        <tr>
+            <th></th>
+            <th>Film Id</th>
+            <th>Tittel</th>
+            <th colspan="3">År</th>
+
+        </tr>
+        @foreach (var film in Model)
+        {
             <tr>
-                <th></th>
-                <th>Film Id</th>
-                <th>Tittel</th>
-                <th colspan="3">År</th>
+                <td><input type="checkbox" /></td>
+                <td>@film.FId</td>
+                <td>@film.Navn</td>
+                <td>@film.Aar</td>
 
+                <td class="text-right">
+                    <a href="#endreModal" class="btn btn-default" id="endreKnapp"
+                        data-id="@film.FId" data-tittel="@film.Navn" data-aar="@film.Aar"
+                        data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger"
+                        data-pris="@film.Pris" data-bilde="@film.Bilde" data-toggle="modal" data-endreModal="true">Endre</a>
+                    <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
+                        data-navn="@film.FId @film.Navn @film.Bilde"
+                        data-id="@film.FId" data-toggle="modal" data-sletteModal="true">Slett</a>
+                </td>
             </tr>
-            @foreach (var film in Model)
-            {
-                <tr>
-                    <td><input type="checkbox" /></td>
-                    <td>@film.FId</td>
-                    <td>@film.Navn</td>
-                    <td>@film.Aar</td>
-
-                    <td class="text-right">
-                        <a href="#endreModal" class="btn btn-default" id="endreKnapp"
-                           data-id="@film.FId" data-tittel="@film.Navn" data-aar="@film.Aar"
-                           data-len="@film.Lengde" data-stor="@film.Storrelse" data-sjanger="@film.Sjanger"
-                           data-pris="@film.Pris" data-bilde="@film.Bilde" data-toggle="modal" data-endreModal="true">Endre</a>
-                        <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
-                           data-navn="@film.FId @film.Navn @film.Bilde"
-                           data-id="@film.FId" data-toggle="modal" data-sletteModal="true">Slett</a>
-                    </td>
-                </tr>
-            }
-        </table>
-        @Html.Partial("sletteModal")
-        @Html.Partial("endreModal")
+        }
+    </table>
+    @Html.Partial("sletteModal")
+    @Html.Partial("endreModal")
     </div>
-
 </body>
