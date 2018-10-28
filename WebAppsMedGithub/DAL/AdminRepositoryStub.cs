@@ -87,7 +87,7 @@ namespace DAL
             }
         }
 
-        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
+        public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
             if (id == 0)
             {
