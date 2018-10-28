@@ -14,7 +14,7 @@ namespace DAL
         List<Bestillinger> HentAlleBestillinger();
         bool EndreKunde(int id, String bl, String fn, String en, String ad, String post, String postSted, int tlf);
         bool SlettKunde(int id);
-        bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris);
+        bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde);
         bool SlettFilm(int id);
         bool SlettBestilling(int id);
     }

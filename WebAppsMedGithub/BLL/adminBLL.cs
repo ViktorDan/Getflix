@@ -47,7 +47,7 @@ namespace BLL
         }
         public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
-            return _Repository.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
+            return _Repository.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
         }
         public bool SlettFilm(int id)
         {

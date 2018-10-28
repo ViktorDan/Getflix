@@ -76,11 +76,7 @@ namespace WebAppsMedGithub.Controllers
             // kunne returnert en feil dersom slettingen feilet....
         }
 
-        public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris)
-        {
-            return View();
-
-        }
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
