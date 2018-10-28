@@ -119,44 +119,7 @@ namespace WebAppsMedGithub
                 }
             }
         }
-        /*
-        public bool endreKunde(int id, Kunde innKunde)
-        {
-            var db = new DBContext();
-            try
-            {
-                dbKunder endreKunde = db.Kunder.Find(id);
-                endreKunde.Fornavn = innKunde.fornavn;
-                endreKunde.Etternavn = innKunde.etternavn;
-                endreKunde.Adresse = innKunde.adresse;
-                if (endreKunde.Postnr != innKunde.postnr)
-                {
-                    // Postnummeret er endret. Må først sjekke om det nye postnummeret eksisterer i tabellen.
-                    Poststeder eksisterendePoststed = db.Poststeder.FirstOrDefault(p => p.Postnr == innKunde.postnr);
-                    if (eksisterendePoststed == null)
-                    {
-                        // poststedet eksisterer ikke, må legges inn
-                        var nyttPoststed = new Poststeder()
-                        {
-                            Postnr = innKunde.postnr,
-                            Poststed = innKunde.poststed
-                        };
-                        db.Poststeder.Add(nyttPoststed);
-                    }
-                    else
-                    {   // poststedet med det nye postnr eksisterer, endre bare postnummeret til kunden
-                        endreKunde.Postnr = innKunde.postnr;
-                    }
-                };
-                db.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        */
+        
         public bool slettKunde(String slettId)
         {
             var db = new DBContext();

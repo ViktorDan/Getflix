@@ -104,8 +104,7 @@ namespace WebAppsMedGithub.Controllers
         }
         public void EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
-            var adminDb = new AdminBLL();
-            bool endreOK = adminDb.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
+            bool endreOK = _AdminBLL.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
         }
         
         [HttpPost]

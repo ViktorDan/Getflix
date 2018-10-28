@@ -38,8 +38,7 @@ namespace BLL
         }
         public bool EndreKunde(int id, String bl, String fn, String en, String ad, String post, String postSted, int tlf)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.EndreKunde(id, bl, fn, en, ad, post, postSted, tlf);
+            return _Repository.EndreKunde(id, bl, fn, en, ad, post, postSted, tlf);
         }
         public bool SlettKunde(int id)
         {
