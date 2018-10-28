@@ -49,8 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDAL.cs" />
+    <Compile Include="AdminRepositoryStub.cs" />
     <Compile Include="DBContext.cs" />
     <Compile Include="DBInitializer.cs" />
+    <Compile Include="IAdminRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
