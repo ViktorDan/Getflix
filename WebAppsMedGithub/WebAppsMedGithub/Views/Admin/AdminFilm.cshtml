@@ -89,14 +89,13 @@
                 @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <input class="col-sm-6" type="file" name="file" value="Endre bilde"/>
-                    <input type="submit" name="Submit" id="Submit" value="Last opp"/>
+                    <input type="submit" name="Submit" id="Submit" value="Last opp bilde"/>
                 }
 
             </div>
         </div>
     <table class="table-striped col-sm-offset-1 col-md-10">
         <tr>
-            <th></th>
             <th>Film Id</th>
             <th>Tittel</th>
             <th colspan="3">År</th>
@@ -105,7 +104,6 @@
         @foreach (var film in Model)
         {
             <tr>
-                <td><input type="checkbox" /></td>
                 <td>@film.FId</td>
                 <td>@film.Navn</td>
                 <td>@film.Aar</td>

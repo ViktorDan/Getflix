@@ -27,33 +27,6 @@
                     });
                 });
             });
-            $('a[data-endreModal=true]').click(function () {
-                var dataId = $(this).data('id');
-                var dataBn = $(this).data('bn');
-                var dataFId = $(this).data('fId');
-                var dataDato = $(this).data('dato');
-                
-
-                $('#endreNavn').html("<tr><td>Bestillings id</td><td><input value='" + dataId +"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Brukernavn</td><td><input value='"+dataBn+"' class='form-control'></input></td></tr>"
-                    + "<tr><td>Film id</td><td><input value='" + dataFId + "' class='form-control'></input></td></tr>"
-                    + "<tr><td>Dato</td><td><input value='" + dataDato + "' class='form-control'></input></td></tr>");
-
-                $('#endreModalKnapp').click(function () {
-                    $.ajax({
-                        url: '@Url.Action("EndreBestilling", "Home")',
-                        data: { id: dataId },
-                        success: function () {
-                            $.ajax({
-                                url: '@Url.Action("AdminBestilling", "Home")',
-                                success: function () {
-                                    window.location.reload();
-                                }
-                            });
-                        }
-                    });
-                });
-            });
         });
     </script>
 </head>
@@ -63,7 +36,6 @@
     <div>
         <table class="table-striped col-sm-offset-1 col-md-10">
             <tr>
-                <th></th>
                 <th>Bestillings id</th>
                 <th>Brukernavn</th>
                 <th>Film Id</th>
@@ -72,16 +44,12 @@
             @foreach (var best in Model)
             {
                 <tr>
-                    <td><input type="checkbox" /></td>
                     <td>@best.BId</td>
                     <td>@best.Brukernavn</td>
                     <td>@best.FId</td>
                     <td>@best.dato.ToShortDateString()</td>
 
                     <td class="text-right">
-                        <a href="#endreModal" class="btn btn-default" id="endreKnapp"
-                           data-id="@best.BId" data-bn="@best.Brukernavn" data-fId="@best.FId"
-                           data-dato="@best.dato" data-toggle="modal" data-endreModal="true">Endre</a>
                         <a href="#sletteModal" class="btn btn-danger" id="sletteKnapp"
                            data-navn="@best.BId @best.Brukernavn @best.FId"
                            data-id="@best.BId" data-toggle="modal" data-sletteModal="true">Slett</a>
