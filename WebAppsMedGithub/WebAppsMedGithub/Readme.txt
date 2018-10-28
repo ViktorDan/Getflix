@@ -13,4 +13,4 @@ mulighet til å kjøre prosjektet på skytjenesten.
 
 Logging av feilsituasjoner blir gjort ved hjelp av Elmah, Elmah oppretter en fil i app.data  for alle feilhendelser og det finnes link til elmah logs på admin sidene. 
 
-For tilgang til admin sidene lag en bruker med brukernavn: "admin" deretter logg inn. 
+Hvis bruker navn admin og passord admin ikke fungerer må det opprettes en bruke ved brukernavn: "admin", denne brukeren vil ha tilgang til admin sidene. 
