@@ -8,25 +8,32 @@ using Model;
 
 namespace BLL
 {
-    public class AdminBLL
+    public class AdminBLL : IAdminBLL
     {
+        private IAdminRepository _Repository;
+        public AdminBLL()
+        {
+            _Repository = new AdminDAL();
+        }
+        public AdminBLL(IAdminRepository stub)
+        {
+            _Repository = stub;
+        }
+
         public List<dbKunder> HentAlleKunder()
         {
-            var AdminDAL = new AdminDAL();
-            List<dbKunder> kunder = AdminDAL.HentAlleKunder();
+            List<dbKunder> kunder = _Repository.HentAlleKunder();
             return kunder;
         }
         public List<Filmer> HentAlleFilmer()
         {
-            var AdminDAL = new AdminDAL();
-            List<Filmer> filmer = AdminDAL.HentAlleFilmer();
+            List<Filmer> filmer = _Repository.HentAlleFilmer();
             return filmer;
         }
 
         public List<Bestillinger> HentAlleBestillinger()
         {
-            var AdminDAL = new AdminDAL();
-            List<Bestillinger> bestillinger = AdminDAL.HentAlleBestillinger();
+            List<Bestillinger> bestillinger = _Repository.HentAlleBestillinger();
             return bestillinger;
         }
         public bool EndreKunde(int id, String bl, String fn, String en, String ad, String post, String postSted, int tlf)
@@ -36,23 +43,19 @@ namespace BLL
         }
         public bool SlettKunde(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettKunde(id);
+            return _Repository.SlettKunde(id);
         }
         public bool EndreFilm(int id, String tittel, int aar, String sjan, int len, int stor, int pris, String bilde)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.EndreFilm(id, tittel, aar, sjan, len, stor, pris, bilde);
+            return _Repository.EndreFilm(id, tittel, aar, sjan, len, stor, pris);
         }
         public bool SlettFilm(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettFilm(id);
+            return _Repository.SlettFilm(id);
         }
         public bool SlettBestilling(int id)
         {
-            var AdminDAL = new AdminDAL();
-            return AdminDAL.SlettBestilling(id);
+            return _Repository.SlettBestilling(id);
         }
     }
 }
