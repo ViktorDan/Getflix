@@ -7,24 +7,15 @@ html, body {
     height: 100%;
 }
 
-
-
 .body-content {
-    padding: 4% 15px 15px 15px;
+    padding: 4% 15px 1.5% 15px;
     box-shadow: 0 0 1000px #424040;
     border: 1px solid #424040;
     background-color: #424040;
     color: #D8D5D5;
     min-height: 100%;
-}
-
-#footer {
-    margin-top: -2%;
+    height: auto !important;
     margin-bottom: 0;
-    color: #D8D5D5;
-    font-family: Verdana, Geneva, sans-serif;
-    font-weight: 100;
-    opacity: 0.8;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -102,12 +93,18 @@ textarea {
     margin-right: 5%;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: red;
-}
-
 #endreNavn {
     margin-left: 20%;
     margin-right: 20%;
     min-width: 60%;
+}
+
+.footer {
+    height: 2%;
+    color: #D8D5D5;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 100;
+    opacity: 0.8;
+    width: 100%;
+    background-color: black;
 }

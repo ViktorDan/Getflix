@@ -45,43 +45,24 @@
 
 </script>
 
-@* Endrer at å trykke på logoen sender deg til hovedsiden vår med oversikt over filmer, legger til logg ut - knapp *@
 
-<div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Getflix", "HovedSide", "Home", new { area = "" }, new { @class = "navbar-brand", id = "getflixKnapp" })
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
-                <li>@Html.ActionLink("Logg ut", "LoggUt")</li>
-            </ul>
-        </div>
-    </div>
+<h3 class="text-center">Velkommen @Session["Brukernavn"]</h3>
+
+<!--Nedtrekk liste for valg av sjanger-->
+<div>
+    <select class="form-control" id="IdListe" onchange="hentFilmAjax()">
+        @foreach (var Sjanger in Model)
+        {
+            <option>@Sjanger</option>
+        }
+    </select>
 </div>
+<br />
 
-<div class="container body-content">
-    <!--Nedtrekk liste for valg av sjanger-->
-    <div>
-        <select class="form-control" id="IdListe" onchange="hentFilmAjax()">
-            @foreach (var Sjanger in Model)
-            {
-                <option>@Sjanger</option>
-            }
-        </select>
-    </div>
-    <br />
+<div class="text-center" id="FilmListe">
 
-    <div class="text-center" id="FilmListe">
-
-    </div>
-    @Html.Partial("filmModal") 
 </div>
+@Html.Partial("filmModal")
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
